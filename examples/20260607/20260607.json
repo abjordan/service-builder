@@ -1,0 +1,5053 @@
+{
+    "name": "2026-06-07",
+    "DesktopAudioDevice1": {
+        "prev_ver": 536936450,
+        "name": "Desktop Audio",
+        "uuid": "5479c2fa-6922-4eb6-a816-69f12d964ea3",
+        "id": "wasapi_output_capture",
+        "versioned_id": "wasapi_output_capture",
+        "settings": {
+            "device_id": "default"
+        },
+        "mixers": 255,
+        "sync": 0,
+        "flags": 0,
+        "volume": 0.0,
+        "balance": 0.5,
+        "enabled": true,
+        "muted": true,
+        "push-to-mute": false,
+        "push-to-mute-delay": 0,
+        "push-to-talk": false,
+        "push-to-talk-delay": 0,
+        "hotkeys": {
+            "libobs.mute": [],
+            "libobs.unmute": [],
+            "libobs.push-to-mute": [],
+            "libobs.push-to-talk": []
+        },
+        "deinterlace_mode": 0,
+        "deinterlace_field_order": 0,
+        "monitoring_type": 0,
+        "private_settings": {}
+    },
+    "AuxAudioDevice1": {
+        "prev_ver": 536936450,
+        "name": "Mic/Aux",
+        "uuid": "1a28ced6-e66b-45bb-994f-89685e5dab70",
+        "id": "wasapi_input_capture",
+        "versioned_id": "wasapi_input_capture",
+        "settings": {
+            "device_id": "default"
+        },
+        "mixers": 255,
+        "sync": 0,
+        "flags": 0,
+        "volume": 0.0,
+        "balance": 0.5,
+        "enabled": true,
+        "muted": true,
+        "push-to-mute": false,
+        "push-to-mute-delay": 0,
+        "push-to-talk": false,
+        "push-to-talk-delay": 0,
+        "hotkeys": {
+            "libobs.mute": [],
+            "libobs.unmute": [],
+            "libobs.push-to-mute": [],
+            "libobs.push-to-talk": []
+        },
+        "deinterlace_mode": 0,
+        "deinterlace_field_order": 0,
+        "monitoring_type": 0,
+        "private_settings": {}
+    },
+    "groups": [
+        {
+            "prev_ver": 536936450,
+            "name": "Title Card",
+            "uuid": "2f680e47-c59c-4b6d-8ce3-93d333a01313",
+            "id": "group",
+            "versioned_id": "group",
+            "settings": {
+                "custom_size": true,
+                "cx": 961,
+                "cy": 457,
+                "id_counter": 0,
+                "items": [
+                    {
+                        "name": "White Box",
+                        "source_uuid": "9f4c368e-30d9-4a2a-b935-b48841a6d9e1",
+                        "visible": true,
+                        "locked": false,
+                        "rot": 0.0,
+                        "scale_ref": {
+                            "x": 1920.0,
+                            "y": 1080.0
+                        },
+                        "align": 5,
+                        "bounds_type": 0,
+                        "bounds_align": 0,
+                        "bounds_crop": false,
+                        "crop_left": 0,
+                        "crop_top": 0,
+                        "crop_right": 0,
+                        "crop_bottom": 0,
+                        "id": 27,
+                        "group_item_backup": false,
+                        "pos": {
+                            "x": 0.0,
+                            "y": 0.0
+                        },
+                        "scale": {
+                            "x": 0.8000994324684143,
+                            "y": 0.5440475940704346
+                        },
+                        "bounds": {
+                            "x": 0.0,
+                            "y": 0.0
+                        },
+                        "scale_filter": "disable",
+                        "blend_method": "default",
+                        "blend_type": "normal",
+                        "show_transition": {
+                            "duration": 0
+                        },
+                        "hide_transition": {
+                            "duration": 0
+                        },
+                        "private_settings": {}
+                    },
+                    {
+                        "name": "LCS Name",
+                        "source_uuid": "8d286904-7826-4727-ad7d-719d95da7aaa",
+                        "visible": true,
+                        "locked": false,
+                        "rot": 0.0,
+                        "scale_ref": {
+                            "x": 1920.0,
+                            "y": 1080.0
+                        },
+                        "align": 5,
+                        "bounds_type": 0,
+                        "bounds_align": 0,
+                        "bounds_crop": false,
+                        "crop_left": 0,
+                        "crop_top": 0,
+                        "crop_right": 0,
+                        "crop_bottom": 0,
+                        "id": 28,
+                        "group_item_backup": false,
+                        "pos": {
+                            "x": 92.30712890625,
+                            "y": 120.88933563232422
+                        },
+                        "scale": {
+                            "x": 0.912500262260437,
+                            "y": 0.9128441214561462
+                        },
+                        "bounds": {
+                            "x": 0.0,
+                            "y": 0.0
+                        },
+                        "scale_filter": "disable",
+                        "blend_method": "default",
+                        "blend_type": "normal",
+                        "show_transition": {
+                            "duration": 0
+                        },
+                        "hide_transition": {
+                            "duration": 0
+                        },
+                        "private_settings": {}
+                    },
+                    {
+                        "name": "Luther-rose-logo-small.png",
+                        "source_uuid": "58470e50-de4f-43cf-92c2-a9e21c8ba910",
+                        "visible": true,
+                        "locked": false,
+                        "rot": 0.0,
+                        "scale_ref": {
+                            "x": 1920.0,
+                            "y": 1080.0
+                        },
+                        "align": 5,
+                        "bounds_type": 0,
+                        "bounds_align": 0,
+                        "bounds_crop": false,
+                        "crop_left": 0,
+                        "crop_top": 0,
+                        "crop_right": 0,
+                        "crop_bottom": 0,
+                        "id": 29,
+                        "group_item_backup": false,
+                        "pos": {
+                            "x": 610.5283203125,
+                            "y": 124.43597412109375
+                        },
+                        "scale": {
+                            "x": 0.1186506375670433,
+                            "y": 0.1187548115849495
+                        },
+                        "bounds": {
+                            "x": 0.0,
+                            "y": 0.0
+                        },
+                        "scale_filter": "disable",
+                        "blend_method": "default",
+                        "blend_type": "normal",
+                        "show_transition": {
+                            "duration": 0
+                        },
+                        "hide_transition": {
+                            "duration": 0
+                        },
+                        "private_settings": {}
+                    },
+                    {
+                        "name": "Tagline",
+                        "source_uuid": "aca1d8c2-5f34-49a7-a996-0c0e8b9b6a74",
+                        "visible": true,
+                        "locked": false,
+                        "rot": 0.0,
+                        "scale_ref": {
+                            "x": 1920.0,
+                            "y": 1080.0
+                        },
+                        "align": 5,
+                        "bounds_type": 0,
+                        "bounds_align": 0,
+                        "bounds_crop": false,
+                        "crop_left": 0,
+                        "crop_top": 0,
+                        "crop_right": 0,
+                        "crop_bottom": 0,
+                        "id": 9,
+                        "group_item_backup": false,
+                        "pos": {
+                            "x": 27.187255859375,
+                            "y": 337.3028564453125
+                        },
+                        "scale": {
+                            "x": 0.9929332733154297,
+                            "y": 0.9895836114883423
+                        },
+                        "bounds": {
+                            "x": 0.0,
+                            "y": 0.0
+                        },
+                        "scale_filter": "disable",
+                        "blend_method": "default",
+                        "blend_type": "normal",
+                        "show_transition": {
+                            "duration": 0
+                        },
+                        "hide_transition": {
+                            "duration": 0
+                        },
+                        "private_settings": {}
+                    },
+                    {
+                        "name": "Date",
+                        "source_uuid": "0f149a91-2137-4786-912c-c0afc1e3266d",
+                        "visible": true,
+                        "locked": false,
+                        "rot": 0.0,
+                        "scale_ref": {
+                            "x": 1920.0,
+                            "y": 1080.0
+                        },
+                        "align": 5,
+                        "bounds_type": 0,
+                        "bounds_align": 0,
+                        "bounds_crop": false,
+                        "crop_left": 0,
+                        "crop_top": 0,
+                        "crop_right": 0,
+                        "crop_bottom": 0,
+                        "id": 35,
+                        "group_item_backup": false,
+                        "pos": {
+                            "x": 178.38748168945312,
+                            "y": 12.442228317260742
+                        },
+                        "scale": {
+                            "x": 1.4822335243225098,
+                            "y": 1.4861111640930176
+                        },
+                        "bounds": {
+                            "x": 0.0,
+                            "y": 0.0
+                        },
+                        "scale_filter": "disable",
+                        "blend_method": "default",
+                        "blend_type": "normal",
+                        "show_transition": {
+                            "duration": 0
+                        },
+                        "hide_transition": {
+                            "duration": 0
+                        },
+                        "private_settings": {}
+                    }
+                ]
+            },
+            "mixers": 0,
+            "sync": 0,
+            "flags": 0,
+            "volume": 1.0,
+            "balance": 0.5,
+            "enabled": true,
+            "muted": false,
+            "push-to-mute": false,
+            "push-to-mute-delay": 0,
+            "push-to-talk": false,
+            "push-to-talk-delay": 0,
+            "hotkeys": {
+                "libobs.show_scene_item.27": [],
+                "libobs.hide_scene_item.27": [],
+                "libobs.show_scene_item.28": [],
+                "libobs.hide_scene_item.28": [],
+                "libobs.show_scene_item.29": [],
+                "libobs.hide_scene_item.29": [],
+                "libobs.show_scene_item.9": [],
+                "libobs.hide_scene_item.9": [],
+                "libobs.show_scene_item.35": [],
+                "libobs.hide_scene_item.35": []
+            },
+            "deinterlace_mode": 0,
+            "deinterlace_field_order": 0,
+            "monitoring_type": 0,
+            "canvas_uuid": "6c69626f-6273-4c00-9d88-c5136d61696e",
+            "private_settings": {}
+        }
+    ],
+    "scene_order": [
+        {
+            "name": "Black ------------------------------------------- 2"
+        },
+        {
+            "name": "Intro"
+        },
+        {
+            "name": "Welcome"
+        },
+        {
+            "name": "Opening Hymn"
+        },
+        {
+            "name": "Conf., Abs. Psalm, Kyrie"
+        },
+        {
+            "name": "Gloria"
+        },
+        {
+            "name": "Sal and Col, OT"
+        },
+        {
+            "name": "Choir Anthem"
+        },
+        {
+            "name": "Readings"
+        },
+        {
+            "name": "Creed"
+        },
+        {
+            "name": "Sermon Hymn"
+        },
+        {
+            "name": "Sermon"
+        },
+        {
+            "name": "Prayers and Benediction"
+        },
+        {
+            "name": "Closing Hymn"
+        },
+        {
+            "name": "Thanks"
+        },
+        {
+            "name": "Outro"
+        },
+        {
+            "name": "Black ---------------"
+        },
+        {
+            "name": "Bell Choir"
+        },
+        {
+            "name": "OT Reading"
+        },
+        {
+            "name": "Invocation"
+        }
+    ],
+    "current_scene": "Intro",
+    "current_program_scene": "Welcome",
+    "canvases": [],
+    "current_transition": "Fade",
+    "transition_duration": 500,
+    "transitions": [],
+    "quick_transitions": [
+        {
+            "name": "Cut",
+            "duration": 300,
+            "hotkeys": [],
+            "id": 1,
+            "fade_to_black": false
+        },
+        {
+            "name": "Fade",
+            "duration": 500,
+            "hotkeys": [],
+            "id": 2,
+            "fade_to_black": false
+        },
+        {
+            "name": "Fade",
+            "duration": 2000,
+            "hotkeys": [],
+            "id": 3,
+            "fade_to_black": true
+        }
+    ],
+    "saved_projectors": [],
+    "preview_locked": false,
+    "scaling_enabled": false,
+    "scaling_level": -5,
+    "scaling_off_x": 0.0,
+    "scaling_off_y": 0.0,
+    "virtual-camera": {
+        "type2": 3
+    },
+    "modules": {
+        "scripts-tool": [],
+        "output-timer": {
+            "streamTimerHours": 0,
+            "streamTimerMinutes": 0,
+            "streamTimerSeconds": 30,
+            "recordTimerHours": 0,
+            "recordTimerMinutes": 0,
+            "recordTimerSeconds": 30,
+            "autoStartStreamTimer": false,
+            "autoStartRecordTimer": false,
+            "pauseRecordTimer": true
+        },
+        "auto-scene-switcher": {
+            "interval": 300,
+            "non_matching_scene": "",
+            "switch_if_not_matching": false,
+            "active": false,
+            "switches": []
+        },
+        "captions": {
+            "source": "",
+            "enabled": false,
+            "lang_id": 1033,
+            "provider": "mssapi"
+        }
+    },
+    "version": 1,
+    "sources": [
+        {
+            "prev_ver": 536936450,
+            "name": "Acknowledgements",
+            "uuid": "06c00a7e-fded-468a-9faf-550bb26ee1a4",
+            "id": "text_gdiplus",
+            "versioned_id": "text_gdiplus_v2",
+            "settings": {
+                "text": "Acknowledgments\nDivine Service, Setting Four from Lutheran Service Book.\nUnless otherwise indicated, all scripture quotations are from The Holy Bible, English Standard Version,\ncopyright © 2001 by Crossway Bibles, a division of Good News Publishers. Used by permission. All rights reserved. \nCreated by Lutheran Service Builder © 2006 Concordia Publishing House.\nSome images used under license from ShutterStock.com",
+                "font": {
+                    "face": "Arial",
+                    "flags": 1,
+                    "size": 28,
+                    "style": "Bold"
+                }
+            },
+            "mixers": 0,
+            "sync": 0,
+            "flags": 0,
+            "volume": 1.0,
+            "balance": 0.5,
+            "enabled": true,
+            "muted": false,
+            "push-to-mute": false,
+            "push-to-mute-delay": 0,
+            "push-to-talk": false,
+            "push-to-talk-delay": 0,
+            "hotkeys": {},
+            "deinterlace_mode": 0,
+            "deinterlace_field_order": 0,
+            "monitoring_type": 0,
+            "private_settings": {}
+        },
+        {
+            "prev_ver": 536936450,
+            "name": "Acknowledgements 2",
+            "uuid": "23b7ce9b-f1d2-4b09-9f9b-04fe24a2afdf",
+            "id": "text_gdiplus",
+            "versioned_id": "text_gdiplus_v2",
+            "settings": {
+                "text": "Divine Service, Setting One from Lutheran Service Book\n\nUnless otherwise indicated, all scripture quotations are from \nThe Holy Bible, English Standard Version, © 2001 by Crossway Bibles, \na division of Good News Publishers. Used by permission. All rights reserved.\n\nCreated by Lutheran Service Builder © 2006 Concordia Publishing House.\nSome images used under license from Shutterstock.com",
+                "font": {
+                    "face": "Arial",
+                    "flags": 1,
+                    "size": 28,
+                    "style": "Bold"
+                },
+                "color": 4278190080
+            },
+            "mixers": 0,
+            "sync": 0,
+            "flags": 0,
+            "volume": 1.0,
+            "balance": 0.5,
+            "enabled": true,
+            "muted": false,
+            "push-to-mute": false,
+            "push-to-mute-delay": 0,
+            "push-to-talk": false,
+            "push-to-talk-delay": 0,
+            "hotkeys": {},
+            "deinterlace_mode": 0,
+            "deinterlace_field_order": 0,
+            "monitoring_type": 0,
+            "private_settings": {}
+        },
+        {
+            "prev_ver": 536936450,
+            "name": "Announcements",
+            "uuid": "44b48f13-f82c-4135-9bcc-e7bfcbfe96e1",
+            "id": "slideshow",
+            "versioned_id": "slideshow",
+            "settings": {
+                "files": [
+                    {
+                        "value": "G:/Shared drives/Worship/Announcements/Announcements-1080p/Slide1 (Large).PNG",
+                        "uuid": "b0b68246-e036-48ac-8775-b422366095d4",
+                        "selected": false,
+                        "hidden": false
+                    },
+                    {
+                        "value": "G:/Shared drives/Worship/Announcements/Announcements-1080p/Slide2 (Large).PNG",
+                        "uuid": "85a3308b-14b5-41e5-9389-c0fb68a50883",
+                        "selected": false,
+                        "hidden": false
+                    },
+                    {
+                        "value": "G:/Shared drives/Worship/Announcements/Announcements-1080p/Slide3 (Large).PNG",
+                        "uuid": "a2d1251e-df91-43ac-9478-d28974123cee",
+                        "selected": false,
+                        "hidden": false
+                    },
+                    {
+                        "value": "G:/Shared drives/Worship/Announcements/Announcements-1080p/Slide4 (Large).PNG",
+                        "uuid": "9b22571a-96cc-42aa-b6ed-878a01fa8fe7",
+                        "selected": false,
+                        "hidden": false
+                    },
+                    {
+                        "value": "G:/Shared drives/Worship/Announcements/Announcements-1080p/Slide5 (Large).PNG",
+                        "uuid": "f3f23a0f-e989-4d75-89a3-89fa5ab3601f",
+                        "selected": false,
+                        "hidden": false
+                    },
+                    {
+                        "value": "G:/Shared drives/Worship/Announcements/Announcements-1080p/Slide6 (Large).PNG",
+                        "uuid": "a92f5aa5-ca8f-427d-a063-7c44ce1fd9c2",
+                        "selected": false,
+                        "hidden": false
+                    },
+                    {
+                        "value": "G:/Shared drives/Worship/Announcements/Announcements-1080p/Slide7 (Large).PNG",
+                        "uuid": "4c69d342-9c76-4968-9832-92bd5d93f7d3",
+                        "selected": false,
+                        "hidden": false
+                    },
+                    {
+                        "value": "G:/Shared drives/Worship/Announcements/Announcements-1080p/Slide8 (Large).PNG",
+                        "uuid": "5bdd489c-df1e-4fa0-986e-cb5c3daa830b",
+                        "selected": false,
+                        "hidden": false
+                    },
+                    {
+                        "value": "G:/Shared drives/Worship/Announcements/Announcements-1080p/Slide9 (Large).PNG",
+                        "uuid": "d3f67b16-b505-4234-90fa-ae0271989ffd",
+                        "selected": false,
+                        "hidden": false
+                    },
+                    {
+                        "value": "G:/Shared drives/Worship/Announcements/Announcements-1080p/Slide10 (Large).PNG",
+                        "uuid": "14b2b306-5666-4f8d-8bfc-ee0131597b49",
+                        "selected": false,
+                        "hidden": false
+                    },
+                    {
+                        "value": "G:/Shared drives/Worship/Announcements/Announcements-1080p/Slide11 (Large).PNG",
+                        "uuid": "770cfe39-af24-41ca-9cd2-e339e429788c",
+                        "selected": false,
+                        "hidden": false
+                    },
+                    {
+                        "value": "G:/Shared drives/Worship/Announcements/Announcements-1080p/Slide12 (Large).PNG",
+                        "uuid": "8322a200-a484-4ec2-b11a-bc94fca7d016",
+                        "selected": false,
+                        "hidden": false
+                    },
+                    {
+                        "value": "G:/Shared drives/Worship/Announcements/Announcements-1080p/Slide13 (Large).PNG",
+                        "uuid": "85d3cf63-4f1f-451e-92f3-2513d86ccae5",
+                        "selected": false,
+                        "hidden": false
+                    },
+                    {
+                        "value": "G:/Shared drives/Worship/Announcements/Announcements-1080p/Slide14 (Large).PNG",
+                        "uuid": "a3e93431-47ef-417c-a317-8df08d822715",
+                        "selected": false,
+                        "hidden": false
+                    },
+                    {
+                        "value": "G:/Shared drives/Worship/Announcements/Announcements-1080p/Slide15 (Large).PNG",
+                        "uuid": "647f9848-d766-4cce-aab4-0b238653210e",
+                        "selected": false,
+                        "hidden": false
+                    }
+                ],
+                "slide_time": 12000,
+                "playback_behavior": "stop_restart"
+            },
+            "mixers": 0,
+            "sync": 0,
+            "flags": 0,
+            "volume": 1.0,
+            "balance": 0.5,
+            "enabled": true,
+            "muted": false,
+            "push-to-mute": false,
+            "push-to-mute-delay": 0,
+            "push-to-talk": false,
+            "push-to-talk-delay": 0,
+            "hotkeys": {
+                "SlideShow.PlayPause": [],
+                "SlideShow.Restart": [],
+                "SlideShow.Stop": [],
+                "SlideShow.NextSlide": [],
+                "SlideShow.PreviousSlide": []
+            },
+            "deinterlace_mode": 0,
+            "deinterlace_field_order": 0,
+            "monitoring_type": 0,
+            "private_settings": {}
+        },
+        {
+            "prev_ver": 536936450,
+            "name": "Bell Choir",
+            "uuid": "12ad7446-2ec3-4fab-bdab-580a4eff9abf",
+            "id": "scene",
+            "versioned_id": "scene",
+            "settings": {
+                "custom_size": false,
+                "id_counter": 2,
+                "items": [
+                    {
+                        "name": "Video Capture Device",
+                        "source_uuid": "d3d6f570-3060-4ea9-8350-828fddf3c99c",
+                        "visible": true,
+                        "locked": false,
+                        "rot": 0.0,
+                        "align": 5,
+                        "bounds_type": 0,
+                        "bounds_align": 0,
+                        "bounds_crop": false,
+                        "crop_left": 0,
+                        "crop_top": 0,
+                        "crop_right": 0,
+                        "crop_bottom": 0,
+                        "id": 1,
+                        "group_item_backup": false,
+                        "pos": {
+                            "x": 0.0,
+                            "y": 0.0
+                        },
+                        "scale": {
+                            "x": 1.0,
+                            "y": 1.0
+                        },
+                        "bounds": {
+                            "x": 0.0,
+                            "y": 0.0
+                        },
+                        "scale_filter": "disable",
+                        "blend_method": "default",
+                        "blend_type": "normal",
+                        "show_transition": {
+                            "duration": 0
+                        },
+                        "hide_transition": {
+                            "duration": 0
+                        },
+                        "private_settings": {}
+                    },
+                    {
+                        "name": "Choir Anthem Image",
+                        "source_uuid": "bf97773f-c653-4cf5-b613-ce6a79328c9f",
+                        "visible": true,
+                        "locked": false,
+                        "rot": 0.0,
+                        "align": 5,
+                        "bounds_type": 0,
+                        "bounds_align": 0,
+                        "bounds_crop": false,
+                        "crop_left": 0,
+                        "crop_top": 0,
+                        "crop_right": 0,
+                        "crop_bottom": 0,
+                        "id": 2,
+                        "group_item_backup": false,
+                        "pos": {
+                            "x": -1.0,
+                            "y": -1.0
+                        },
+                        "scale": {
+                            "x": 0.4012500047683716,
+                            "y": 0.4011111259460449
+                        },
+                        "bounds": {
+                            "x": 0.0,
+                            "y": 0.0
+                        },
+                        "scale_filter": "disable",
+                        "blend_method": "default",
+                        "blend_type": "normal",
+                        "show_transition": {
+                            "duration": 0
+                        },
+                        "hide_transition": {
+                            "duration": 0
+                        },
+                        "private_settings": {}
+                    }
+                ]
+            },
+            "mixers": 0,
+            "sync": 0,
+            "flags": 0,
+            "volume": 1.0,
+            "balance": 0.5,
+            "enabled": true,
+            "muted": false,
+            "push-to-mute": false,
+            "push-to-mute-delay": 0,
+            "push-to-talk": false,
+            "push-to-talk-delay": 0,
+            "hotkeys": {
+                "OBSBasic.SelectScene": [],
+                "libobs.show_scene_item.1": [],
+                "libobs.hide_scene_item.1": [],
+                "libobs.show_scene_item.2": [],
+                "libobs.hide_scene_item.2": []
+            },
+            "deinterlace_mode": 0,
+            "deinterlace_field_order": 0,
+            "monitoring_type": 0,
+            "canvas_uuid": "6c69626f-6273-4c00-9d88-c5136d61696e",
+            "private_settings": {}
+        },
+        {
+            "prev_ver": 536936450,
+            "name": "Black ---------------",
+            "uuid": "92e9d7a4-6fc9-46ef-ba10-bfe44f575b71",
+            "id": "scene",
+            "versioned_id": "scene",
+            "settings": {
+                "custom_size": false,
+                "id_counter": 2,
+                "items": [
+                    {
+                        "name": "Color Source 3",
+                        "source_uuid": "16114103-5bcc-4daa-8259-40943bbb6f8e",
+                        "visible": true,
+                        "locked": false,
+                        "rot": 0.0,
+                        "align": 5,
+                        "bounds_type": 0,
+                        "bounds_align": 0,
+                        "bounds_crop": false,
+                        "crop_left": 0,
+                        "crop_top": 0,
+                        "crop_right": 0,
+                        "crop_bottom": 0,
+                        "id": 2,
+                        "group_item_backup": false,
+                        "pos": {
+                            "x": 0.0,
+                            "y": 0.0
+                        },
+                        "scale": {
+                            "x": 1.0,
+                            "y": 1.0
+                        },
+                        "bounds": {
+                            "x": 0.0,
+                            "y": 0.0
+                        },
+                        "scale_filter": "disable",
+                        "blend_method": "default",
+                        "blend_type": "normal",
+                        "show_transition": {
+                            "duration": 0
+                        },
+                        "hide_transition": {
+                            "duration": 0
+                        },
+                        "private_settings": {}
+                    },
+                    {
+                        "name": "Logo 10 2",
+                        "source_uuid": "86a2f482-209a-4fac-9c03-fa1aff422f5f",
+                        "visible": true,
+                        "locked": false,
+                        "rot": 0.0,
+                        "align": 5,
+                        "bounds_type": 0,
+                        "bounds_align": 0,
+                        "bounds_crop": false,
+                        "crop_left": 0,
+                        "crop_top": 0,
+                        "crop_right": 0,
+                        "crop_bottom": 0,
+                        "id": 1,
+                        "group_item_backup": false,
+                        "pos": {
+                            "x": 450.0,
+                            "y": 27.0
+                        },
+                        "scale": {
+                            "x": 0.39511439204216003,
+                            "y": 0.39546501636505127
+                        },
+                        "bounds": {
+                            "x": 0.0,
+                            "y": 0.0
+                        },
+                        "scale_filter": "disable",
+                        "blend_method": "default",
+                        "blend_type": "normal",
+                        "show_transition": {
+                            "duration": 0
+                        },
+                        "hide_transition": {
+                            "duration": 0
+                        },
+                        "private_settings": {}
+                    }
+                ]
+            },
+            "mixers": 0,
+            "sync": 0,
+            "flags": 0,
+            "volume": 1.0,
+            "balance": 0.5,
+            "enabled": true,
+            "muted": false,
+            "push-to-mute": false,
+            "push-to-mute-delay": 0,
+            "push-to-talk": false,
+            "push-to-talk-delay": 0,
+            "hotkeys": {
+                "OBSBasic.SelectScene": [],
+                "libobs.show_scene_item.2": [],
+                "libobs.hide_scene_item.2": [],
+                "libobs.show_scene_item.1": [],
+                "libobs.hide_scene_item.1": []
+            },
+            "deinterlace_mode": 0,
+            "deinterlace_field_order": 0,
+            "monitoring_type": 0,
+            "canvas_uuid": "6c69626f-6273-4c00-9d88-c5136d61696e",
+            "private_settings": {}
+        },
+        {
+            "prev_ver": 536936450,
+            "name": "Black ------------------------------------------- 2",
+            "uuid": "522eef1a-db55-4a25-a0fd-d63654cd93b1",
+            "id": "scene",
+            "versioned_id": "scene",
+            "settings": {
+                "custom_size": false,
+                "id_counter": 2,
+                "items": [
+                    {
+                        "name": "Color Source 3",
+                        "source_uuid": "16114103-5bcc-4daa-8259-40943bbb6f8e",
+                        "visible": true,
+                        "locked": false,
+                        "rot": 0.0,
+                        "align": 5,
+                        "bounds_type": 0,
+                        "bounds_align": 0,
+                        "bounds_crop": false,
+                        "crop_left": 0,
+                        "crop_top": 0,
+                        "crop_right": 0,
+                        "crop_bottom": 0,
+                        "id": 1,
+                        "group_item_backup": false,
+                        "pos": {
+                            "x": 0.0,
+                            "y": 0.0
+                        },
+                        "scale": {
+                            "x": 1.0,
+                            "y": 1.0
+                        },
+                        "bounds": {
+                            "x": 0.0,
+                            "y": 0.0
+                        },
+                        "scale_filter": "disable",
+                        "blend_method": "default",
+                        "blend_type": "normal",
+                        "show_transition": {
+                            "duration": 0
+                        },
+                        "hide_transition": {
+                            "duration": 0
+                        },
+                        "private_settings": {}
+                    },
+                    {
+                        "name": "Logo 10 2",
+                        "source_uuid": "86a2f482-209a-4fac-9c03-fa1aff422f5f",
+                        "visible": true,
+                        "locked": false,
+                        "rot": 0.0,
+                        "align": 5,
+                        "bounds_type": 0,
+                        "bounds_align": 0,
+                        "bounds_crop": false,
+                        "crop_left": 0,
+                        "crop_top": 0,
+                        "crop_right": 0,
+                        "crop_bottom": 0,
+                        "id": 2,
+                        "group_item_backup": false,
+                        "pos": {
+                            "x": 450.0,
+                            "y": 27.0
+                        },
+                        "scale": {
+                            "x": 0.39511439204216003,
+                            "y": 0.39546501636505127
+                        },
+                        "bounds": {
+                            "x": 0.0,
+                            "y": 0.0
+                        },
+                        "scale_filter": "disable",
+                        "blend_method": "default",
+                        "blend_type": "normal",
+                        "show_transition": {
+                            "duration": 0
+                        },
+                        "hide_transition": {
+                            "duration": 0
+                        },
+                        "private_settings": {}
+                    }
+                ]
+            },
+            "mixers": 0,
+            "sync": 0,
+            "flags": 0,
+            "volume": 1.0,
+            "balance": 0.5,
+            "enabled": true,
+            "muted": false,
+            "push-to-mute": false,
+            "push-to-mute-delay": 0,
+            "push-to-talk": false,
+            "push-to-talk-delay": 0,
+            "hotkeys": {
+                "OBSBasic.SelectScene": [],
+                "libobs.show_scene_item.1": [],
+                "libobs.hide_scene_item.1": [],
+                "libobs.show_scene_item.2": [],
+                "libobs.hide_scene_item.2": []
+            },
+            "deinterlace_mode": 0,
+            "deinterlace_field_order": 0,
+            "monitoring_type": 0,
+            "canvas_uuid": "6c69626f-6273-4c00-9d88-c5136d61696e",
+            "private_settings": {}
+        },
+        {
+            "prev_ver": 536936450,
+            "name": "Bonus Hymn Lyrics",
+            "uuid": "72d3d282-598a-4870-9be8-65058cf3e606",
+            "id": "slideshow",
+            "versioned_id": "slideshow",
+            "settings": {
+                "files": [
+                    {
+                        "value": "G:/Shared drives/Worship/2026-06-07/Hymns/Slide11.PNG",
+                        "uuid": "5d01fd76-9699-4350-aef8-6ad311d0c31f",
+                        "selected": false,
+                        "hidden": false
+                    }
+                ],
+                "transition_speed": 300,
+                "playback_behavior": "stop_restart",
+                "slide_mode": "mode_manual"
+            },
+            "mixers": 0,
+            "sync": 0,
+            "flags": 0,
+            "volume": 1.0,
+            "balance": 0.5,
+            "enabled": true,
+            "muted": false,
+            "push-to-mute": false,
+            "push-to-mute-delay": 0,
+            "push-to-talk": false,
+            "push-to-talk-delay": 0,
+            "hotkeys": {
+                "SlideShow.PlayPause": [],
+                "SlideShow.Restart": [],
+                "SlideShow.Stop": [],
+                "SlideShow.NextSlide": [
+                    {
+                        "key": "OBS_KEY_N"
+                    }
+                ],
+                "SlideShow.PreviousSlide": [
+                    {
+                        "key": "OBS_KEY_P"
+                    }
+                ]
+            },
+            "deinterlace_mode": 0,
+            "deinterlace_field_order": 0,
+            "monitoring_type": 0,
+            "private_settings": {}
+        },
+        {
+            "prev_ver": 536936450,
+            "name": "Choir Anthem",
+            "uuid": "e0a796b7-e088-49c0-8e53-36da9a29f198",
+            "id": "scene",
+            "versioned_id": "scene",
+            "settings": {
+                "custom_size": false,
+                "id_counter": 2,
+                "items": [
+                    {
+                        "name": "Video Capture Device",
+                        "source_uuid": "d3d6f570-3060-4ea9-8350-828fddf3c99c",
+                        "visible": true,
+                        "locked": false,
+                        "rot": 0.0,
+                        "align": 5,
+                        "bounds_type": 0,
+                        "bounds_align": 0,
+                        "bounds_crop": false,
+                        "crop_left": 0,
+                        "crop_top": 0,
+                        "crop_right": 0,
+                        "crop_bottom": 0,
+                        "id": 1,
+                        "group_item_backup": false,
+                        "pos": {
+                            "x": 0.0,
+                            "y": 0.0
+                        },
+                        "scale": {
+                            "x": 1.0,
+                            "y": 1.0
+                        },
+                        "bounds": {
+                            "x": 0.0,
+                            "y": 0.0
+                        },
+                        "scale_filter": "disable",
+                        "blend_method": "default",
+                        "blend_type": "normal",
+                        "show_transition": {
+                            "duration": 0
+                        },
+                        "hide_transition": {
+                            "duration": 0
+                        },
+                        "private_settings": {}
+                    },
+                    {
+                        "name": "Bonus Hymn Lyrics",
+                        "source_uuid": "72d3d282-598a-4870-9be8-65058cf3e606",
+                        "visible": true,
+                        "locked": false,
+                        "rot": 0.0,
+                        "align": 5,
+                        "bounds_type": 0,
+                        "bounds_align": 0,
+                        "bounds_crop": false,
+                        "crop_left": 0,
+                        "crop_top": 0,
+                        "crop_right": 0,
+                        "crop_bottom": 0,
+                        "id": 2,
+                        "group_item_backup": false,
+                        "pos": {
+                            "x": 0.0,
+                            "y": 0.0
+                        },
+                        "scale": {
+                            "x": 0.4000000059604645,
+                            "y": 0.4000000059604645
+                        },
+                        "bounds": {
+                            "x": 0.0,
+                            "y": 0.0
+                        },
+                        "scale_filter": "disable",
+                        "blend_method": "default",
+                        "blend_type": "normal",
+                        "show_transition": {
+                            "duration": 0
+                        },
+                        "hide_transition": {
+                            "duration": 0
+                        },
+                        "private_settings": {}
+                    }
+                ]
+            },
+            "mixers": 0,
+            "sync": 0,
+            "flags": 0,
+            "volume": 1.0,
+            "balance": 0.5,
+            "enabled": true,
+            "muted": false,
+            "push-to-mute": false,
+            "push-to-mute-delay": 0,
+            "push-to-talk": false,
+            "push-to-talk-delay": 0,
+            "hotkeys": {
+                "OBSBasic.SelectScene": [],
+                "libobs.show_scene_item.1": [],
+                "libobs.hide_scene_item.1": [],
+                "libobs.show_scene_item.2": [],
+                "libobs.hide_scene_item.2": []
+            },
+            "deinterlace_mode": 0,
+            "deinterlace_field_order": 0,
+            "monitoring_type": 0,
+            "canvas_uuid": "6c69626f-6273-4c00-9d88-c5136d61696e",
+            "private_settings": {}
+        },
+        {
+            "prev_ver": 536936450,
+            "name": "Choir Anthem Image",
+            "uuid": "bf97773f-c653-4cf5-b613-ce6a79328c9f",
+            "id": "image_source",
+            "versioned_id": "image_source",
+            "settings": {
+                "file": "G:/Shared drives/Worship/2026-04-05 - Easter/Hymns/Slide2.PNG"
+            },
+            "mixers": 0,
+            "sync": 0,
+            "flags": 0,
+            "volume": 1.0,
+            "balance": 0.5,
+            "enabled": true,
+            "muted": false,
+            "push-to-mute": false,
+            "push-to-mute-delay": 0,
+            "push-to-talk": false,
+            "push-to-talk-delay": 0,
+            "hotkeys": {},
+            "deinterlace_mode": 0,
+            "deinterlace_field_order": 0,
+            "monitoring_type": 0,
+            "private_settings": {}
+        },
+        {
+            "prev_ver": 536936450,
+            "name": "Closing Hymn",
+            "uuid": "4e59dba4-5a0f-4fe7-b354-f989021b9d75",
+            "id": "scene",
+            "versioned_id": "scene",
+            "settings": {
+                "custom_size": false,
+                "id_counter": 4,
+                "items": [
+                    {
+                        "name": "Video Capture Device",
+                        "source_uuid": "d3d6f570-3060-4ea9-8350-828fddf3c99c",
+                        "visible": true,
+                        "locked": false,
+                        "rot": 0.0,
+                        "align": 5,
+                        "bounds_type": 0,
+                        "bounds_align": 0,
+                        "bounds_crop": false,
+                        "crop_left": 0,
+                        "crop_top": 0,
+                        "crop_right": 0,
+                        "crop_bottom": 0,
+                        "id": 1,
+                        "group_item_backup": false,
+                        "pos": {
+                            "x": 0.0,
+                            "y": 0.0
+                        },
+                        "scale": {
+                            "x": 1.0,
+                            "y": 1.0
+                        },
+                        "bounds": {
+                            "x": 0.0,
+                            "y": 0.0
+                        },
+                        "scale_filter": "disable",
+                        "blend_method": "default",
+                        "blend_type": "normal",
+                        "show_transition": {
+                            "duration": 0
+                        },
+                        "hide_transition": {
+                            "duration": 0
+                        },
+                        "private_settings": {}
+                    },
+                    {
+                        "name": "Closing Hymn Slides",
+                        "source_uuid": "d4ac888c-e562-4635-9800-54ed1dc5252f",
+                        "visible": true,
+                        "locked": false,
+                        "rot": 0.0,
+                        "align": 5,
+                        "bounds_type": 0,
+                        "bounds_align": 0,
+                        "bounds_crop": false,
+                        "crop_left": 0,
+                        "crop_top": 0,
+                        "crop_right": 0,
+                        "crop_bottom": 0,
+                        "id": 3,
+                        "group_item_backup": false,
+                        "pos": {
+                            "x": 0.0,
+                            "y": 0.0
+                        },
+                        "scale": {
+                            "x": 0.4000000059604645,
+                            "y": 0.4000000059604645
+                        },
+                        "bounds": {
+                            "x": 0.0,
+                            "y": 0.0
+                        },
+                        "scale_filter": "disable",
+                        "blend_method": "default",
+                        "blend_type": "normal",
+                        "show_transition": {
+                            "duration": 0
+                        },
+                        "hide_transition": {
+                            "duration": 0
+                        },
+                        "private_settings": {}
+                    }
+                ]
+            },
+            "mixers": 0,
+            "sync": 0,
+            "flags": 0,
+            "volume": 1.0,
+            "balance": 0.5,
+            "enabled": true,
+            "muted": false,
+            "push-to-mute": false,
+            "push-to-mute-delay": 0,
+            "push-to-talk": false,
+            "push-to-talk-delay": 0,
+            "hotkeys": {
+                "OBSBasic.SelectScene": [],
+                "libobs.show_scene_item.1": [],
+                "libobs.hide_scene_item.1": [],
+                "libobs.show_scene_item.3": [],
+                "libobs.hide_scene_item.3": []
+            },
+            "deinterlace_mode": 0,
+            "deinterlace_field_order": 0,
+            "monitoring_type": 0,
+            "canvas_uuid": "6c69626f-6273-4c00-9d88-c5136d61696e",
+            "private_settings": {}
+        },
+        {
+            "prev_ver": 536936450,
+            "name": "Closing Hymn Slides",
+            "uuid": "d4ac888c-e562-4635-9800-54ed1dc5252f",
+            "id": "slideshow",
+            "versioned_id": "slideshow",
+            "settings": {
+                "files": [
+                    {
+                        "value": "G:/Shared drives/Worship/2026-06-07/Hymns/Slide8.PNG",
+                        "uuid": "ce71322e-c920-48ca-9b7c-3a6bf4670005",
+                        "selected": false,
+                        "hidden": false
+                    },
+                    {
+                        "value": "G:/Shared drives/Worship/2026-06-07/Hymns/Slide9.PNG",
+                        "uuid": "8165a2d0-1c3d-432d-8934-1093336b6bc8",
+                        "selected": false,
+                        "hidden": false
+                    },
+                    {
+                        "value": "G:/Shared drives/Worship/2026-06-07/Hymns/Slide10.PNG",
+                        "uuid": "bfa8052e-9c4b-48f9-9967-491de5f9fa6b",
+                        "selected": false,
+                        "hidden": false
+                    }
+                ],
+                "transition_speed": 300,
+                "playback_behavior": "stop_restart",
+                "slide_mode": "mode_manual"
+            },
+            "mixers": 0,
+            "sync": 0,
+            "flags": 0,
+            "volume": 1.0,
+            "balance": 0.5,
+            "enabled": true,
+            "muted": false,
+            "push-to-mute": false,
+            "push-to-mute-delay": 0,
+            "push-to-talk": false,
+            "push-to-talk-delay": 0,
+            "hotkeys": {
+                "SlideShow.PlayPause": [],
+                "SlideShow.Restart": [],
+                "SlideShow.Stop": [],
+                "SlideShow.NextSlide": [
+                    {
+                        "key": "OBS_KEY_N"
+                    }
+                ],
+                "SlideShow.PreviousSlide": [
+                    {
+                        "key": "OBS_KEY_P"
+                    }
+                ]
+            },
+            "deinterlace_mode": 0,
+            "deinterlace_field_order": 0,
+            "monitoring_type": 0,
+            "private_settings": {}
+        },
+        {
+            "prev_ver": 536936450,
+            "name": "Color Source",
+            "uuid": "1a210e3c-0d2c-4542-8df2-784d550e09e2",
+            "id": "color_source",
+            "versioned_id": "color_source_v2",
+            "settings": {
+                "color": 4294967295
+            },
+            "mixers": 0,
+            "sync": 0,
+            "flags": 0,
+            "volume": 1.0,
+            "balance": 0.5,
+            "enabled": true,
+            "muted": false,
+            "push-to-mute": false,
+            "push-to-mute-delay": 0,
+            "push-to-talk": false,
+            "push-to-talk-delay": 0,
+            "hotkeys": {},
+            "deinterlace_mode": 0,
+            "deinterlace_field_order": 0,
+            "monitoring_type": 0,
+            "private_settings": {}
+        },
+        {
+            "prev_ver": 536936450,
+            "name": "Color Source 3",
+            "uuid": "16114103-5bcc-4daa-8259-40943bbb6f8e",
+            "id": "color_source",
+            "versioned_id": "color_source_v3",
+            "settings": {
+                "color": 4283979864
+            },
+            "mixers": 0,
+            "sync": 0,
+            "flags": 0,
+            "volume": 1.0,
+            "balance": 0.5,
+            "enabled": true,
+            "muted": false,
+            "push-to-mute": false,
+            "push-to-mute-delay": 0,
+            "push-to-talk": false,
+            "push-to-talk-delay": 0,
+            "hotkeys": {},
+            "deinterlace_mode": 0,
+            "deinterlace_field_order": 0,
+            "monitoring_type": 0,
+            "private_settings": {}
+        },
+        {
+            "prev_ver": 536936450,
+            "name": "Conf Abs Psalm Kyrie Lyrics",
+            "uuid": "ef62d767-8bac-4b00-a7d4-1938b257e9a1",
+            "id": "slideshow",
+            "versioned_id": "slideshow",
+            "settings": {
+                "files": [
+                    {
+                        "value": "G:/Shared drives/Worship/2026-06-07/Liturgy/01-Confession and Absolution/Slide1.PNG",
+                        "uuid": "cc515f64-e6f5-4b60-ab97-65018e82b5e3",
+                        "selected": false,
+                        "hidden": false
+                    },
+                    {
+                        "value": "G:/Shared drives/Worship/2026-06-07/Liturgy/01-Confession and Absolution/Slide2.PNG",
+                        "uuid": "38d77d4d-2bdd-4f76-a009-87bab93cf3b3",
+                        "selected": false,
+                        "hidden": false
+                    },
+                    {
+                        "value": "G:/Shared drives/Worship/2026-06-07/Liturgy/01-Confession and Absolution/Slide3.PNG",
+                        "uuid": "b1256770-1ed9-4a50-9d04-9c44cc504faa",
+                        "selected": false,
+                        "hidden": false
+                    },
+                    {
+                        "value": "G:/Shared drives/Worship/2026-06-07/Liturgy/01-Confession and Absolution/Slide4.PNG",
+                        "uuid": "c69ccf40-4c57-4b0f-b75f-fb436acb86e5",
+                        "selected": false,
+                        "hidden": false
+                    },
+                    {
+                        "value": "G:/Shared drives/Worship/2026-06-07/Liturgy/01-Confession and Absolution/Slide5.PNG",
+                        "uuid": "774d3359-c20d-46b0-8794-4d2a9871f89c",
+                        "selected": false,
+                        "hidden": false
+                    },
+                    {
+                        "value": "G:/Shared drives/Worship/2026-06-07/Liturgy/01-Confession and Absolution/Slide6.PNG",
+                        "uuid": "d0f8db61-577f-4574-acb6-70a5dcfbdc41",
+                        "selected": false,
+                        "hidden": false
+                    },
+                    {
+                        "value": "G:/Shared drives/Worship/2026-06-07/Liturgy/01-Confession and Absolution/Slide7.PNG",
+                        "uuid": "209e5ebe-6434-4a5b-8dc0-5c78b6337530",
+                        "selected": false,
+                        "hidden": false
+                    },
+                    {
+                        "value": "G:/Shared drives/Worship/2026-06-07/Liturgy/02-Psalm/Slide8.PNG",
+                        "uuid": "3be1907c-1ceb-4177-b882-f8e8fa7af9df",
+                        "selected": false,
+                        "hidden": false
+                    },
+                    {
+                        "value": "G:/Shared drives/Worship/2026-06-07/Liturgy/02-Psalm/Slide9.PNG",
+                        "uuid": "8d1a7872-fb06-4fb7-9d1a-b62472d380ad",
+                        "selected": false,
+                        "hidden": false
+                    },
+                    {
+                        "value": "G:/Shared drives/Worship/2026-06-07/Liturgy/02-Psalm/Slide10.PNG",
+                        "uuid": "e0ea1360-12b0-4bf9-9fae-50ba94361cf5",
+                        "selected": false,
+                        "hidden": false
+                    },
+                    {
+                        "value": "G:/Shared drives/Worship/2026-06-07/Liturgy/02-Psalm/Slide11.PNG",
+                        "uuid": "f24672dd-009a-4f77-94ec-5f96c70d100f",
+                        "selected": false,
+                        "hidden": false
+                    },
+                    {
+                        "value": "G:/Shared drives/Worship/2026-06-07/Liturgy/02-Psalm/Slide12.PNG",
+                        "uuid": "f2b893a3-0990-404a-9fa0-14648ece99d5",
+                        "selected": false,
+                        "hidden": false
+                    },
+                    {
+                        "value": "G:/Shared drives/Worship/2026-06-07/Liturgy/02-Psalm/Slide13.PNG",
+                        "uuid": "723c2455-38a7-444d-9533-8041a80d5acd",
+                        "selected": false,
+                        "hidden": false
+                    },
+                    {
+                        "value": "G:/Shared drives/Worship/2026-06-07/Liturgy/02-Psalm/Slide14.PNG",
+                        "uuid": "e19408bc-549c-4c44-a456-8a01163edaef",
+                        "selected": false,
+                        "hidden": false
+                    },
+                    {
+                        "value": "G:/Shared drives/Worship/2026-06-07/Liturgy/02-Psalm/Slide15.PNG",
+                        "uuid": "e762c32e-3e50-485b-9bc8-944d71552d55",
+                        "selected": false,
+                        "hidden": false
+                    },
+                    {
+                        "value": "G:/Shared drives/Worship/2026-06-07/Liturgy/02-Psalm/Slide16.PNG",
+                        "uuid": "a4bb1e42-6278-44f0-b1ba-70eba41643e8",
+                        "selected": false,
+                        "hidden": false
+                    },
+                    {
+                        "value": "G:/Shared drives/Worship/2026-06-07/Liturgy/03-Kyrie/Slide17.PNG",
+                        "uuid": "6a09e047-a52d-49c5-a065-a86130d3418c",
+                        "selected": false,
+                        "hidden": false
+                    },
+                    {
+                        "value": "G:/Shared drives/Worship/2026-06-07/Liturgy/03-Kyrie/Slide18.PNG",
+                        "uuid": "4c8962c3-c4f1-427c-9e11-3ade9050de47",
+                        "selected": false,
+                        "hidden": false
+                    },
+                    {
+                        "value": "G:/Shared drives/Worship/2026-06-07/Liturgy/03-Kyrie/Slide19.PNG",
+                        "uuid": "564ff1a6-ccbe-463b-bed7-2d8ca4fb6715",
+                        "selected": false,
+                        "hidden": false
+                    },
+                    {
+                        "value": "G:/Shared drives/Worship/2026-06-07/Liturgy/03-Kyrie/Slide20.PNG",
+                        "uuid": "b143b8bf-1d1a-4309-b026-5feef3fcf25c",
+                        "selected": false,
+                        "hidden": false
+                    },
+                    {
+                        "value": "G:/Shared drives/Worship/2026-06-07/Liturgy/03-Kyrie/Slide21.PNG",
+                        "uuid": "7cfe365d-ba5f-4163-8556-b90c29af1929",
+                        "selected": false,
+                        "hidden": false
+                    }
+                ],
+                "undo_uuid": "ef62d767-8bac-4b00-a7d4-1938b257e9a1",
+                "transition_speed": 300,
+                "playback_behavior": "stop_restart",
+                "slide_mode": "mode_manual"
+            },
+            "mixers": 0,
+            "sync": 0,
+            "flags": 0,
+            "volume": 1.0,
+            "balance": 0.5,
+            "enabled": true,
+            "muted": false,
+            "push-to-mute": false,
+            "push-to-mute-delay": 0,
+            "push-to-talk": false,
+            "push-to-talk-delay": 0,
+            "hotkeys": {
+                "SlideShow.PlayPause": [],
+                "SlideShow.Restart": [],
+                "SlideShow.Stop": [],
+                "SlideShow.NextSlide": [
+                    {
+                        "key": "OBS_KEY_N"
+                    }
+                ],
+                "SlideShow.PreviousSlide": [
+                    {
+                        "key": "OBS_KEY_P"
+                    }
+                ]
+            },
+            "deinterlace_mode": 0,
+            "deinterlace_field_order": 0,
+            "monitoring_type": 0,
+            "private_settings": {}
+        },
+        {
+            "prev_ver": 536936450,
+            "name": "Conf., Abs. Psalm, Kyrie",
+            "uuid": "b9c475f8-4d24-4ebe-9b5a-fe1d16107317",
+            "id": "scene",
+            "versioned_id": "scene",
+            "settings": {
+                "custom_size": false,
+                "id_counter": 3,
+                "items": [
+                    {
+                        "name": "Video Capture Device",
+                        "source_uuid": "d3d6f570-3060-4ea9-8350-828fddf3c99c",
+                        "visible": true,
+                        "locked": false,
+                        "rot": 0.0,
+                        "align": 5,
+                        "bounds_type": 0,
+                        "bounds_align": 0,
+                        "bounds_crop": false,
+                        "crop_left": 0,
+                        "crop_top": 0,
+                        "crop_right": 0,
+                        "crop_bottom": 0,
+                        "id": 1,
+                        "group_item_backup": false,
+                        "pos": {
+                            "x": 0.0,
+                            "y": 0.0
+                        },
+                        "scale": {
+                            "x": 1.0,
+                            "y": 1.0
+                        },
+                        "bounds": {
+                            "x": 0.0,
+                            "y": 0.0
+                        },
+                        "scale_filter": "disable",
+                        "blend_method": "default",
+                        "blend_type": "normal",
+                        "show_transition": {
+                            "duration": 0
+                        },
+                        "hide_transition": {
+                            "duration": 0
+                        },
+                        "private_settings": {}
+                    },
+                    {
+                        "name": "Conf Abs Psalm Kyrie Lyrics",
+                        "source_uuid": "ef62d767-8bac-4b00-a7d4-1938b257e9a1",
+                        "visible": true,
+                        "locked": false,
+                        "rot": 0.0,
+                        "align": 5,
+                        "bounds_type": 0,
+                        "bounds_align": 0,
+                        "bounds_crop": false,
+                        "crop_left": 0,
+                        "crop_top": 0,
+                        "crop_right": 0,
+                        "crop_bottom": 0,
+                        "id": 3,
+                        "group_item_backup": false,
+                        "pos": {
+                            "x": 0.0,
+                            "y": 866.0
+                        },
+                        "scale": {
+                            "x": 0.594427227973938,
+                            "y": 0.5944444537162781
+                        },
+                        "bounds": {
+                            "x": 0.0,
+                            "y": 0.0
+                        },
+                        "scale_filter": "disable",
+                        "blend_method": "default",
+                        "blend_type": "normal",
+                        "show_transition": {
+                            "duration": 0
+                        },
+                        "hide_transition": {
+                            "duration": 0
+                        },
+                        "private_settings": {}
+                    }
+                ]
+            },
+            "mixers": 0,
+            "sync": 0,
+            "flags": 0,
+            "volume": 1.0,
+            "balance": 0.5,
+            "enabled": true,
+            "muted": false,
+            "push-to-mute": false,
+            "push-to-mute-delay": 0,
+            "push-to-talk": false,
+            "push-to-talk-delay": 0,
+            "hotkeys": {
+                "OBSBasic.SelectScene": [],
+                "libobs.show_scene_item.1": [],
+                "libobs.hide_scene_item.1": [],
+                "libobs.show_scene_item.3": [],
+                "libobs.hide_scene_item.3": []
+            },
+            "deinterlace_mode": 0,
+            "deinterlace_field_order": 0,
+            "monitoring_type": 0,
+            "canvas_uuid": "6c69626f-6273-4c00-9d88-c5136d61696e",
+            "private_settings": {}
+        },
+        {
+            "prev_ver": 536936450,
+            "name": "Creed",
+            "uuid": "87bb91ac-f248-4bcd-b9ce-228bed25d39b",
+            "id": "scene",
+            "versioned_id": "scene",
+            "settings": {
+                "custom_size": false,
+                "id_counter": 5,
+                "items": [
+                    {
+                        "name": "Video Capture Device",
+                        "source_uuid": "d3d6f570-3060-4ea9-8350-828fddf3c99c",
+                        "visible": true,
+                        "locked": false,
+                        "rot": 0.0,
+                        "align": 5,
+                        "bounds_type": 0,
+                        "bounds_align": 0,
+                        "bounds_crop": false,
+                        "crop_left": 0,
+                        "crop_top": 0,
+                        "crop_right": 0,
+                        "crop_bottom": 0,
+                        "id": 1,
+                        "group_item_backup": false,
+                        "pos": {
+                            "x": 0.0,
+                            "y": 0.0
+                        },
+                        "scale": {
+                            "x": 1.0,
+                            "y": 1.0
+                        },
+                        "bounds": {
+                            "x": 0.0,
+                            "y": 0.0
+                        },
+                        "scale_filter": "disable",
+                        "blend_method": "default",
+                        "blend_type": "normal",
+                        "show_transition": {
+                            "duration": 0
+                        },
+                        "hide_transition": {
+                            "duration": 0
+                        },
+                        "private_settings": {}
+                    },
+                    {
+                        "name": "Creed Images",
+                        "source_uuid": "49858674-bfab-442b-81e2-9e31973f14e9",
+                        "visible": true,
+                        "locked": false,
+                        "rot": 0.0,
+                        "align": 5,
+                        "bounds_type": 0,
+                        "bounds_align": 0,
+                        "bounds_crop": false,
+                        "crop_left": 0,
+                        "crop_top": 0,
+                        "crop_right": 0,
+                        "crop_bottom": 0,
+                        "id": 5,
+                        "group_item_backup": false,
+                        "pos": {
+                            "x": 0.0,
+                            "y": 866.0
+                        },
+                        "scale": {
+                            "x": 0.594427227973938,
+                            "y": 0.5944444537162781
+                        },
+                        "bounds": {
+                            "x": 0.0,
+                            "y": 0.0
+                        },
+                        "scale_filter": "disable",
+                        "blend_method": "default",
+                        "blend_type": "normal",
+                        "show_transition": {
+                            "duration": 0
+                        },
+                        "hide_transition": {
+                            "duration": 0
+                        },
+                        "private_settings": {}
+                    }
+                ]
+            },
+            "mixers": 0,
+            "sync": 0,
+            "flags": 0,
+            "volume": 1.0,
+            "balance": 0.5,
+            "enabled": true,
+            "muted": false,
+            "push-to-mute": false,
+            "push-to-mute-delay": 0,
+            "push-to-talk": false,
+            "push-to-talk-delay": 0,
+            "hotkeys": {
+                "OBSBasic.SelectScene": [],
+                "libobs.show_scene_item.1": [],
+                "libobs.hide_scene_item.1": [],
+                "libobs.show_scene_item.5": [],
+                "libobs.hide_scene_item.5": []
+            },
+            "deinterlace_mode": 0,
+            "deinterlace_field_order": 0,
+            "monitoring_type": 0,
+            "canvas_uuid": "6c69626f-6273-4c00-9d88-c5136d61696e",
+            "private_settings": {}
+        },
+        {
+            "prev_ver": 536936450,
+            "name": "Creed Images",
+            "uuid": "49858674-bfab-442b-81e2-9e31973f14e9",
+            "id": "slideshow",
+            "versioned_id": "slideshow",
+            "settings": {
+                "files": [
+                    {
+                        "value": "G:/Shared drives/Worship/2026-06-07/Liturgy/09-Nicene Creed/Slide45.PNG",
+                        "uuid": "0a5ecb27-e31d-4a77-a4ae-a4e682b62013",
+                        "selected": false,
+                        "hidden": false
+                    },
+                    {
+                        "value": "G:/Shared drives/Worship/2026-06-07/Liturgy/09-Nicene Creed/Slide46.PNG",
+                        "uuid": "3340b5ff-ed83-4c10-80cc-3879c8c0780e",
+                        "selected": false,
+                        "hidden": false
+                    },
+                    {
+                        "value": "G:/Shared drives/Worship/2026-06-07/Liturgy/09-Nicene Creed/Slide47.PNG",
+                        "uuid": "47e20421-53fd-4ae3-9cec-5df29ced6184",
+                        "selected": false,
+                        "hidden": false
+                    },
+                    {
+                        "value": "G:/Shared drives/Worship/2026-06-07/Liturgy/09-Nicene Creed/Slide48.PNG",
+                        "uuid": "b58812b9-3788-4502-b1ce-36126a5d9e5d",
+                        "selected": false,
+                        "hidden": false
+                    },
+                    {
+                        "value": "G:/Shared drives/Worship/2026-06-07/Liturgy/09-Nicene Creed/Slide49.PNG",
+                        "uuid": "127bfe4d-b98b-4355-99e9-ccbd0b69159c",
+                        "selected": false,
+                        "hidden": false
+                    },
+                    {
+                        "value": "G:/Shared drives/Worship/2026-06-07/Liturgy/09-Nicene Creed/Slide50.PNG",
+                        "uuid": "0a42dde1-a8b4-4617-8d72-055dbed6a7b3",
+                        "selected": false,
+                        "hidden": false
+                    },
+                    {
+                        "value": "G:/Shared drives/Worship/2026-06-07/Liturgy/09-Nicene Creed/Slide51.PNG",
+                        "uuid": "cfd419f8-9199-4386-bf30-62b3d8fee8c1",
+                        "selected": false,
+                        "hidden": false
+                    },
+                    {
+                        "value": "G:/Shared drives/Worship/2026-06-07/Liturgy/09-Nicene Creed/Slide52.PNG",
+                        "uuid": "8e901b15-d323-460f-8786-cbd1889d6a27",
+                        "selected": false,
+                        "hidden": false
+                    },
+                    {
+                        "value": "G:/Shared drives/Worship/2026-06-07/Liturgy/09-Nicene Creed/Slide53.PNG",
+                        "uuid": "158bf2d3-f4b9-4bae-a92c-a1df78e34b69",
+                        "selected": false,
+                        "hidden": false
+                    },
+                    {
+                        "value": "G:/Shared drives/Worship/2026-06-07/Liturgy/09-Nicene Creed/Slide54.PNG",
+                        "uuid": "f7d8b9d9-db2f-466b-92bb-5a34c7bafef2",
+                        "selected": false,
+                        "hidden": false
+                    }
+                ],
+                "transition_speed": 300,
+                "playback_behavior": "stop_restart",
+                "slide_mode": "mode_manual"
+            },
+            "mixers": 0,
+            "sync": 0,
+            "flags": 0,
+            "volume": 1.0,
+            "balance": 0.5,
+            "enabled": true,
+            "muted": false,
+            "push-to-mute": false,
+            "push-to-mute-delay": 0,
+            "push-to-talk": false,
+            "push-to-talk-delay": 0,
+            "hotkeys": {
+                "SlideShow.PlayPause": [],
+                "SlideShow.Restart": [],
+                "SlideShow.Stop": [],
+                "SlideShow.NextSlide": [
+                    {
+                        "key": "OBS_KEY_N"
+                    }
+                ],
+                "SlideShow.PreviousSlide": [
+                    {
+                        "key": "OBS_KEY_P"
+                    }
+                ]
+            },
+            "deinterlace_mode": 0,
+            "deinterlace_field_order": 0,
+            "monitoring_type": 0,
+            "private_settings": {}
+        },
+        {
+            "prev_ver": 536936450,
+            "name": "Date",
+            "uuid": "0f149a91-2137-4786-912c-c0afc1e3266d",
+            "id": "text_gdiplus",
+            "versioned_id": "text_gdiplus_v2",
+            "settings": {
+                "text": "June 7th, 2026",
+                "font": {
+                    "face": "Candara",
+                    "flags": 0,
+                    "size": 72,
+                    "style": "Regular"
+                },
+                "align": "center",
+                "color": 4278190080
+            },
+            "mixers": 0,
+            "sync": 0,
+            "flags": 0,
+            "volume": 1.0,
+            "balance": 0.5,
+            "enabled": true,
+            "muted": false,
+            "push-to-mute": false,
+            "push-to-mute-delay": 0,
+            "push-to-talk": false,
+            "push-to-talk-delay": 0,
+            "hotkeys": {},
+            "deinterlace_mode": 0,
+            "deinterlace_field_order": 0,
+            "monitoring_type": 0,
+            "private_settings": {}
+        },
+        {
+            "prev_ver": 536936450,
+            "name": "Gloria",
+            "uuid": "05f8aa30-62ce-4cc5-b088-fc195d6de79b",
+            "id": "scene",
+            "versioned_id": "scene",
+            "settings": {
+                "id_counter": 3,
+                "custom_size": false,
+                "items": [
+                    {
+                        "name": "Video Capture Device",
+                        "source_uuid": "d3d6f570-3060-4ea9-8350-828fddf3c99c",
+                        "visible": true,
+                        "locked": false,
+                        "rot": 0.0,
+                        "align": 5,
+                        "bounds_type": 0,
+                        "bounds_align": 0,
+                        "bounds_crop": false,
+                        "crop_left": 0,
+                        "crop_top": 0,
+                        "crop_right": 0,
+                        "crop_bottom": 0,
+                        "id": 1,
+                        "group_item_backup": false,
+                        "pos": {
+                            "x": 0.0,
+                            "y": 0.0
+                        },
+                        "scale": {
+                            "x": 1.0,
+                            "y": 1.0
+                        },
+                        "bounds": {
+                            "x": 0.0,
+                            "y": 0.0
+                        },
+                        "scale_filter": "disable",
+                        "blend_method": "default",
+                        "blend_type": "normal",
+                        "show_transition": {
+                            "duration": 0
+                        },
+                        "hide_transition": {
+                            "duration": 0
+                        },
+                        "private_settings": {}
+                    },
+                    {
+                        "name": "Gloria Slides",
+                        "source_uuid": "3ef295fb-f0ae-475b-9a03-e630bb1ad56c",
+                        "visible": true,
+                        "locked": false,
+                        "rot": 0.0,
+                        "align": 5,
+                        "bounds_type": 0,
+                        "bounds_align": 0,
+                        "bounds_crop": false,
+                        "crop_left": 0,
+                        "crop_top": 0,
+                        "crop_right": 0,
+                        "crop_bottom": 0,
+                        "id": 3,
+                        "group_item_backup": false,
+                        "pos": {
+                            "x": 0.0,
+                            "y": 0.0
+                        },
+                        "scale": {
+                            "x": 0.4000000059604645,
+                            "y": 0.4000000059604645
+                        },
+                        "bounds": {
+                            "x": 0.0,
+                            "y": 0.0
+                        },
+                        "scale_filter": "disable",
+                        "blend_method": "default",
+                        "blend_type": "normal",
+                        "show_transition": {
+                            "duration": 0
+                        },
+                        "hide_transition": {
+                            "duration": 0
+                        },
+                        "private_settings": {}
+                    }
+                ]
+            },
+            "mixers": 0,
+            "sync": 0,
+            "flags": 0,
+            "volume": 1.0,
+            "balance": 0.5,
+            "enabled": true,
+            "muted": false,
+            "push-to-mute": false,
+            "push-to-mute-delay": 0,
+            "push-to-talk": false,
+            "push-to-talk-delay": 0,
+            "hotkeys": {
+                "OBSBasic.SelectScene": [],
+                "libobs.show_scene_item.1": [],
+                "libobs.hide_scene_item.1": [],
+                "libobs.show_scene_item.3": [],
+                "libobs.hide_scene_item.3": []
+            },
+            "deinterlace_mode": 0,
+            "deinterlace_field_order": 0,
+            "monitoring_type": 0,
+            "canvas_uuid": "6c69626f-6273-4c00-9d88-c5136d61696e",
+            "private_settings": {}
+        },
+        {
+            "prev_ver": 536936450,
+            "name": "Gloria Slides",
+            "uuid": "3ef295fb-f0ae-475b-9a03-e630bb1ad56c",
+            "id": "slideshow",
+            "versioned_id": "slideshow",
+            "settings": {
+                "files": [
+                    {
+                        "value": "G:/Shared drives/Worship/2026-06-07/Hymns/Slide5.PNG",
+                        "uuid": "1de4d672-2949-437c-83be-8b46f0db1ffb",
+                        "selected": false,
+                        "hidden": false
+                    }
+                ],
+                "transition_speed": 300,
+                "playback_behavior": "stop_restart",
+                "slide_mode": "mode_manual"
+            },
+            "mixers": 0,
+            "sync": 0,
+            "flags": 0,
+            "volume": 1.0,
+            "balance": 0.5,
+            "enabled": true,
+            "muted": false,
+            "push-to-mute": false,
+            "push-to-mute-delay": 0,
+            "push-to-talk": false,
+            "push-to-talk-delay": 0,
+            "hotkeys": {
+                "SlideShow.PlayPause": [],
+                "SlideShow.Restart": [],
+                "SlideShow.Stop": [],
+                "SlideShow.NextSlide": [
+                    {
+                        "key": "OBS_KEY_N"
+                    }
+                ],
+                "SlideShow.PreviousSlide": []
+            },
+            "deinterlace_mode": 0,
+            "deinterlace_field_order": 0,
+            "monitoring_type": 0,
+            "private_settings": {}
+        },
+        {
+            "prev_ver": 536936450,
+            "name": "Gospel Slides",
+            "uuid": "3a9281cc-46f8-44e5-bfdf-f20286ea6fb2",
+            "id": "slideshow",
+            "versioned_id": "slideshow",
+            "settings": {
+                "files": [
+                    {
+                        "value": "G:/Shared drives/Worship/2026-06-07/Liturgy/04-Collect/Slide22.PNG",
+                        "uuid": "2ba85467-1f4a-4bc4-880d-cf0aa2cfb14e",
+                        "selected": false,
+                        "hidden": false
+                    },
+                    {
+                        "value": "G:/Shared drives/Worship/2026-06-07/Liturgy/04-Collect/Slide23.PNG",
+                        "uuid": "0ee7e752-80cd-42fd-b0c7-79b5bdcbf1ea",
+                        "selected": false,
+                        "hidden": false
+                    },
+                    {
+                        "value": "G:/Shared drives/Worship/2026-06-07/Liturgy/04-Collect/Slide24.PNG",
+                        "uuid": "ecf18e07-5cc7-40df-8512-bd2a6878bcdf",
+                        "selected": false,
+                        "hidden": false
+                    },
+                    {
+                        "value": "G:/Shared drives/Worship/2026-06-07/Liturgy/05-Readings/Slide25.PNG",
+                        "uuid": "a27c6e63-8437-44c3-ab0c-cb2a408d880b",
+                        "selected": false,
+                        "hidden": false
+                    }
+                ],
+                "transition_speed": 300,
+                "playback_behavior": "stop_restart",
+                "slide_mode": "mode_manual"
+            },
+            "mixers": 0,
+            "sync": 0,
+            "flags": 0,
+            "volume": 1.0,
+            "balance": 0.5,
+            "enabled": true,
+            "muted": false,
+            "push-to-mute": false,
+            "push-to-mute-delay": 0,
+            "push-to-talk": false,
+            "push-to-talk-delay": 0,
+            "hotkeys": {
+                "SlideShow.PlayPause": [],
+                "SlideShow.Restart": [],
+                "SlideShow.Stop": [],
+                "SlideShow.NextSlide": [
+                    {
+                        "key": "OBS_KEY_N"
+                    }
+                ],
+                "SlideShow.PreviousSlide": [
+                    {
+                        "key": "OBS_KEY_P"
+                    }
+                ]
+            },
+            "deinterlace_mode": 0,
+            "deinterlace_field_order": 0,
+            "monitoring_type": 0,
+            "private_settings": {}
+        },
+        {
+            "prev_ver": 536936450,
+            "name": "Intro",
+            "uuid": "2ed6342f-9b33-42dc-8041-336bd4065b0d",
+            "id": "scene",
+            "versioned_id": "scene",
+            "settings": {
+                "custom_size": false,
+                "id_counter": 38,
+                "items": [
+                    {
+                        "name": "Video Capture Device",
+                        "source_uuid": "d3d6f570-3060-4ea9-8350-828fddf3c99c",
+                        "visible": false,
+                        "locked": false,
+                        "rot": 0.0,
+                        "align": 5,
+                        "bounds_type": 0,
+                        "bounds_align": 0,
+                        "bounds_crop": false,
+                        "crop_left": 0,
+                        "crop_top": 0,
+                        "crop_right": 0,
+                        "crop_bottom": 0,
+                        "id": 37,
+                        "group_item_backup": false,
+                        "pos": {
+                            "x": 0.0,
+                            "y": 0.0
+                        },
+                        "scale": {
+                            "x": 1.0,
+                            "y": 1.0
+                        },
+                        "bounds": {
+                            "x": 0.0,
+                            "y": 0.0
+                        },
+                        "scale_filter": "disable",
+                        "blend_method": "default",
+                        "blend_type": "normal",
+                        "show_transition": {
+                            "duration": 0
+                        },
+                        "hide_transition": {
+                            "duration": 0
+                        },
+                        "private_settings": {}
+                    },
+                    {
+                        "name": "Color Source",
+                        "source_uuid": "1a210e3c-0d2c-4542-8df2-784d550e09e2",
+                        "visible": true,
+                        "locked": false,
+                        "rot": 0.0,
+                        "align": 5,
+                        "bounds_type": 0,
+                        "bounds_align": 0,
+                        "bounds_crop": false,
+                        "crop_left": 0,
+                        "crop_top": 0,
+                        "crop_right": 0,
+                        "crop_bottom": 0,
+                        "id": 26,
+                        "group_item_backup": false,
+                        "pos": {
+                            "x": 0.0,
+                            "y": 0.0
+                        },
+                        "scale": {
+                            "x": 1.0,
+                            "y": 1.0
+                        },
+                        "bounds": {
+                            "x": 0.0,
+                            "y": 0.0
+                        },
+                        "scale_filter": "disable",
+                        "blend_method": "default",
+                        "blend_type": "normal",
+                        "show_transition": {
+                            "duration": 0
+                        },
+                        "hide_transition": {
+                            "duration": 0
+                        },
+                        "private_settings": {}
+                    },
+                    {
+                        "name": "Splash Background",
+                        "source_uuid": "f4fc1384-5d19-4646-879f-499c567ec60f",
+                        "visible": true,
+                        "locked": false,
+                        "rot": 0.0,
+                        "align": 5,
+                        "bounds_type": 0,
+                        "bounds_align": 0,
+                        "bounds_crop": false,
+                        "crop_left": 0,
+                        "crop_top": 0,
+                        "crop_right": 0,
+                        "crop_bottom": 0,
+                        "id": 36,
+                        "group_item_backup": false,
+                        "pos": {
+                            "x": 0.0,
+                            "y": -1.0
+                        },
+                        "scale": {
+                            "x": 0.40041667222976685,
+                            "y": 0.40037035942077637
+                        },
+                        "bounds": {
+                            "x": 0.0,
+                            "y": 0.0
+                        },
+                        "scale_filter": "disable",
+                        "blend_method": "default",
+                        "blend_type": "normal",
+                        "show_transition": {
+                            "duration": 0
+                        },
+                        "hide_transition": {
+                            "duration": 0
+                        },
+                        "private_settings": {}
+                    },
+                    {
+                        "name": "White Box",
+                        "source_uuid": "9f4c368e-30d9-4a2a-b935-b48841a6d9e1",
+                        "visible": true,
+                        "locked": false,
+                        "rot": 0.0,
+                        "align": 5,
+                        "bounds_type": 0,
+                        "bounds_align": 0,
+                        "bounds_crop": false,
+                        "crop_left": 0,
+                        "crop_top": 0,
+                        "crop_right": 0,
+                        "crop_bottom": 0,
+                        "id": 27,
+                        "group_item_backup": true,
+                        "pos": {
+                            "x": 85.0,
+                            "y": 847.0
+                        },
+                        "scale": {
+                            "x": 0.32553473114967346,
+                            "y": 0.22142855823040009
+                        },
+                        "bounds": {
+                            "x": 0.0,
+                            "y": 0.0
+                        },
+                        "scale_filter": "disable",
+                        "blend_method": "default",
+                        "blend_type": "normal",
+                        "show_transition": {
+                            "duration": 0
+                        },
+                        "hide_transition": {
+                            "duration": 0
+                        },
+                        "private_settings": {}
+                    },
+                    {
+                        "name": "LCS Name",
+                        "source_uuid": "8d286904-7826-4727-ad7d-719d95da7aaa",
+                        "visible": true,
+                        "locked": false,
+                        "rot": 0.0,
+                        "align": 5,
+                        "bounds_type": 0,
+                        "bounds_align": 0,
+                        "bounds_crop": false,
+                        "crop_left": 0,
+                        "crop_top": 0,
+                        "crop_right": 0,
+                        "crop_bottom": 0,
+                        "id": 28,
+                        "group_item_backup": true,
+                        "pos": {
+                            "x": 122.55680084228516,
+                            "y": 896.2022094726562
+                        },
+                        "scale": {
+                            "x": 0.3712669909000397,
+                            "y": 0.37152954936027527
+                        },
+                        "bounds": {
+                            "x": 0.0,
+                            "y": 0.0
+                        },
+                        "scale_filter": "disable",
+                        "blend_method": "default",
+                        "blend_type": "normal",
+                        "show_transition": {
+                            "duration": 0
+                        },
+                        "hide_transition": {
+                            "duration": 0
+                        },
+                        "private_settings": {}
+                    },
+                    {
+                        "name": "Luther-rose-logo-small.png",
+                        "source_uuid": "58470e50-de4f-43cf-92c2-a9e21c8ba910",
+                        "visible": true,
+                        "locked": false,
+                        "rot": 0.0,
+                        "align": 5,
+                        "bounds_type": 0,
+                        "bounds_align": 0,
+                        "bounds_crop": false,
+                        "crop_left": 0,
+                        "crop_top": 0,
+                        "crop_right": 0,
+                        "crop_bottom": 0,
+                        "id": 29,
+                        "group_item_backup": true,
+                        "pos": {
+                            "x": 333.4043273925781,
+                            "y": 897.6456909179688
+                        },
+                        "scale": {
+                            "x": 0.04827512800693512,
+                            "y": 0.04833346605300903
+                        },
+                        "bounds": {
+                            "x": 0.0,
+                            "y": 0.0
+                        },
+                        "scale_filter": "disable",
+                        "blend_method": "default",
+                        "blend_type": "normal",
+                        "show_transition": {
+                            "duration": 0
+                        },
+                        "hide_transition": {
+                            "duration": 0
+                        },
+                        "private_settings": {}
+                    },
+                    {
+                        "name": "Tagline",
+                        "source_uuid": "aca1d8c2-5f34-49a7-a996-0c0e8b9b6a74",
+                        "visible": true,
+                        "locked": false,
+                        "rot": 0.0,
+                        "align": 5,
+                        "bounds_type": 0,
+                        "bounds_align": 0,
+                        "bounds_crop": false,
+                        "crop_left": 0,
+                        "crop_top": 0,
+                        "crop_right": 0,
+                        "crop_bottom": 0,
+                        "id": 9,
+                        "group_item_backup": true,
+                        "pos": {
+                            "x": 96.0616226196289,
+                            "y": 984.2830200195312
+                        },
+                        "scale": {
+                            "x": 0.40399259328842163,
+                            "y": 0.40276268124580383
+                        },
+                        "bounds": {
+                            "x": 0.0,
+                            "y": 0.0
+                        },
+                        "scale_filter": "disable",
+                        "blend_method": "default",
+                        "blend_type": "normal",
+                        "show_transition": {
+                            "duration": 0
+                        },
+                        "hide_transition": {
+                            "duration": 0
+                        },
+                        "private_settings": {}
+                    },
+                    {
+                        "name": "Date",
+                        "source_uuid": "0f149a91-2137-4786-912c-c0afc1e3266d",
+                        "visible": true,
+                        "locked": false,
+                        "rot": 0.0,
+                        "align": 5,
+                        "bounds_type": 0,
+                        "bounds_align": 0,
+                        "bounds_crop": false,
+                        "crop_left": 0,
+                        "crop_top": 0,
+                        "crop_right": 0,
+                        "crop_bottom": 0,
+                        "id": 35,
+                        "group_item_backup": true,
+                        "pos": {
+                            "x": 157.58013916015625,
+                            "y": 852.0640258789062
+                        },
+                        "scale": {
+                            "x": 0.6030731201171875,
+                            "y": 0.6048504710197449
+                        },
+                        "bounds": {
+                            "x": 0.0,
+                            "y": 0.0
+                        },
+                        "scale_filter": "disable",
+                        "blend_method": "default",
+                        "blend_type": "normal",
+                        "show_transition": {
+                            "duration": 0
+                        },
+                        "hide_transition": {
+                            "duration": 0
+                        },
+                        "private_settings": {}
+                    },
+                    {
+                        "name": "Title Card",
+                        "source_uuid": "2f680e47-c59c-4b6d-8ce3-93d333a01313",
+                        "visible": true,
+                        "locked": false,
+                        "rot": 0.0,
+                        "align": 5,
+                        "bounds_type": 0,
+                        "bounds_align": 0,
+                        "bounds_crop": false,
+                        "crop_left": 0,
+                        "crop_top": 0,
+                        "crop_right": 0,
+                        "crop_bottom": 0,
+                        "id": 31,
+                        "group_item_backup": false,
+                        "pos": {
+                            "x": 85.0,
+                            "y": 847.0
+                        },
+                        "scale": {
+                            "x": 0.4068678319454193,
+                            "y": 0.40700218081474304
+                        },
+                        "bounds": {
+                            "x": 0.0,
+                            "y": 0.0
+                        },
+                        "scale_filter": "disable",
+                        "blend_method": "default",
+                        "blend_type": "normal",
+                        "show_transition": {
+                            "duration": 0
+                        },
+                        "hide_transition": {
+                            "duration": 0
+                        },
+                        "private_settings": {
+                            "collapsed": false
+                        }
+                    },
+                    {
+                        "name": "Intro Copyright",
+                        "source_uuid": "ff92ac94-920a-4a6f-9d66-dde28aef00b5",
+                        "visible": false,
+                        "locked": false,
+                        "rot": 0.0,
+                        "align": 5,
+                        "bounds_type": 0,
+                        "bounds_align": 0,
+                        "bounds_crop": false,
+                        "crop_left": 0,
+                        "crop_top": 0,
+                        "crop_right": 0,
+                        "crop_bottom": 0,
+                        "id": 24,
+                        "group_item_backup": false,
+                        "pos": {
+                            "x": 556.07568359375,
+                            "y": 994.26318359375
+                        },
+                        "scale": {
+                            "x": 0.9742316603660583,
+                            "y": 0.974281370639801
+                        },
+                        "bounds": {
+                            "x": 0.0,
+                            "y": 0.0
+                        },
+                        "scale_filter": "disable",
+                        "blend_method": "default",
+                        "blend_type": "normal",
+                        "show_transition": {
+                            "duration": 0
+                        },
+                        "hide_transition": {
+                            "duration": 0
+                        },
+                        "private_settings": {}
+                    },
+                    {
+                        "name": "Intro Music",
+                        "source_uuid": "ccf040fb-19ba-4a05-b09c-2e55129dd405",
+                        "visible": true,
+                        "locked": false,
+                        "rot": 0.0,
+                        "align": 5,
+                        "bounds_type": 0,
+                        "bounds_align": 0,
+                        "bounds_crop": false,
+                        "crop_left": 0,
+                        "crop_top": 0,
+                        "crop_right": 0,
+                        "crop_bottom": 0,
+                        "id": 38,
+                        "group_item_backup": false,
+                        "pos": {
+                            "x": 0.0,
+                            "y": 0.0
+                        },
+                        "scale": {
+                            "x": 1.0,
+                            "y": 1.0
+                        },
+                        "bounds": {
+                            "x": 0.0,
+                            "y": 0.0
+                        },
+                        "scale_filter": "disable",
+                        "blend_method": "default",
+                        "blend_type": "normal",
+                        "show_transition": {
+                            "duration": 0
+                        },
+                        "hide_transition": {
+                            "duration": 0
+                        },
+                        "private_settings": {}
+                    }
+                ]
+            },
+            "mixers": 0,
+            "sync": 0,
+            "flags": 0,
+            "volume": 1.0,
+            "balance": 0.5,
+            "enabled": true,
+            "muted": false,
+            "push-to-mute": false,
+            "push-to-mute-delay": 0,
+            "push-to-talk": false,
+            "push-to-talk-delay": 0,
+            "hotkeys": {
+                "OBSBasic.SelectScene": [],
+                "libobs.show_scene_item.37": [],
+                "libobs.hide_scene_item.37": [],
+                "libobs.show_scene_item.26": [],
+                "libobs.hide_scene_item.26": [],
+                "libobs.show_scene_item.36": [],
+                "libobs.hide_scene_item.36": [],
+                "libobs.show_scene_item.31": [],
+                "libobs.hide_scene_item.31": [],
+                "libobs.show_scene_item.24": [],
+                "libobs.hide_scene_item.24": [],
+                "libobs.show_scene_item.38": [],
+                "libobs.hide_scene_item.38": []
+            },
+            "deinterlace_mode": 0,
+            "deinterlace_field_order": 0,
+            "monitoring_type": 0,
+            "canvas_uuid": "6c69626f-6273-4c00-9d88-c5136d61696e",
+            "private_settings": {}
+        },
+        {
+            "prev_ver": 536936450,
+            "name": "Intro Copyright",
+            "uuid": "ff92ac94-920a-4a6f-9d66-dde28aef00b5",
+            "id": "text_gdiplus",
+            "versioned_id": "text_gdiplus_v2",
+            "settings": {
+                "text": "Lorem ipsum",
+                "font": {
+                    "face": "Arial",
+                    "flags": 0,
+                    "size": 22,
+                    "style": "Regular"
+                },
+                "color": 4282598211
+            },
+            "mixers": 0,
+            "sync": 0,
+            "flags": 0,
+            "volume": 1.0,
+            "balance": 0.5,
+            "enabled": true,
+            "muted": false,
+            "push-to-mute": false,
+            "push-to-mute-delay": 0,
+            "push-to-talk": false,
+            "push-to-talk-delay": 0,
+            "hotkeys": {},
+            "deinterlace_mode": 0,
+            "deinterlace_field_order": 0,
+            "monitoring_type": 0,
+            "private_settings": {}
+        },
+        {
+            "prev_ver": 536936450,
+            "name": "Intro Music",
+            "uuid": "ccf040fb-19ba-4a05-b09c-2e55129dd405",
+            "id": "vlc_source",
+            "versioned_id": "vlc_source",
+            "settings": {
+                "playlist": [
+                    {
+                        "value": "G:/Shared drives/Worship/Music/prelude postlude music for contemporary service/Kindness[1].mp3",
+                        "uuid": "7fc9f421-963b-43bb-96a0-b13bc088705e",
+                        "selected": false,
+                        "hidden": false
+                    },
+                    {
+                        "value": "G:/Shared drives/Worship/Music/prelude postlude music for contemporary service/Love[1].mp3",
+                        "uuid": "620f5648-2a62-4503-96a8-51b9948c0867",
+                        "selected": false,
+                        "hidden": false
+                    },
+                    {
+                        "value": "G:/Shared drives/Worship/Music/prelude postlude music for contemporary service/Patience[1].mp3",
+                        "uuid": "d09fa18a-33e7-48f1-9e25-0697bd50cdba",
+                        "selected": false,
+                        "hidden": false
+                    },
+                    {
+                        "value": "G:/Shared drives/Worship/Music/prelude postlude music for contemporary service/Joy[1].mp3",
+                        "uuid": "a30dc3cf-7543-410e-90f4-fc2526f0df00",
+                        "selected": true,
+                        "hidden": false
+                    }
+                ]
+            },
+            "mixers": 255,
+            "sync": 0,
+            "flags": 0,
+            "volume": 0.17786654829978943,
+            "balance": 0.5,
+            "enabled": true,
+            "muted": false,
+            "push-to-mute": false,
+            "push-to-mute-delay": 0,
+            "push-to-talk": false,
+            "push-to-talk-delay": 0,
+            "hotkeys": {
+                "libobs.mute": [],
+                "libobs.unmute": [],
+                "libobs.push-to-mute": [],
+                "libobs.push-to-talk": [],
+                "VLCSource.PlayPause": [],
+                "VLCSource.Restart": [],
+                "VLCSource.Stop": [],
+                "VLCSource.PlaylistNext": [],
+                "VLCSource.PlaylistPrev": []
+            },
+            "deinterlace_mode": 0,
+            "deinterlace_field_order": 0,
+            "monitoring_type": 2,
+            "private_settings": {}
+        },
+        {
+            "prev_ver": 536936450,
+            "name": "Invocation",
+            "uuid": "f9168a37-f783-4c69-ad49-498be6c228cf",
+            "id": "scene",
+            "versioned_id": "scene",
+            "settings": {
+                "custom_size": false,
+                "id_counter": 6,
+                "items": [
+                    {
+                        "name": "Video Capture Device",
+                        "source_uuid": "d3d6f570-3060-4ea9-8350-828fddf3c99c",
+                        "visible": true,
+                        "locked": false,
+                        "rot": 0.0,
+                        "align": 5,
+                        "bounds_type": 0,
+                        "bounds_align": 0,
+                        "bounds_crop": false,
+                        "crop_left": 0,
+                        "crop_top": 0,
+                        "crop_right": 0,
+                        "crop_bottom": 0,
+                        "id": 1,
+                        "group_item_backup": false,
+                        "pos": {
+                            "x": 0.0,
+                            "y": 0.0
+                        },
+                        "scale": {
+                            "x": 1.0,
+                            "y": 1.0
+                        },
+                        "bounds": {
+                            "x": 0.0,
+                            "y": 0.0
+                        },
+                        "scale_filter": "disable",
+                        "blend_method": "default",
+                        "blend_type": "normal",
+                        "show_transition": {
+                            "duration": 0
+                        },
+                        "hide_transition": {
+                            "duration": 0
+                        },
+                        "private_settings": {}
+                    },
+                    {
+                        "name": "Invocation Slides",
+                        "source_uuid": "0c1990dc-99f0-41f7-90d9-06627165c57d",
+                        "visible": true,
+                        "locked": false,
+                        "rot": 0.0,
+                        "align": 5,
+                        "bounds_type": 0,
+                        "bounds_align": 0,
+                        "bounds_crop": false,
+                        "crop_left": 0,
+                        "crop_top": 0,
+                        "crop_right": 0,
+                        "crop_bottom": 0,
+                        "id": 6,
+                        "group_item_backup": false,
+                        "pos": {
+                            "x": -10.0,
+                            "y": 866.0
+                        },
+                        "scale": {
+                            "x": 0.5975232124328613,
+                            "y": 0.5972222089767456
+                        },
+                        "bounds": {
+                            "x": 0.0,
+                            "y": 0.0
+                        },
+                        "scale_filter": "disable",
+                        "blend_method": "default",
+                        "blend_type": "normal",
+                        "show_transition": {
+                            "duration": 0
+                        },
+                        "hide_transition": {
+                            "duration": 0
+                        },
+                        "private_settings": {}
+                    }
+                ]
+            },
+            "mixers": 0,
+            "sync": 0,
+            "flags": 0,
+            "volume": 1.0,
+            "balance": 0.5,
+            "enabled": true,
+            "muted": false,
+            "push-to-mute": false,
+            "push-to-mute-delay": 0,
+            "push-to-talk": false,
+            "push-to-talk-delay": 0,
+            "hotkeys": {
+                "OBSBasic.SelectScene": [],
+                "libobs.show_scene_item.1": [],
+                "libobs.hide_scene_item.1": [],
+                "libobs.show_scene_item.6": [],
+                "libobs.hide_scene_item.6": []
+            },
+            "deinterlace_mode": 0,
+            "deinterlace_field_order": 0,
+            "monitoring_type": 0,
+            "canvas_uuid": "6c69626f-6273-4c00-9d88-c5136d61696e",
+            "private_settings": {}
+        },
+        {
+            "prev_ver": 536936450,
+            "name": "Invocation Slides",
+            "uuid": "0c1990dc-99f0-41f7-90d9-06627165c57d",
+            "id": "slideshow",
+            "versioned_id": "slideshow",
+            "settings": {
+                "files": [
+                    {
+                        "value": "G:/Shared drives/Worship/2025-06-01/Liturgy/01-Invocation/Slide1.PNG",
+                        "uuid": "e1dcde4a-2542-4b4a-9374-05eb37191383",
+                        "selected": false,
+                        "hidden": false
+                    }
+                ],
+                "transition_speed": 300,
+                "playback_behavior": "stop_restart",
+                "slide_mode": "mode_manual"
+            },
+            "mixers": 0,
+            "sync": 0,
+            "flags": 0,
+            "volume": 1.0,
+            "balance": 0.5,
+            "enabled": true,
+            "muted": false,
+            "push-to-mute": false,
+            "push-to-mute-delay": 0,
+            "push-to-talk": false,
+            "push-to-talk-delay": 0,
+            "hotkeys": {
+                "SlideShow.PlayPause": [],
+                "SlideShow.Restart": [],
+                "SlideShow.Stop": [],
+                "SlideShow.NextSlide": [
+                    {
+                        "key": "OBS_KEY_N"
+                    }
+                ],
+                "SlideShow.PreviousSlide": [
+                    {
+                        "key": "OBS_KEY_P"
+                    }
+                ]
+            },
+            "deinterlace_mode": 0,
+            "deinterlace_field_order": 0,
+            "monitoring_type": 0,
+            "private_settings": {}
+        },
+        {
+            "prev_ver": 536936450,
+            "name": "LCS Name",
+            "uuid": "8d286904-7826-4727-ad7d-719d95da7aaa",
+            "id": "text_gdiplus",
+            "versioned_id": "text_gdiplus_v2",
+            "settings": {
+                "text": "Lutheran Church\nof the Savior\nBedford, MA",
+                "font": {
+                    "face": "Candara",
+                    "flags": 0,
+                    "size": 72,
+                    "style": "Regular"
+                },
+                "align": "center",
+                "color": 4278190080
+            },
+            "mixers": 0,
+            "sync": 0,
+            "flags": 0,
+            "volume": 1.0,
+            "balance": 0.5,
+            "enabled": true,
+            "muted": false,
+            "push-to-mute": false,
+            "push-to-mute-delay": 0,
+            "push-to-talk": false,
+            "push-to-talk-delay": 0,
+            "hotkeys": {},
+            "deinterlace_mode": 0,
+            "deinterlace_field_order": 0,
+            "monitoring_type": 0,
+            "private_settings": {}
+        },
+        {
+            "prev_ver": 536936450,
+            "name": "Logo",
+            "uuid": "3ecc5413-24c0-4583-a62a-6bd708eaa5cf",
+            "id": "image_source",
+            "versioned_id": "image_source",
+            "settings": {
+                "file": "G:/Shared drives/Worship/Reusables/lcs-logo.png"
+            },
+            "mixers": 0,
+            "sync": 0,
+            "flags": 0,
+            "volume": 1.0,
+            "balance": 0.5,
+            "enabled": true,
+            "muted": false,
+            "push-to-mute": false,
+            "push-to-mute-delay": 0,
+            "push-to-talk": false,
+            "push-to-talk-delay": 0,
+            "hotkeys": {},
+            "deinterlace_mode": 0,
+            "deinterlace_field_order": 0,
+            "monitoring_type": 0,
+            "private_settings": {}
+        },
+        {
+            "prev_ver": 536936450,
+            "name": "Logo 10 2",
+            "uuid": "86a2f482-209a-4fac-9c03-fa1aff422f5f",
+            "id": "image_source",
+            "versioned_id": "image_source",
+            "settings": {
+                "file": "G:/Shared drives/Worship/Reusables/lcs-logo.png"
+            },
+            "mixers": 0,
+            "sync": 0,
+            "flags": 0,
+            "volume": 1.0,
+            "balance": 0.5,
+            "enabled": true,
+            "muted": false,
+            "push-to-mute": false,
+            "push-to-mute-delay": 0,
+            "push-to-talk": false,
+            "push-to-talk-delay": 0,
+            "hotkeys": {},
+            "deinterlace_mode": 0,
+            "deinterlace_field_order": 0,
+            "monitoring_type": 0,
+            "private_settings": {}
+        },
+        {
+            "prev_ver": 536936450,
+            "name": "Logo 9",
+            "uuid": "f1986b0d-db44-42f7-be92-35ebb87041fb",
+            "id": "image_source",
+            "versioned_id": "image_source",
+            "settings": {
+                "file": "G:/Shared drives/Worship/Reusables/lcs-logo.png"
+            },
+            "mixers": 0,
+            "sync": 0,
+            "flags": 0,
+            "volume": 1.0,
+            "balance": 0.5,
+            "enabled": true,
+            "muted": false,
+            "push-to-mute": false,
+            "push-to-mute-delay": 0,
+            "push-to-talk": false,
+            "push-to-talk-delay": 0,
+            "hotkeys": {},
+            "deinterlace_mode": 0,
+            "deinterlace_field_order": 0,
+            "monitoring_type": 0,
+            "private_settings": {}
+        },
+        {
+            "prev_ver": 536936450,
+            "name": "Logo 9 2",
+            "uuid": "a3e1e85f-7dd1-4b26-9108-358e11986b27",
+            "id": "image_source",
+            "versioned_id": "image_source",
+            "settings": {
+                "file": "G:/Shared drives/Worship/Reusables/lcs-logo.png"
+            },
+            "mixers": 0,
+            "sync": 0,
+            "flags": 0,
+            "volume": 1.0,
+            "balance": 0.5,
+            "enabled": true,
+            "muted": false,
+            "push-to-mute": false,
+            "push-to-mute-delay": 0,
+            "push-to-talk": false,
+            "push-to-talk-delay": 0,
+            "hotkeys": {},
+            "deinterlace_mode": 0,
+            "deinterlace_field_order": 0,
+            "monitoring_type": 0,
+            "private_settings": {}
+        },
+        {
+            "prev_ver": 536936450,
+            "name": "Luther-rose-logo-small.png",
+            "uuid": "58470e50-de4f-43cf-92c2-a9e21c8ba910",
+            "id": "image_source",
+            "versioned_id": "image_source",
+            "settings": {
+                "file": "G:/Shared drives/Worship/Reusables/lcs-logo.png"
+            },
+            "mixers": 0,
+            "sync": 0,
+            "flags": 0,
+            "volume": 1.0,
+            "balance": 0.5,
+            "enabled": true,
+            "muted": false,
+            "push-to-mute": false,
+            "push-to-mute-delay": 0,
+            "push-to-talk": false,
+            "push-to-talk-delay": 0,
+            "hotkeys": {},
+            "deinterlace_mode": 0,
+            "deinterlace_field_order": 0,
+            "monitoring_type": 0,
+            "private_settings": {}
+        },
+        {
+            "prev_ver": 536936450,
+            "name": "Opening Hymn",
+            "uuid": "42039e20-986c-49da-a822-79e02df5b0bb",
+            "id": "scene",
+            "versioned_id": "scene",
+            "settings": {
+                "custom_size": false,
+                "id_counter": 3,
+                "items": [
+                    {
+                        "name": "Video Capture Device",
+                        "source_uuid": "d3d6f570-3060-4ea9-8350-828fddf3c99c",
+                        "visible": true,
+                        "locked": false,
+                        "rot": 0.0,
+                        "align": 5,
+                        "bounds_type": 0,
+                        "bounds_align": 0,
+                        "bounds_crop": false,
+                        "crop_left": 0,
+                        "crop_top": 0,
+                        "crop_right": 0,
+                        "crop_bottom": 0,
+                        "id": 1,
+                        "group_item_backup": false,
+                        "pos": {
+                            "x": 0.0,
+                            "y": 0.0
+                        },
+                        "scale": {
+                            "x": 1.0,
+                            "y": 1.0
+                        },
+                        "bounds": {
+                            "x": 0.0,
+                            "y": 0.0
+                        },
+                        "scale_filter": "disable",
+                        "blend_method": "default",
+                        "blend_type": "normal",
+                        "show_transition": {
+                            "duration": 0
+                        },
+                        "hide_transition": {
+                            "duration": 0
+                        },
+                        "private_settings": {}
+                    },
+                    {
+                        "name": "Opening Hymn Slides",
+                        "source_uuid": "a0d6f5d4-f1b1-4c02-9a79-c8c90abdc1c1",
+                        "visible": true,
+                        "locked": false,
+                        "rot": 0.0,
+                        "align": 5,
+                        "bounds_type": 0,
+                        "bounds_align": 0,
+                        "bounds_crop": false,
+                        "crop_left": 0,
+                        "crop_top": 0,
+                        "crop_right": 0,
+                        "crop_bottom": 0,
+                        "id": 2,
+                        "group_item_backup": false,
+                        "pos": {
+                            "x": 0.0,
+                            "y": 0.0
+                        },
+                        "scale": {
+                            "x": 0.4000000059604645,
+                            "y": 0.4000000059604645
+                        },
+                        "bounds": {
+                            "x": 0.0,
+                            "y": 0.0
+                        },
+                        "scale_filter": "disable",
+                        "blend_method": "default",
+                        "blend_type": "normal",
+                        "show_transition": {
+                            "duration": 0
+                        },
+                        "hide_transition": {
+                            "duration": 0
+                        },
+                        "private_settings": {}
+                    }
+                ]
+            },
+            "mixers": 0,
+            "sync": 0,
+            "flags": 0,
+            "volume": 1.0,
+            "balance": 0.5,
+            "enabled": true,
+            "muted": false,
+            "push-to-mute": false,
+            "push-to-mute-delay": 0,
+            "push-to-talk": false,
+            "push-to-talk-delay": 0,
+            "hotkeys": {
+                "OBSBasic.SelectScene": [],
+                "libobs.show_scene_item.1": [],
+                "libobs.hide_scene_item.1": [],
+                "libobs.show_scene_item.2": [],
+                "libobs.hide_scene_item.2": []
+            },
+            "deinterlace_mode": 0,
+            "deinterlace_field_order": 0,
+            "monitoring_type": 0,
+            "canvas_uuid": "6c69626f-6273-4c00-9d88-c5136d61696e",
+            "private_settings": {}
+        },
+        {
+            "prev_ver": 536936450,
+            "name": "Opening Hymn Slides",
+            "uuid": "a0d6f5d4-f1b1-4c02-9a79-c8c90abdc1c1",
+            "id": "slideshow",
+            "versioned_id": "slideshow",
+            "settings": {
+                "files": [
+                    {
+                        "value": "G:/Shared drives/Worship/2026-06-07/Hymns/Slide2.PNG",
+                        "uuid": "c27a8278-cd13-4201-8dc9-b993bd433e9f",
+                        "selected": false,
+                        "hidden": false
+                    },
+                    {
+                        "value": "G:/Shared drives/Worship/2026-06-07/Hymns/Slide3.PNG",
+                        "uuid": "7783c2da-a582-43a1-a1e8-dd1d04dd857f",
+                        "selected": false,
+                        "hidden": false
+                    },
+                    {
+                        "value": "G:/Shared drives/Worship/2026-06-07/Hymns/Slide4.PNG",
+                        "uuid": "6e4274c0-7aa5-4b8b-88d9-c3377bacb8ec",
+                        "selected": false,
+                        "hidden": false
+                    }
+                ],
+                "slide_time": 3000,
+                "transition_speed": 300,
+                "playback_behavior": "stop_restart",
+                "slide_mode": "mode_manual"
+            },
+            "mixers": 0,
+            "sync": 0,
+            "flags": 0,
+            "volume": 1.0,
+            "balance": 0.5,
+            "enabled": true,
+            "muted": false,
+            "push-to-mute": false,
+            "push-to-mute-delay": 0,
+            "push-to-talk": false,
+            "push-to-talk-delay": 0,
+            "hotkeys": {
+                "SlideShow.PlayPause": [],
+                "SlideShow.Restart": [],
+                "SlideShow.Stop": [],
+                "SlideShow.NextSlide": [
+                    {
+                        "key": "OBS_KEY_N"
+                    }
+                ],
+                "SlideShow.PreviousSlide": [
+                    {
+                        "key": "OBS_KEY_P"
+                    }
+                ]
+            },
+            "deinterlace_mode": 0,
+            "deinterlace_field_order": 0,
+            "monitoring_type": 0,
+            "private_settings": {}
+        },
+        {
+            "prev_ver": 536936450,
+            "name": "OT Reading",
+            "uuid": "978779f4-fd37-44b0-b9e1-8c831bf5d108",
+            "id": "scene",
+            "versioned_id": "scene",
+            "settings": {
+                "custom_size": false,
+                "id_counter": 6,
+                "items": [
+                    {
+                        "name": "Video Capture Device",
+                        "source_uuid": "d3d6f570-3060-4ea9-8350-828fddf3c99c",
+                        "visible": true,
+                        "locked": false,
+                        "rot": 0.0,
+                        "align": 5,
+                        "bounds_type": 0,
+                        "bounds_align": 0,
+                        "bounds_crop": false,
+                        "crop_left": 0,
+                        "crop_top": 0,
+                        "crop_right": 0,
+                        "crop_bottom": 0,
+                        "id": 1,
+                        "group_item_backup": false,
+                        "pos": {
+                            "x": 0.0,
+                            "y": 0.0
+                        },
+                        "scale": {
+                            "x": 1.0,
+                            "y": 1.0
+                        },
+                        "bounds": {
+                            "x": 0.0,
+                            "y": 0.0
+                        },
+                        "scale_filter": "disable",
+                        "blend_method": "default",
+                        "blend_type": "normal",
+                        "show_transition": {
+                            "duration": 0
+                        },
+                        "hide_transition": {
+                            "duration": 0
+                        },
+                        "private_settings": {}
+                    },
+                    {
+                        "name": "Readings - NT Gospel",
+                        "source_uuid": "9f8dbff7-af8e-4622-852f-6c773ab0d6b0",
+                        "visible": true,
+                        "locked": false,
+                        "rot": 0.0,
+                        "align": 5,
+                        "bounds_type": 0,
+                        "bounds_align": 0,
+                        "bounds_crop": false,
+                        "crop_left": 0,
+                        "crop_top": 0,
+                        "crop_right": 0,
+                        "crop_bottom": 0,
+                        "id": 6,
+                        "group_item_backup": false,
+                        "pos": {
+                            "x": 0.0,
+                            "y": 866.0
+                        },
+                        "scale": {
+                            "x": 0.594427227973938,
+                            "y": 0.5944444537162781
+                        },
+                        "bounds": {
+                            "x": 0.0,
+                            "y": 0.0
+                        },
+                        "scale_filter": "disable",
+                        "blend_method": "default",
+                        "blend_type": "normal",
+                        "show_transition": {
+                            "duration": 0
+                        },
+                        "hide_transition": {
+                            "duration": 0
+                        },
+                        "private_settings": {}
+                    }
+                ]
+            },
+            "mixers": 0,
+            "sync": 0,
+            "flags": 0,
+            "volume": 1.0,
+            "balance": 0.5,
+            "enabled": true,
+            "muted": false,
+            "push-to-mute": false,
+            "push-to-mute-delay": 0,
+            "push-to-talk": false,
+            "push-to-talk-delay": 0,
+            "hotkeys": {
+                "OBSBasic.SelectScene": [],
+                "libobs.show_scene_item.1": [],
+                "libobs.hide_scene_item.1": [],
+                "libobs.show_scene_item.6": [],
+                "libobs.hide_scene_item.6": []
+            },
+            "deinterlace_mode": 0,
+            "deinterlace_field_order": 0,
+            "monitoring_type": 0,
+            "canvas_uuid": "6c69626f-6273-4c00-9d88-c5136d61696e",
+            "private_settings": {}
+        },
+        {
+            "prev_ver": 536936450,
+            "name": "Outro",
+            "uuid": "a9e6e367-a968-4cf0-9a14-41a75aa4180f",
+            "id": "scene",
+            "versioned_id": "scene",
+            "settings": {
+                "custom_size": false,
+                "id_counter": 19,
+                "items": [
+                    {
+                        "name": "Acknowledgements",
+                        "source_uuid": "06c00a7e-fded-468a-9faf-550bb26ee1a4",
+                        "visible": false,
+                        "locked": false,
+                        "rot": 0.0,
+                        "align": 5,
+                        "bounds_type": 0,
+                        "bounds_align": 0,
+                        "bounds_crop": false,
+                        "crop_left": 0,
+                        "crop_top": 0,
+                        "crop_right": 0,
+                        "crop_bottom": 0,
+                        "id": 7,
+                        "group_item_backup": false,
+                        "pos": {
+                            "x": 0.0,
+                            "y": 942.0
+                        },
+                        "scale": {
+                            "x": 0.8726415038108826,
+                            "y": 0.8734177350997925
+                        },
+                        "bounds": {
+                            "x": 0.0,
+                            "y": 0.0
+                        },
+                        "scale_filter": "disable",
+                        "blend_method": "default",
+                        "blend_type": "normal",
+                        "show_transition": {
+                            "duration": 0
+                        },
+                        "hide_transition": {
+                            "duration": 0
+                        },
+                        "private_settings": {}
+                    },
+                    {
+                        "name": "Announcements",
+                        "source_uuid": "44b48f13-f82c-4135-9bcc-e7bfcbfe96e1",
+                        "visible": true,
+                        "locked": false,
+                        "rot": 0.0,
+                        "align": 5,
+                        "bounds_type": 0,
+                        "bounds_align": 0,
+                        "bounds_crop": false,
+                        "crop_left": 0,
+                        "crop_top": 0,
+                        "crop_right": 0,
+                        "crop_bottom": 0,
+                        "id": 8,
+                        "group_item_backup": false,
+                        "pos": {
+                            "x": 0.0,
+                            "y": 0.0
+                        },
+                        "scale": {
+                            "x": 1.0,
+                            "y": 1.0
+                        },
+                        "bounds": {
+                            "x": 0.0,
+                            "y": 0.0
+                        },
+                        "scale_filter": "disable",
+                        "blend_method": "default",
+                        "blend_type": "normal",
+                        "show_transition": {
+                            "duration": 0
+                        },
+                        "hide_transition": {
+                            "duration": 0
+                        },
+                        "private_settings": {}
+                    },
+                    {
+                        "name": "Outro Copyright",
+                        "source_uuid": "58dd98ea-6579-44d6-bdff-16ada6074e40",
+                        "visible": false,
+                        "locked": false,
+                        "rot": 0.0,
+                        "align": 5,
+                        "bounds_type": 0,
+                        "bounds_align": 0,
+                        "bounds_crop": false,
+                        "crop_left": 0,
+                        "crop_top": 0,
+                        "crop_right": 0,
+                        "crop_bottom": 0,
+                        "id": 18,
+                        "group_item_backup": false,
+                        "pos": {
+                            "x": 1221.154296875,
+                            "y": 894.1363525390625
+                        },
+                        "scale": {
+                            "x": 1.0685714483261108,
+                            "y": 1.0681818723678589
+                        },
+                        "bounds": {
+                            "x": 0.0,
+                            "y": 0.0
+                        },
+                        "scale_filter": "disable",
+                        "blend_method": "default",
+                        "blend_type": "normal",
+                        "show_transition": {
+                            "duration": 0
+                        },
+                        "hide_transition": {
+                            "duration": 0
+                        },
+                        "private_settings": {}
+                    },
+                    {
+                        "name": "Outro Hymns",
+                        "source_uuid": "1c545f8c-1fcc-4286-ae8e-bd6ca7627329",
+                        "visible": true,
+                        "locked": false,
+                        "rot": 0.0,
+                        "align": 5,
+                        "bounds_type": 0,
+                        "bounds_align": 0,
+                        "bounds_crop": false,
+                        "crop_left": 0,
+                        "crop_top": 0,
+                        "crop_right": 0,
+                        "crop_bottom": 0,
+                        "id": 19,
+                        "group_item_backup": false,
+                        "pos": {
+                            "x": 0.0,
+                            "y": 0.0
+                        },
+                        "scale": {
+                            "x": 1.0,
+                            "y": 1.0
+                        },
+                        "bounds": {
+                            "x": 0.0,
+                            "y": 0.0
+                        },
+                        "scale_filter": "disable",
+                        "blend_method": "default",
+                        "blend_type": "normal",
+                        "show_transition": {
+                            "duration": 0
+                        },
+                        "hide_transition": {
+                            "duration": 0
+                        },
+                        "private_settings": {}
+                    }
+                ]
+            },
+            "mixers": 0,
+            "sync": 0,
+            "flags": 0,
+            "volume": 1.0,
+            "balance": 0.5,
+            "enabled": true,
+            "muted": false,
+            "push-to-mute": false,
+            "push-to-mute-delay": 0,
+            "push-to-talk": false,
+            "push-to-talk-delay": 0,
+            "hotkeys": {
+                "OBSBasic.SelectScene": [],
+                "libobs.show_scene_item.7": [],
+                "libobs.hide_scene_item.7": [],
+                "libobs.show_scene_item.8": [],
+                "libobs.hide_scene_item.8": [],
+                "libobs.show_scene_item.18": [],
+                "libobs.hide_scene_item.18": [],
+                "libobs.show_scene_item.19": [],
+                "libobs.hide_scene_item.19": []
+            },
+            "deinterlace_mode": 0,
+            "deinterlace_field_order": 0,
+            "monitoring_type": 0,
+            "canvas_uuid": "6c69626f-6273-4c00-9d88-c5136d61696e",
+            "private_settings": {}
+        },
+        {
+            "prev_ver": 536936450,
+            "name": "Outro Copyright",
+            "uuid": "58dd98ea-6579-44d6-bdff-16ada6074e40",
+            "id": "text_gdiplus",
+            "versioned_id": "text_gdiplus_v2",
+            "settings": {
+                "text": "\"Jesus, There's No One Like You (live)\",  Music and Words by Neil DeGraide, \nBrittany Kauflin, Jordan Kauflin, and Grace Nixon, \n© 2017 Sovereign Grace Praise (BMI)/Sovereign Grace Worship (ASCAP)\n Sovereign Grace Music, a division of Sovereign Grace Churches.  \nAll rights reserved. Used by permission.  Administrated worldwide \nat www.CapitolCMGPublishing.com,\nexcluding the UK which is adm. by Integrity Music, part of the \nDavid C Cook family. www.SovereignGraceMusic.org",
+                "font": {
+                    "face": "Arial",
+                    "flags": 0,
+                    "size": 22,
+                    "style": "Regular"
+                }
+            },
+            "mixers": 0,
+            "sync": 0,
+            "flags": 0,
+            "volume": 1.0,
+            "balance": 0.5,
+            "enabled": true,
+            "muted": false,
+            "push-to-mute": false,
+            "push-to-mute-delay": 0,
+            "push-to-talk": false,
+            "push-to-talk-delay": 0,
+            "hotkeys": {},
+            "deinterlace_mode": 0,
+            "deinterlace_field_order": 0,
+            "monitoring_type": 0,
+            "private_settings": {}
+        },
+        {
+            "prev_ver": 536936450,
+            "name": "Outro Hymns",
+            "uuid": "1c545f8c-1fcc-4286-ae8e-bd6ca7627329",
+            "id": "vlc_source",
+            "versioned_id": "vlc_source",
+            "settings": {
+                "playlist": [
+                    {
+                        "value": "G:/Shared drives/Worship/Music/prelude postlude music for contemporary service/Faithfulness[1].mp3",
+                        "uuid": "4c367a2f-3a63-4626-af2b-27224b898c4a",
+                        "selected": false,
+                        "hidden": false
+                    },
+                    {
+                        "value": "G:/Shared drives/Worship/Music/prelude postlude music for contemporary service/Gentleness[1].mp3",
+                        "uuid": "d379040f-6422-41a7-8f45-deae4334c65c",
+                        "selected": false,
+                        "hidden": false
+                    },
+                    {
+                        "value": "G:/Shared drives/Worship/Music/prelude postlude music for contemporary service/Peace[1].mp3",
+                        "uuid": "ef23c226-053f-4c64-a358-6ea278c6c83d",
+                        "selected": false,
+                        "hidden": false
+                    },
+                    {
+                        "value": "G:/Shared drives/Worship/Music/prelude postlude music for contemporary service/Self-Control[1].mp3",
+                        "uuid": "f2399395-2c8c-4c86-a7ad-52f10eec4e51",
+                        "selected": false,
+                        "hidden": false
+                    },
+                    {
+                        "value": "G:/Shared drives/Worship/Music/prelude postlude music for contemporary service/Goodness[1].mp3",
+                        "uuid": "69cea41c-22a0-4808-8175-8c1e2f03f698",
+                        "selected": true,
+                        "hidden": false
+                    }
+                ]
+            },
+            "mixers": 255,
+            "sync": 0,
+            "flags": 0,
+            "volume": 0.31421324610710144,
+            "balance": 0.5,
+            "enabled": true,
+            "muted": false,
+            "push-to-mute": false,
+            "push-to-mute-delay": 0,
+            "push-to-talk": false,
+            "push-to-talk-delay": 0,
+            "hotkeys": {
+                "libobs.mute": [],
+                "libobs.unmute": [],
+                "libobs.push-to-mute": [],
+                "libobs.push-to-talk": [],
+                "VLCSource.PlayPause": [],
+                "VLCSource.Restart": [],
+                "VLCSource.Stop": [],
+                "VLCSource.PlaylistNext": [],
+                "VLCSource.PlaylistPrev": []
+            },
+            "deinterlace_mode": 0,
+            "deinterlace_field_order": 0,
+            "monitoring_type": 2,
+            "private_settings": {}
+        },
+        {
+            "prev_ver": 536936450,
+            "name": "Prayers and Benediction",
+            "uuid": "e68c605f-8fcb-4437-8b9b-ae61e79d1e9e",
+            "id": "scene",
+            "versioned_id": "scene",
+            "settings": {
+                "custom_size": false,
+                "id_counter": 2,
+                "items": [
+                    {
+                        "name": "Video Capture Device",
+                        "source_uuid": "d3d6f570-3060-4ea9-8350-828fddf3c99c",
+                        "visible": true,
+                        "locked": false,
+                        "rot": 0.0,
+                        "align": 5,
+                        "bounds_type": 0,
+                        "bounds_align": 0,
+                        "bounds_crop": false,
+                        "crop_left": 0,
+                        "crop_top": 0,
+                        "crop_right": 0,
+                        "crop_bottom": 0,
+                        "id": 1,
+                        "group_item_backup": false,
+                        "pos": {
+                            "x": 0.0,
+                            "y": 0.0
+                        },
+                        "scale": {
+                            "x": 1.0,
+                            "y": 1.0
+                        },
+                        "bounds": {
+                            "x": 0.0,
+                            "y": 0.0
+                        },
+                        "scale_filter": "disable",
+                        "blend_method": "default",
+                        "blend_type": "normal",
+                        "show_transition": {
+                            "duration": 0
+                        },
+                        "hide_transition": {
+                            "duration": 0
+                        },
+                        "private_settings": {}
+                    },
+                    {
+                        "name": "Prayers Slides",
+                        "source_uuid": "820027e2-0c6d-4700-a9e9-fd657920fbc6",
+                        "visible": true,
+                        "locked": false,
+                        "rot": 0.0,
+                        "align": 5,
+                        "bounds_type": 0,
+                        "bounds_align": 0,
+                        "bounds_crop": false,
+                        "crop_left": 0,
+                        "crop_top": 0,
+                        "crop_right": 0,
+                        "crop_bottom": 0,
+                        "id": 2,
+                        "group_item_backup": false,
+                        "pos": {
+                            "x": 0.0,
+                            "y": 866.0
+                        },
+                        "scale": {
+                            "x": 0.594427227973938,
+                            "y": 0.5944444537162781
+                        },
+                        "bounds": {
+                            "x": 0.0,
+                            "y": 0.0
+                        },
+                        "scale_filter": "disable",
+                        "blend_method": "default",
+                        "blend_type": "normal",
+                        "show_transition": {
+                            "duration": 0
+                        },
+                        "hide_transition": {
+                            "duration": 0
+                        },
+                        "private_settings": {}
+                    }
+                ]
+            },
+            "mixers": 0,
+            "sync": 0,
+            "flags": 0,
+            "volume": 1.0,
+            "balance": 0.5,
+            "enabled": true,
+            "muted": false,
+            "push-to-mute": false,
+            "push-to-mute-delay": 0,
+            "push-to-talk": false,
+            "push-to-talk-delay": 0,
+            "hotkeys": {
+                "OBSBasic.SelectScene": [],
+                "libobs.show_scene_item.1": [],
+                "libobs.hide_scene_item.1": [],
+                "libobs.show_scene_item.2": [],
+                "libobs.hide_scene_item.2": []
+            },
+            "deinterlace_mode": 0,
+            "deinterlace_field_order": 0,
+            "monitoring_type": 0,
+            "canvas_uuid": "6c69626f-6273-4c00-9d88-c5136d61696e",
+            "private_settings": {}
+        },
+        {
+            "prev_ver": 536936450,
+            "name": "Prayers Slides",
+            "uuid": "820027e2-0c6d-4700-a9e9-fd657920fbc6",
+            "id": "slideshow",
+            "versioned_id": "slideshow",
+            "settings": {
+                "files": [
+                    {
+                        "value": "G:/Shared drives/Worship/2026-06-07/Liturgy/06-Prayers/Slide31.PNG",
+                        "uuid": "7f0b6fb3-b30d-4375-b72f-43a2621fbf3d",
+                        "selected": false,
+                        "hidden": false
+                    },
+                    {
+                        "value": "G:/Shared drives/Worship/2026-06-07/Liturgy/06-Prayers/Slide32.PNG",
+                        "uuid": "ebb53bfe-e4d2-4bea-92a7-bb02bb1551f6",
+                        "selected": false,
+                        "hidden": false
+                    },
+                    {
+                        "value": "G:/Shared drives/Worship/2026-06-07/Liturgy/06-Prayers/Slide33.PNG",
+                        "uuid": "b15e043e-d030-4a23-a31e-6d09af62ae74",
+                        "selected": false,
+                        "hidden": false
+                    },
+                    {
+                        "value": "G:/Shared drives/Worship/2026-06-07/Liturgy/06-Prayers/Slide34.PNG",
+                        "uuid": "dac92ee7-a648-4b16-8a56-5c81fc641783",
+                        "selected": false,
+                        "hidden": false
+                    },
+                    {
+                        "value": "G:/Shared drives/Worship/2026-06-07/Liturgy/06-Prayers/Slide35.PNG",
+                        "uuid": "001aeb0f-cb6d-459f-8f3e-4346d578035a",
+                        "selected": false,
+                        "hidden": false
+                    },
+                    {
+                        "value": "G:/Shared drives/Worship/2026-06-07/Liturgy/06-Prayers/Slide36.PNG",
+                        "uuid": "d469444d-5f91-49c8-b4ec-a78d13533f02",
+                        "selected": false,
+                        "hidden": false
+                    },
+                    {
+                        "value": "G:/Shared drives/Worship/2026-06-07/Liturgy/06-Prayers/Slide37.PNG",
+                        "uuid": "98ccd654-3ce2-4977-bbcd-530a41163c8d",
+                        "selected": false,
+                        "hidden": false
+                    }
+                ],
+                "transition_speed": 300,
+                "playback_behavior": "stop_restart",
+                "slide_mode": "mode_manual"
+            },
+            "mixers": 0,
+            "sync": 0,
+            "flags": 0,
+            "volume": 1.0,
+            "balance": 0.5,
+            "enabled": true,
+            "muted": false,
+            "push-to-mute": false,
+            "push-to-mute-delay": 0,
+            "push-to-talk": false,
+            "push-to-talk-delay": 0,
+            "hotkeys": {
+                "SlideShow.PlayPause": [],
+                "SlideShow.Restart": [],
+                "SlideShow.Stop": [],
+                "SlideShow.NextSlide": [
+                    {
+                        "key": "OBS_KEY_N"
+                    }
+                ],
+                "SlideShow.PreviousSlide": [
+                    {
+                        "key": "OBS_KEY_P"
+                    }
+                ]
+            },
+            "deinterlace_mode": 0,
+            "deinterlace_field_order": 0,
+            "monitoring_type": 0,
+            "private_settings": {}
+        },
+        {
+            "prev_ver": 536936450,
+            "name": "Readings",
+            "uuid": "3fee448c-660e-4518-932c-51f2881430f9",
+            "id": "scene",
+            "versioned_id": "scene",
+            "settings": {
+                "id_counter": 3,
+                "custom_size": false,
+                "items": [
+                    {
+                        "name": "Video Capture Device",
+                        "source_uuid": "d3d6f570-3060-4ea9-8350-828fddf3c99c",
+                        "visible": true,
+                        "locked": false,
+                        "rot": 0.0,
+                        "align": 5,
+                        "bounds_type": 0,
+                        "bounds_align": 0,
+                        "bounds_crop": false,
+                        "crop_left": 0,
+                        "crop_top": 0,
+                        "crop_right": 0,
+                        "crop_bottom": 0,
+                        "id": 1,
+                        "group_item_backup": false,
+                        "pos": {
+                            "x": 0.0,
+                            "y": 0.0
+                        },
+                        "scale": {
+                            "x": 1.0,
+                            "y": 1.0
+                        },
+                        "bounds": {
+                            "x": 0.0,
+                            "y": 0.0
+                        },
+                        "scale_filter": "disable",
+                        "blend_method": "default",
+                        "blend_type": "normal",
+                        "show_transition": {
+                            "duration": 0
+                        },
+                        "hide_transition": {
+                            "duration": 0
+                        },
+                        "private_settings": {}
+                    },
+                    {
+                        "name": "Readings - NT Gospel 2",
+                        "source_uuid": "761175b7-4e27-4618-b359-656c39b65a31",
+                        "visible": true,
+                        "locked": false,
+                        "rot": 0.0,
+                        "align": 5,
+                        "bounds_type": 0,
+                        "bounds_align": 0,
+                        "bounds_crop": false,
+                        "crop_left": 0,
+                        "crop_top": 0,
+                        "crop_right": 0,
+                        "crop_bottom": 0,
+                        "id": 3,
+                        "group_item_backup": false,
+                        "pos": {
+                            "x": 0.0,
+                            "y": 866.0
+                        },
+                        "scale": {
+                            "x": 0.594427227973938,
+                            "y": 0.5944444537162781
+                        },
+                        "bounds": {
+                            "x": 0.0,
+                            "y": 0.0
+                        },
+                        "scale_filter": "disable",
+                        "blend_method": "default",
+                        "blend_type": "normal",
+                        "show_transition": {
+                            "duration": 0
+                        },
+                        "hide_transition": {
+                            "duration": 0
+                        },
+                        "private_settings": {}
+                    }
+                ]
+            },
+            "mixers": 0,
+            "sync": 0,
+            "flags": 0,
+            "volume": 1.0,
+            "balance": 0.5,
+            "enabled": true,
+            "muted": false,
+            "push-to-mute": false,
+            "push-to-mute-delay": 0,
+            "push-to-talk": false,
+            "push-to-talk-delay": 0,
+            "hotkeys": {
+                "OBSBasic.SelectScene": [],
+                "libobs.show_scene_item.1": [],
+                "libobs.hide_scene_item.1": [],
+                "libobs.show_scene_item.3": [],
+                "libobs.hide_scene_item.3": []
+            },
+            "deinterlace_mode": 0,
+            "deinterlace_field_order": 0,
+            "monitoring_type": 0,
+            "canvas_uuid": "6c69626f-6273-4c00-9d88-c5136d61696e",
+            "private_settings": {}
+        },
+        {
+            "prev_ver": 536936450,
+            "name": "Readings - NT Gospel",
+            "uuid": "9f8dbff7-af8e-4622-852f-6c773ab0d6b0",
+            "id": "slideshow",
+            "versioned_id": "slideshow",
+            "settings": {
+                "files": [
+                    {
+                        "value": "G:/Shared drives/Worship/2026-04-05 - Easter/Liturgy/04-Readings/Slide24.PNG",
+                        "uuid": "cf3a229f-6c65-4281-95fb-f24a3e8add01",
+                        "selected": false,
+                        "hidden": false
+                    }
+                ],
+                "transition_speed": 300,
+                "playback_behavior": "stop_restart",
+                "slide_mode": "mode_manual"
+            },
+            "mixers": 0,
+            "sync": 0,
+            "flags": 0,
+            "volume": 1.0,
+            "balance": 0.5,
+            "enabled": true,
+            "muted": false,
+            "push-to-mute": false,
+            "push-to-mute-delay": 0,
+            "push-to-talk": false,
+            "push-to-talk-delay": 0,
+            "hotkeys": {
+                "SlideShow.PlayPause": [],
+                "SlideShow.Restart": [],
+                "SlideShow.Stop": [],
+                "SlideShow.NextSlide": [
+                    {
+                        "key": "OBS_KEY_N"
+                    }
+                ],
+                "SlideShow.PreviousSlide": [
+                    {
+                        "key": "OBS_KEY_P"
+                    }
+                ]
+            },
+            "deinterlace_mode": 0,
+            "deinterlace_field_order": 0,
+            "monitoring_type": 0,
+            "private_settings": {}
+        },
+        {
+            "prev_ver": 536936450,
+            "name": "Readings - NT Gospel 2",
+            "uuid": "761175b7-4e27-4618-b359-656c39b65a31",
+            "id": "slideshow",
+            "versioned_id": "slideshow",
+            "settings": {
+                "files": [
+                    {
+                        "value": "G:/Shared drives/Worship/2026-06-07/Liturgy/05-Readings/Slide26.PNG",
+                        "uuid": "19d15c97-54fe-487c-b5e3-15e0e54d3bcb",
+                        "selected": false,
+                        "hidden": false
+                    },
+                    {
+                        "value": "G:/Shared drives/Worship/2026-06-07/Liturgy/05-Readings/Slide27.PNG",
+                        "uuid": "687ac852-f6c5-4907-9730-424781c2560d",
+                        "selected": false,
+                        "hidden": false
+                    },
+                    {
+                        "value": "G:/Shared drives/Worship/2026-06-07/Liturgy/05-Readings/Slide28.PNG",
+                        "uuid": "b10fff35-0d53-43fa-9495-9488fbe04439",
+                        "selected": false,
+                        "hidden": false
+                    },
+                    {
+                        "value": "G:/Shared drives/Worship/2026-06-07/Liturgy/05-Readings/Slide29.PNG",
+                        "uuid": "78e8b189-633d-40fd-ad13-17dd7b5c62a2",
+                        "selected": false,
+                        "hidden": false
+                    },
+                    {
+                        "value": "G:/Shared drives/Worship/2026-06-07/Liturgy/05-Readings/Slide30.PNG",
+                        "uuid": "c988f2ba-d36b-4aff-b2e0-32c3f5b3163a",
+                        "selected": false,
+                        "hidden": false
+                    }
+                ],
+                "transition_speed": 300,
+                "playback_behavior": "stop_restart",
+                "slide_mode": "mode_manual"
+            },
+            "mixers": 0,
+            "sync": 0,
+            "flags": 0,
+            "volume": 1.0,
+            "balance": 0.5,
+            "enabled": true,
+            "muted": false,
+            "push-to-mute": false,
+            "push-to-mute-delay": 0,
+            "push-to-talk": false,
+            "push-to-talk-delay": 0,
+            "hotkeys": {
+                "SlideShow.PlayPause": [],
+                "SlideShow.Restart": [],
+                "SlideShow.Stop": [],
+                "SlideShow.NextSlide": [
+                    {
+                        "key": "OBS_KEY_N"
+                    }
+                ],
+                "SlideShow.PreviousSlide": []
+            },
+            "deinterlace_mode": 0,
+            "deinterlace_field_order": 0,
+            "monitoring_type": 0,
+            "private_settings": {}
+        },
+        {
+            "prev_ver": 536936450,
+            "name": "Sal and Col, OT",
+            "uuid": "547303f2-4506-487c-b748-90596d47bc9f",
+            "id": "scene",
+            "versioned_id": "scene",
+            "settings": {
+                "custom_size": false,
+                "id_counter": 5,
+                "items": [
+                    {
+                        "name": "Video Capture Device",
+                        "source_uuid": "d3d6f570-3060-4ea9-8350-828fddf3c99c",
+                        "visible": true,
+                        "locked": false,
+                        "rot": 0.0,
+                        "align": 5,
+                        "bounds_type": 0,
+                        "bounds_align": 0,
+                        "bounds_crop": false,
+                        "crop_left": 0,
+                        "crop_top": 0,
+                        "crop_right": 0,
+                        "crop_bottom": 0,
+                        "id": 1,
+                        "group_item_backup": false,
+                        "pos": {
+                            "x": 0.0,
+                            "y": 0.0
+                        },
+                        "scale": {
+                            "x": 1.0,
+                            "y": 1.0
+                        },
+                        "bounds": {
+                            "x": 0.0,
+                            "y": 0.0
+                        },
+                        "scale_filter": "disable",
+                        "blend_method": "default",
+                        "blend_type": "normal",
+                        "show_transition": {
+                            "duration": 0
+                        },
+                        "hide_transition": {
+                            "duration": 0
+                        },
+                        "private_settings": {}
+                    },
+                    {
+                        "name": "Gospel Slides",
+                        "source_uuid": "3a9281cc-46f8-44e5-bfdf-f20286ea6fb2",
+                        "visible": true,
+                        "locked": false,
+                        "rot": 0.0,
+                        "align": 5,
+                        "bounds_type": 0,
+                        "bounds_align": 0,
+                        "bounds_crop": false,
+                        "crop_left": 0,
+                        "crop_top": 0,
+                        "crop_right": 0,
+                        "crop_bottom": 0,
+                        "id": 5,
+                        "group_item_backup": false,
+                        "pos": {
+                            "x": 0.0,
+                            "y": 866.0
+                        },
+                        "scale": {
+                            "x": 0.594427227973938,
+                            "y": 0.5944444537162781
+                        },
+                        "bounds": {
+                            "x": 0.0,
+                            "y": 0.0
+                        },
+                        "scale_filter": "disable",
+                        "blend_method": "default",
+                        "blend_type": "normal",
+                        "show_transition": {
+                            "duration": 0
+                        },
+                        "hide_transition": {
+                            "duration": 0
+                        },
+                        "private_settings": {}
+                    }
+                ]
+            },
+            "mixers": 0,
+            "sync": 0,
+            "flags": 0,
+            "volume": 1.0,
+            "balance": 0.5,
+            "enabled": true,
+            "muted": false,
+            "push-to-mute": false,
+            "push-to-mute-delay": 0,
+            "push-to-talk": false,
+            "push-to-talk-delay": 0,
+            "hotkeys": {
+                "OBSBasic.SelectScene": [],
+                "libobs.show_scene_item.1": [],
+                "libobs.hide_scene_item.1": [],
+                "libobs.show_scene_item.5": [],
+                "libobs.hide_scene_item.5": []
+            },
+            "deinterlace_mode": 0,
+            "deinterlace_field_order": 0,
+            "monitoring_type": 0,
+            "canvas_uuid": "6c69626f-6273-4c00-9d88-c5136d61696e",
+            "private_settings": {}
+        },
+        {
+            "prev_ver": 536936450,
+            "name": "Sermon",
+            "uuid": "8d186f2a-7d72-4077-8be7-ddc78ae59202",
+            "id": "scene",
+            "versioned_id": "scene",
+            "settings": {
+                "custom_size": false,
+                "id_counter": 2,
+                "items": [
+                    {
+                        "name": "Video Capture Device",
+                        "source_uuid": "d3d6f570-3060-4ea9-8350-828fddf3c99c",
+                        "visible": true,
+                        "locked": false,
+                        "rot": 0.0,
+                        "align": 5,
+                        "bounds_type": 0,
+                        "bounds_align": 0,
+                        "bounds_crop": false,
+                        "crop_left": 0,
+                        "crop_top": 0,
+                        "crop_right": 0,
+                        "crop_bottom": 0,
+                        "id": 1,
+                        "group_item_backup": false,
+                        "pos": {
+                            "x": 0.0,
+                            "y": 0.0
+                        },
+                        "scale": {
+                            "x": 1.0,
+                            "y": 1.0
+                        },
+                        "bounds": {
+                            "x": 0.0,
+                            "y": 0.0
+                        },
+                        "scale_filter": "disable",
+                        "blend_method": "default",
+                        "blend_type": "normal",
+                        "show_transition": {
+                            "duration": 0
+                        },
+                        "hide_transition": {
+                            "duration": 0
+                        },
+                        "private_settings": {}
+                    },
+                    {
+                        "name": "Logo 9",
+                        "source_uuid": "f1986b0d-db44-42f7-be92-35ebb87041fb",
+                        "visible": true,
+                        "locked": false,
+                        "rot": 0.0,
+                        "align": 5,
+                        "bounds_type": 0,
+                        "bounds_align": 0,
+                        "bounds_crop": false,
+                        "crop_left": 0,
+                        "crop_top": 0,
+                        "crop_right": 0,
+                        "crop_bottom": 0,
+                        "id": 2,
+                        "group_item_backup": false,
+                        "pos": {
+                            "x": 0.0,
+                            "y": 882.0
+                        },
+                        "scale": {
+                            "x": 0.0759984478354454,
+                            "y": 0.07609531283378601
+                        },
+                        "bounds": {
+                            "x": 0.0,
+                            "y": 0.0
+                        },
+                        "scale_filter": "disable",
+                        "blend_method": "default",
+                        "blend_type": "normal",
+                        "show_transition": {
+                            "duration": 0
+                        },
+                        "hide_transition": {
+                            "duration": 0
+                        },
+                        "private_settings": {}
+                    }
+                ]
+            },
+            "mixers": 0,
+            "sync": 0,
+            "flags": 0,
+            "volume": 1.0,
+            "balance": 0.5,
+            "enabled": true,
+            "muted": false,
+            "push-to-mute": false,
+            "push-to-mute-delay": 0,
+            "push-to-talk": false,
+            "push-to-talk-delay": 0,
+            "hotkeys": {
+                "OBSBasic.SelectScene": [],
+                "libobs.show_scene_item.1": [],
+                "libobs.hide_scene_item.1": [],
+                "libobs.show_scene_item.2": [],
+                "libobs.hide_scene_item.2": []
+            },
+            "deinterlace_mode": 0,
+            "deinterlace_field_order": 0,
+            "monitoring_type": 0,
+            "canvas_uuid": "6c69626f-6273-4c00-9d88-c5136d61696e",
+            "private_settings": {}
+        },
+        {
+            "prev_ver": 536936450,
+            "name": "Sermon Hymn",
+            "uuid": "1e99c0c0-e5c4-4918-86aa-a7687d54aeeb",
+            "id": "scene",
+            "versioned_id": "scene",
+            "settings": {
+                "custom_size": false,
+                "id_counter": 3,
+                "items": [
+                    {
+                        "name": "Video Capture Device",
+                        "source_uuid": "d3d6f570-3060-4ea9-8350-828fddf3c99c",
+                        "visible": true,
+                        "locked": false,
+                        "rot": 0.0,
+                        "align": 5,
+                        "bounds_type": 0,
+                        "bounds_align": 0,
+                        "bounds_crop": false,
+                        "crop_left": 0,
+                        "crop_top": 0,
+                        "crop_right": 0,
+                        "crop_bottom": 0,
+                        "id": 1,
+                        "group_item_backup": false,
+                        "pos": {
+                            "x": 0.0,
+                            "y": 0.0
+                        },
+                        "scale": {
+                            "x": 1.0,
+                            "y": 1.0
+                        },
+                        "bounds": {
+                            "x": 0.0,
+                            "y": 0.0
+                        },
+                        "scale_filter": "disable",
+                        "blend_method": "default",
+                        "blend_type": "normal",
+                        "show_transition": {
+                            "duration": 0
+                        },
+                        "hide_transition": {
+                            "duration": 0
+                        },
+                        "private_settings": {}
+                    },
+                    {
+                        "name": "Sermon Hymn Slides",
+                        "source_uuid": "560118c9-4ecf-485d-b469-c0415c4033d0",
+                        "visible": true,
+                        "locked": false,
+                        "rot": 0.0,
+                        "align": 5,
+                        "bounds_type": 0,
+                        "bounds_align": 0,
+                        "bounds_crop": false,
+                        "crop_left": 0,
+                        "crop_top": 0,
+                        "crop_right": 0,
+                        "crop_bottom": 0,
+                        "id": 2,
+                        "group_item_backup": false,
+                        "pos": {
+                            "x": 0.0,
+                            "y": 0.0
+                        },
+                        "scale": {
+                            "x": 0.4000000059604645,
+                            "y": 0.4000000059604645
+                        },
+                        "bounds": {
+                            "x": 0.0,
+                            "y": 0.0
+                        },
+                        "scale_filter": "disable",
+                        "blend_method": "default",
+                        "blend_type": "normal",
+                        "show_transition": {
+                            "duration": 0
+                        },
+                        "hide_transition": {
+                            "duration": 0
+                        },
+                        "private_settings": {}
+                    }
+                ]
+            },
+            "mixers": 0,
+            "sync": 0,
+            "flags": 0,
+            "volume": 1.0,
+            "balance": 0.5,
+            "enabled": true,
+            "muted": false,
+            "push-to-mute": false,
+            "push-to-mute-delay": 0,
+            "push-to-talk": false,
+            "push-to-talk-delay": 0,
+            "hotkeys": {
+                "OBSBasic.SelectScene": [],
+                "libobs.show_scene_item.1": [],
+                "libobs.hide_scene_item.1": [],
+                "libobs.show_scene_item.2": [],
+                "libobs.hide_scene_item.2": []
+            },
+            "deinterlace_mode": 0,
+            "deinterlace_field_order": 0,
+            "monitoring_type": 0,
+            "canvas_uuid": "6c69626f-6273-4c00-9d88-c5136d61696e",
+            "private_settings": {}
+        },
+        {
+            "prev_ver": 536936450,
+            "name": "Sermon Hymn Slides",
+            "uuid": "560118c9-4ecf-485d-b469-c0415c4033d0",
+            "id": "slideshow",
+            "versioned_id": "slideshow",
+            "settings": {
+                "files": [
+                    {
+                        "value": "G:/Shared drives/Worship/2026-06-07/Hymns/Slide6.PNG",
+                        "uuid": "87199e2c-bbce-4b5a-b9d3-b46340c85b89",
+                        "selected": false,
+                        "hidden": false
+                    },
+                    {
+                        "value": "G:/Shared drives/Worship/2026-06-07/Hymns/Slide7.PNG",
+                        "uuid": "b50fcc62-81f0-4a95-8cc2-aee39dcf1394",
+                        "selected": false,
+                        "hidden": false
+                    }
+                ],
+                "transition_speed": 300,
+                "playback_behavior": "stop_restart",
+                "slide_mode": "mode_manual"
+            },
+            "mixers": 0,
+            "sync": 0,
+            "flags": 0,
+            "volume": 1.0,
+            "balance": 0.5,
+            "enabled": true,
+            "muted": false,
+            "push-to-mute": false,
+            "push-to-mute-delay": 0,
+            "push-to-talk": false,
+            "push-to-talk-delay": 0,
+            "hotkeys": {
+                "SlideShow.PlayPause": [],
+                "SlideShow.Restart": [],
+                "SlideShow.Stop": [],
+                "SlideShow.NextSlide": [
+                    {
+                        "key": "OBS_KEY_N"
+                    }
+                ],
+                "SlideShow.PreviousSlide": [
+                    {
+                        "key": "OBS_KEY_P"
+                    }
+                ]
+            },
+            "deinterlace_mode": 0,
+            "deinterlace_field_order": 0,
+            "monitoring_type": 0,
+            "private_settings": {}
+        },
+        {
+            "prev_ver": 536936450,
+            "name": "Splash Background",
+            "uuid": "f4fc1384-5d19-4646-879f-499c567ec60f",
+            "id": "image_source",
+            "versioned_id": "image_source",
+            "settings": {
+                "file": "G:/Shared drives/Worship/2026-06-07/Hymns/Slide1.PNG",
+                "unload": false,
+                "linear_alpha": false
+            },
+            "mixers": 0,
+            "sync": 0,
+            "flags": 0,
+            "volume": 1.0,
+            "balance": 0.5,
+            "enabled": true,
+            "muted": false,
+            "push-to-mute": false,
+            "push-to-mute-delay": 0,
+            "push-to-talk": false,
+            "push-to-talk-delay": 0,
+            "hotkeys": {},
+            "deinterlace_mode": 0,
+            "deinterlace_field_order": 0,
+            "monitoring_type": 0,
+            "private_settings": {}
+        },
+        {
+            "prev_ver": 536936450,
+            "name": "Stick Around",
+            "uuid": "467b9c02-7b8b-4069-ad16-b20c10955655",
+            "id": "text_gdiplus",
+            "versioned_id": "text_gdiplus_v2",
+            "settings": {
+                "text": "Please stick around and\ncheck out the announcements.",
+                "align": "center",
+                "color": 4278190080
+            },
+            "mixers": 0,
+            "sync": 0,
+            "flags": 0,
+            "volume": 1.0,
+            "balance": 0.5,
+            "enabled": true,
+            "muted": false,
+            "push-to-mute": false,
+            "push-to-mute-delay": 0,
+            "push-to-talk": false,
+            "push-to-talk-delay": 0,
+            "hotkeys": {},
+            "deinterlace_mode": 0,
+            "deinterlace_field_order": 0,
+            "monitoring_type": 0,
+            "private_settings": {}
+        },
+        {
+            "prev_ver": 536936450,
+            "name": "Tagline",
+            "uuid": "aca1d8c2-5f34-49a7-a996-0c0e8b9b6a74",
+            "id": "text_gdiplus",
+            "versioned_id": "text_gdiplus_v2",
+            "settings": {
+                "gradient": false,
+                "text": "A Community of Faith:\nCentered in Christ, Called to Serve",
+                "font": {
+                    "face": "Candara",
+                    "flags": 0,
+                    "size": 48,
+                    "style": "Regular"
+                },
+                "align": "center",
+                "color": 4278190080,
+                "bk_color": 4294967295,
+                "bk_opacity": 0
+            },
+            "mixers": 0,
+            "sync": 0,
+            "flags": 0,
+            "volume": 1.0,
+            "balance": 0.5,
+            "enabled": true,
+            "muted": false,
+            "push-to-mute": false,
+            "push-to-mute-delay": 0,
+            "push-to-talk": false,
+            "push-to-talk-delay": 0,
+            "hotkeys": {},
+            "deinterlace_mode": 0,
+            "deinterlace_field_order": 0,
+            "monitoring_type": 0,
+            "private_settings": {}
+        },
+        {
+            "prev_ver": 536936450,
+            "name": "Thanks",
+            "uuid": "0063d2af-b984-4345-a3b7-921bc73abe9c",
+            "id": "scene",
+            "versioned_id": "scene",
+            "settings": {
+                "custom_size": false,
+                "id_counter": 6,
+                "items": [
+                    {
+                        "name": "Thanks Image",
+                        "source_uuid": "c1fc01dd-0570-40f6-a1ca-66342b015ccb",
+                        "visible": true,
+                        "locked": false,
+                        "rot": 0.0,
+                        "align": 5,
+                        "bounds_type": 0,
+                        "bounds_align": 0,
+                        "bounds_crop": false,
+                        "crop_left": 0,
+                        "crop_top": 0,
+                        "crop_right": 0,
+                        "crop_bottom": 0,
+                        "id": 1,
+                        "group_item_backup": false,
+                        "pos": {
+                            "x": 0.0,
+                            "y": -232.0
+                        },
+                        "scale": {
+                            "x": 0.34285715222358704,
+                            "y": 0.34275001287460327
+                        },
+                        "bounds": {
+                            "x": 0.0,
+                            "y": 0.0
+                        },
+                        "scale_filter": "disable",
+                        "blend_method": "default",
+                        "blend_type": "normal",
+                        "show_transition": {
+                            "duration": 0
+                        },
+                        "hide_transition": {
+                            "duration": 0
+                        },
+                        "private_settings": {}
+                    },
+                    {
+                        "name": "Thanks Text",
+                        "source_uuid": "9faac5a9-d10d-4f38-9cfd-fa62fd210534",
+                        "visible": true,
+                        "locked": false,
+                        "rot": 0.0,
+                        "align": 5,
+                        "bounds_type": 0,
+                        "bounds_align": 0,
+                        "bounds_crop": false,
+                        "crop_left": 0,
+                        "crop_top": 0,
+                        "crop_right": 0,
+                        "crop_bottom": 0,
+                        "id": 3,
+                        "group_item_backup": false,
+                        "pos": {
+                            "x": 132.0,
+                            "y": 59.0
+                        },
+                        "scale": {
+                            "x": 0.702531635761261,
+                            "y": 0.7023346424102783
+                        },
+                        "bounds": {
+                            "x": 0.0,
+                            "y": 0.0
+                        },
+                        "scale_filter": "disable",
+                        "blend_method": "default",
+                        "blend_type": "normal",
+                        "show_transition": {
+                            "duration": 0
+                        },
+                        "hide_transition": {
+                            "duration": 0
+                        },
+                        "private_settings": {}
+                    },
+                    {
+                        "name": "Logo 9 2",
+                        "source_uuid": "a3e1e85f-7dd1-4b26-9108-358e11986b27",
+                        "visible": true,
+                        "locked": false,
+                        "rot": 0.0,
+                        "align": 5,
+                        "bounds_type": 0,
+                        "bounds_align": 0,
+                        "bounds_crop": false,
+                        "crop_left": 0,
+                        "crop_top": 0,
+                        "crop_right": 0,
+                        "crop_bottom": 0,
+                        "id": 4,
+                        "group_item_backup": false,
+                        "pos": {
+                            "x": 1491.0,
+                            "y": 657.0
+                        },
+                        "scale": {
+                            "x": 0.14618068933486938,
+                            "y": 0.14604151248931885
+                        },
+                        "bounds": {
+                            "x": 0.0,
+                            "y": 0.0
+                        },
+                        "scale_filter": "disable",
+                        "blend_method": "default",
+                        "blend_type": "normal",
+                        "show_transition": {
+                            "duration": 0
+                        },
+                        "hide_transition": {
+                            "duration": 0
+                        },
+                        "private_settings": {}
+                    },
+                    {
+                        "name": "Stick Around",
+                        "source_uuid": "467b9c02-7b8b-4069-ad16-b20c10955655",
+                        "visible": true,
+                        "locked": false,
+                        "rot": 0.0,
+                        "align": 5,
+                        "bounds_type": 0,
+                        "bounds_align": 0,
+                        "bounds_crop": false,
+                        "crop_left": 0,
+                        "crop_top": 0,
+                        "crop_right": 0,
+                        "crop_bottom": 0,
+                        "id": 5,
+                        "group_item_backup": false,
+                        "pos": {
+                            "x": 197.0,
+                            "y": 474.0
+                        },
+                        "scale": {
+                            "x": 0.25015953183174133,
+                            "y": 0.25
+                        },
+                        "bounds": {
+                            "x": 0.0,
+                            "y": 0.0
+                        },
+                        "scale_filter": "disable",
+                        "blend_method": "default",
+                        "blend_type": "normal",
+                        "show_transition": {
+                            "duration": 0
+                        },
+                        "hide_transition": {
+                            "duration": 0
+                        },
+                        "private_settings": {}
+                    },
+                    {
+                        "name": "Acknowledgements 2",
+                        "source_uuid": "23b7ce9b-f1d2-4b09-9f9b-04fe24a2afdf",
+                        "visible": true,
+                        "locked": false,
+                        "rot": 0.0,
+                        "align": 5,
+                        "bounds_type": 0,
+                        "bounds_align": 0,
+                        "bounds_crop": false,
+                        "crop_left": 0,
+                        "crop_top": 0,
+                        "crop_right": 0,
+                        "crop_bottom": 0,
+                        "id": 6,
+                        "group_item_backup": false,
+                        "pos": {
+                            "x": 30.0,
+                            "y": 813.0
+                        },
+                        "scale": {
+                            "x": 1.120853066444397,
+                            "y": 1.123655915260315
+                        },
+                        "bounds": {
+                            "x": 0.0,
+                            "y": 0.0
+                        },
+                        "scale_filter": "disable",
+                        "blend_method": "default",
+                        "blend_type": "normal",
+                        "show_transition": {
+                            "duration": 0
+                        },
+                        "hide_transition": {
+                            "duration": 0
+                        },
+                        "private_settings": {}
+                    }
+                ]
+            },
+            "mixers": 0,
+            "sync": 0,
+            "flags": 0,
+            "volume": 1.0,
+            "balance": 0.5,
+            "enabled": true,
+            "muted": false,
+            "push-to-mute": false,
+            "push-to-mute-delay": 0,
+            "push-to-talk": false,
+            "push-to-talk-delay": 0,
+            "hotkeys": {
+                "OBSBasic.SelectScene": [],
+                "libobs.show_scene_item.1": [],
+                "libobs.hide_scene_item.1": [],
+                "libobs.show_scene_item.3": [],
+                "libobs.hide_scene_item.3": [],
+                "libobs.show_scene_item.4": [],
+                "libobs.hide_scene_item.4": [],
+                "libobs.show_scene_item.5": [],
+                "libobs.hide_scene_item.5": [],
+                "libobs.show_scene_item.6": [],
+                "libobs.hide_scene_item.6": []
+            },
+            "deinterlace_mode": 0,
+            "deinterlace_field_order": 0,
+            "monitoring_type": 0,
+            "canvas_uuid": "6c69626f-6273-4c00-9d88-c5136d61696e",
+            "private_settings": {}
+        },
+        {
+            "prev_ver": 536936450,
+            "name": "Thanks Image",
+            "uuid": "c1fc01dd-0570-40f6-a1ca-66342b015ccb",
+            "id": "image_source",
+            "versioned_id": "image_source",
+            "settings": {
+                "file": "G:/Shared drives/Worship/Shutterstock Assets/abstract_pastel_shutterstock_1924953422.jpg"
+            },
+            "mixers": 0,
+            "sync": 0,
+            "flags": 0,
+            "volume": 1.0,
+            "balance": 0.5,
+            "enabled": true,
+            "muted": false,
+            "push-to-mute": false,
+            "push-to-mute-delay": 0,
+            "push-to-talk": false,
+            "push-to-talk-delay": 0,
+            "hotkeys": {},
+            "deinterlace_mode": 0,
+            "deinterlace_field_order": 0,
+            "monitoring_type": 0,
+            "private_settings": {}
+        },
+        {
+            "prev_ver": 536936450,
+            "name": "Thanks Text",
+            "uuid": "9faac5a9-d10d-4f38-9cfd-fa62fd210534",
+            "id": "text_gdiplus",
+            "versioned_id": "text_gdiplus_v2",
+            "settings": {
+                "text": "Thank you for \njoining us today",
+                "font": {
+                    "face": "Segoe UI",
+                    "flags": 0,
+                    "size": 256,
+                    "style": "Regular"
+                },
+                "align": "center",
+                "color": 4278190080
+            },
+            "mixers": 0,
+            "sync": 0,
+            "flags": 0,
+            "volume": 1.0,
+            "balance": 0.5,
+            "enabled": true,
+            "muted": false,
+            "push-to-mute": false,
+            "push-to-mute-delay": 0,
+            "push-to-talk": false,
+            "push-to-talk-delay": 0,
+            "hotkeys": {},
+            "deinterlace_mode": 0,
+            "deinterlace_field_order": 0,
+            "monitoring_type": 0,
+            "private_settings": {}
+        },
+        {
+            "prev_ver": 536936450,
+            "name": "Video Capture Device",
+            "uuid": "d3d6f570-3060-4ea9-8350-828fddf3c99c",
+            "id": "dshow_input",
+            "versioned_id": "dshow_input",
+            "settings": {
+                "audio_device_id": "Digital Audio Interface (Game Capture HD60 S+):",
+                "last_video_device_id": "Game Capture HD60 S+:\\\\?\\usb#22vid_0fd9&pid_006a&mi_00#226&28ee3180&0&0000#22{65e8773d-8f56-11d0-a3b9-00a0c9223196}\\global",
+                "use_custom_audio_device": true,
+                "video_device_id": "Game Capture HD60 S+:\\\\?\\usb#22vid_0fd9&pid_006a&mi_00#226&28ee3180&0&0000#22{65e8773d-8f56-11d0-a3b9-00a0c9223196}\\global",
+                "active": true,
+                "audio_output_mode": 0
+            },
+            "mixers": 255,
+            "sync": 0,
+            "flags": 0,
+            "volume": 0.5698863863945007,
+            "balance": 0.5,
+            "enabled": true,
+            "muted": false,
+            "push-to-mute": false,
+            "push-to-mute-delay": 0,
+            "push-to-talk": false,
+            "push-to-talk-delay": 0,
+            "hotkeys": {
+                "libobs.mute": [],
+                "libobs.unmute": [],
+                "libobs.push-to-mute": [],
+                "libobs.push-to-talk": []
+            },
+            "deinterlace_mode": 0,
+            "deinterlace_field_order": 0,
+            "monitoring_type": 2,
+            "private_settings": {}
+        },
+        {
+            "prev_ver": 536936450,
+            "name": "Welcome",
+            "uuid": "da24e3c5-908c-413c-b5ac-e607cf1ecc0c",
+            "id": "scene",
+            "versioned_id": "scene",
+            "settings": {
+                "custom_size": false,
+                "id_counter": 7,
+                "items": [
+                    {
+                        "name": "Video Capture Device",
+                        "source_uuid": "d3d6f570-3060-4ea9-8350-828fddf3c99c",
+                        "visible": true,
+                        "locked": false,
+                        "rot": 0.0,
+                        "align": 5,
+                        "bounds_type": 0,
+                        "bounds_align": 0,
+                        "bounds_crop": false,
+                        "crop_left": 0,
+                        "crop_top": 0,
+                        "crop_right": 0,
+                        "crop_bottom": 0,
+                        "id": 1,
+                        "group_item_backup": false,
+                        "pos": {
+                            "x": 0.0,
+                            "y": 0.0
+                        },
+                        "scale": {
+                            "x": 1.0,
+                            "y": 1.0
+                        },
+                        "bounds": {
+                            "x": 0.0,
+                            "y": 0.0
+                        },
+                        "scale_filter": "disable",
+                        "blend_method": "default",
+                        "blend_type": "normal",
+                        "show_transition": {
+                            "duration": 0
+                        },
+                        "hide_transition": {
+                            "duration": 0
+                        },
+                        "private_settings": {}
+                    },
+                    {
+                        "name": "Logo",
+                        "source_uuid": "3ecc5413-24c0-4583-a62a-6bd708eaa5cf",
+                        "visible": true,
+                        "locked": false,
+                        "rot": 0.0,
+                        "align": 5,
+                        "bounds_type": 0,
+                        "bounds_align": 0,
+                        "bounds_crop": false,
+                        "crop_left": 0,
+                        "crop_top": 0,
+                        "crop_right": 0,
+                        "crop_bottom": 0,
+                        "id": 7,
+                        "group_item_backup": false,
+                        "pos": {
+                            "x": 16.0,
+                            "y": 822.0
+                        },
+                        "scale": {
+                            "x": 0.09732454270124435,
+                            "y": 0.09723290055990219
+                        },
+                        "bounds": {
+                            "x": 0.0,
+                            "y": 0.0
+                        },
+                        "scale_filter": "disable",
+                        "blend_method": "default",
+                        "blend_type": "normal",
+                        "show_transition": {
+                            "duration": 0
+                        },
+                        "hide_transition": {
+                            "duration": 0
+                        },
+                        "private_settings": {}
+                    }
+                ]
+            },
+            "mixers": 0,
+            "sync": 0,
+            "flags": 0,
+            "volume": 1.0,
+            "balance": 0.5,
+            "enabled": true,
+            "muted": false,
+            "push-to-mute": false,
+            "push-to-mute-delay": 0,
+            "push-to-talk": false,
+            "push-to-talk-delay": 0,
+            "hotkeys": {
+                "OBSBasic.SelectScene": [],
+                "libobs.show_scene_item.1": [],
+                "libobs.hide_scene_item.1": [],
+                "libobs.show_scene_item.7": [],
+                "libobs.hide_scene_item.7": []
+            },
+            "deinterlace_mode": 0,
+            "deinterlace_field_order": 0,
+            "monitoring_type": 0,
+            "canvas_uuid": "6c69626f-6273-4c00-9d88-c5136d61696e",
+            "private_settings": {}
+        },
+        {
+            "prev_ver": 536936450,
+            "name": "White Box",
+            "uuid": "9f4c368e-30d9-4a2a-b935-b48841a6d9e1",
+            "id": "color_source",
+            "versioned_id": "color_source_v2",
+            "settings": {
+                "color": 4292072403,
+                "width": 1200,
+                "height": 840
+            },
+            "mixers": 0,
+            "sync": 0,
+            "flags": 0,
+            "volume": 1.0,
+            "balance": 0.5,
+            "enabled": true,
+            "muted": false,
+            "push-to-mute": false,
+            "push-to-mute-delay": 0,
+            "push-to-talk": false,
+            "push-to-talk-delay": 0,
+            "hotkeys": {},
+            "deinterlace_mode": 0,
+            "deinterlace_field_order": 0,
+            "monitoring_type": 0,
+            "private_settings": {}
+        }
+    ]
+}

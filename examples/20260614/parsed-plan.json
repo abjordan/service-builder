@@ -1,0 +1,405 @@
+{
+  "metadata": {
+    "serviceDate": "2026-06-14",
+    "serviceTime": "10:45 AM",
+    "liturgicalDay": "Third Sunday After Pentecost",
+    "church": {
+      "name": "The Lutheran Church of the Savior",
+      "address": "426 Davis Road - Bedford, MA 01730",
+      "web": "https://www.lcsavior.org",
+      "phone": "781-275-6013"
+    },
+    "pastor": "Rev. Nils Niemeier, Pastor"
+  },
+  "sections": [
+    {
+      "kind": "liturgy",
+      "title": "Introit  Psalm 67:4–7; antiphon: v. 3",
+      "items": [
+        {
+          "kind": "rubric",
+          "text": "Let the peoples praise you, O God;"
+        },
+        {
+          "kind": "rubric",
+          "text": "let all the peoples praise you!"
+        },
+        {
+          "kind": "rubric",
+          "text": "Let the nations be glad and sing for joy,"
+        },
+        {
+          "kind": "rubric",
+          "text": "for you judge the peoples with equity"
+        },
+        {
+          "kind": "rubric",
+          "text": "and guide the nations upon earth."
+        },
+        {
+          "kind": "rubric",
+          "text": "Let the peoples praise you, O God;"
+        },
+        {
+          "kind": "rubric",
+          "text": "let all the peoples praise you!"
+        },
+        {
+          "kind": "rubric",
+          "text": "The earth has yielded its increase;"
+        },
+        {
+          "kind": "rubric",
+          "text": "God, our God, shall bless us."
+        },
+        {
+          "kind": "rubric",
+          "text": "God shall bless us;"
+        },
+        {
+          "kind": "rubric",
+          "text": "let all the ends of the earth fear him!"
+        },
+        {
+          "kind": "rubric",
+          "text": "Glory be to the Father and to the Son"
+        },
+        {
+          "kind": "rubric",
+          "text": "and to the Holy Spirit;"
+        },
+        {
+          "kind": "rubric",
+          "text": "as it was in the beginning,"
+        },
+        {
+          "kind": "rubric",
+          "text": "is now, and will be forever. Amen."
+        },
+        {
+          "kind": "rubric",
+          "text": "Let the peoples praise you, O God;"
+        },
+        {
+          "kind": "rubric",
+          "text": "let all the peoples praise you!"
+        }
+      ],
+      "includeInSlides": false
+    },
+    {
+      "kind": "note",
+      "title": "Communion Theology and Practice",
+      "text": "Please see our statement of Communion Theology and Practice\non the back page of the worship bulletin.\nIf you are a visitor with us this morning and wish to receive the\nLord’s Supper, please speak with the pastor before the service.\nThank you.\nThird Sunday after Pentecost\nDivine Service",
+      "includeInSlides": false
+    },
+    {
+      "kind": "liturgy",
+      "title": "Welcome",
+      "items": [
+        {
+          "kind": "rubric",
+          "text": "Stand"
+        }
+      ]
+    },
+    {
+      "kind": "song",
+      "title": "Everlasting God",
+      "authors": "Brown, Riley",
+      "stanzaPlan": "Verse, Chorus 1, Verse, Chorus 2, Bridge, Chorus 2"
+    },
+    {
+      "kind": "liturgy",
+      "title": "Confession and Absolution",
+      "items": [
+        {
+          "kind": "rubric",
+          "text": "The sign of the cross may be made by all in remembrance of their Baptism."
+        },
+        {
+          "kind": "spoken",
+          "speaker": "P",
+          "text": "In the name of the Father and of the T Son and of the Holy Spirit."
+        },
+        {
+          "kind": "spoken",
+          "speaker": "C",
+          "text": "Amen."
+        },
+        {
+          "kind": "spoken",
+          "speaker": "P",
+          "text": "If we say we have no sin, we deceive ourselves, and the truth is not in us."
+        },
+        {
+          "kind": "spoken",
+          "speaker": "C",
+          "text": "But if we confess our sins, God, who is faithful and just, will forgive our sins and cleanse us from all unrighteousness. Kneel/Stand Silence for reflection on God’s Word and for self-examination."
+        },
+        {
+          "kind": "spoken",
+          "speaker": "P",
+          "text": "Let us then confess our sins to God our Father."
+        },
+        {
+          "kind": "spoken",
+          "speaker": "C",
+          "text": "Most merciful God, we confess that we are by nature sinful and unclean. We have sinned against You in thought, word, and deed, by what we have done and by what we have left undone. We have not loved You with our whole heart; we have not loved our neighbors as ourselves. We justly deserve Your present and eternal punishment. For the sake of Your Son, Jesus Christ, have mercy on us. Forgive us, renew us, and lead us, so that we may delight in Your will and walk in Your ways to the glory of Your holy name. Amen."
+        },
+        {
+          "kind": "spoken",
+          "speaker": "P",
+          "text": "Almighty God in His mercy has given His Son to die for you and for His sake forgives you all your sins. As a called and ordained servant of Christ, and by His authority, I therefore forgive you all your sins in the name of the Father and of the T Son and of the Holy Spirit."
+        },
+        {
+          "kind": "spoken",
+          "speaker": "C",
+          "text": "Amen."
+        },
+        {
+          "kind": "rubric",
+          "text": "Stand"
+        }
+      ]
+    },
+    {
+      "kind": "song",
+      "title": "Resound in Praise",
+      "authors": "Funk",
+      "stanzaPlan": "Verse, Chorus x2, Verse, Chorus x2"
+    },
+    {
+      "kind": "header",
+      "title": "Service of the Word"
+    },
+    {
+      "kind": "liturgy",
+      "title": "Psalm  Psalm 100; antiphon: v. 5",
+      "items": [
+        {
+          "kind": "spoken",
+          "speaker": "A",
+          "text": "Together, we speak Psalm 100 responsively: 1 Make a joyful noise to the LORD, all the earth! 2 Serve the LORD with gladness! Come into his presence with singing! 3 Know that the LORD, he is God! It is he who made us, and we are his; we are his people, and the sheep of his pasture. 4 Enter his gates with thanksgiving, and his courts with praise! Give thanks to him; bless his name! 5 For the LORD is good; his steadfast love endures forever, and his faithfulness to all generations."
+        },
+        {
+          "kind": "spoken",
+          "speaker": "C",
+          "text": "Glory be to the Father and to the Son and to the Holy Spirit; as it was in the beginning, is now, and will be forever. Amen."
+        }
+      ]
+    },
+    {
+      "kind": "liturgy",
+      "title": "Salutation and Collect of the Day",
+      "items": [
+        {
+          "kind": "spoken",
+          "speaker": "P",
+          "text": "The Lord be with you."
+        },
+        {
+          "kind": "spoken",
+          "speaker": "C",
+          "text": "And also with you."
+        },
+        {
+          "kind": "spoken",
+          "speaker": "P",
+          "text": "Let us pray. Almighty, eternal God, in the Word of Your apostles and prophets You have proclaimed to us Your saving will. Grant us faith to believe Your promises that we may receive eternal salvation; through Jesus Christ, our Lord, who lives and reigns with You and the Holy Spirit, one God, now and forever."
+        },
+        {
+          "kind": "spoken",
+          "speaker": "C",
+          "text": "Amen."
+        },
+        {
+          "kind": "rubric",
+          "text": "Sit"
+        }
+      ]
+    },
+    {
+      "kind": "reading",
+      "title": "Old Testament Reading",
+      "citation": "Exodus 19:2–8"
+    },
+    {
+      "kind": "liturgy",
+      "title": "Old Testament Reading Response",
+      "items": [
+        {
+          "kind": "spoken",
+          "speaker": "A",
+          "text": "This is the Word of the Lord."
+        },
+        {
+          "kind": "spoken",
+          "speaker": "C",
+          "text": "Thanks be to God. 5"
+        }
+      ]
+    },
+    {
+      "kind": "reading",
+      "title": "Epistle",
+      "citation": "Romans 5:6–15"
+    },
+    {
+      "kind": "liturgy",
+      "title": "Epistle Response",
+      "items": [
+        {
+          "kind": "spoken",
+          "speaker": "A",
+          "text": "This is the Word of the Lord."
+        },
+        {
+          "kind": "spoken",
+          "speaker": "C",
+          "text": "Thanks be to God."
+        }
+      ]
+    },
+    {
+      "kind": "reading",
+      "title": "Holy Gospel",
+      "citation": "Matthew 9:35—10:20"
+    },
+    {
+      "kind": "liturgy",
+      "title": "Holy Gospel Response",
+      "items": [
+        {
+          "kind": "spoken",
+          "speaker": "P",
+          "text": "The Holy Gospel according to St. Matthew, the ninth chapter."
+        },
+        {
+          "kind": "spoken",
+          "speaker": "C",
+          "text": "Glory to You, O Lord. 35 Jesus went throughout all the cities and villages, teaching in their synagogues and proclaiming the gospel of the kingdom and healing 36 every disease and every affliction. When he saw the crowds, he had compassion for them, because they were harassed and helpless, like 37 sheep without a shepherd. Then he said to his disciples, “The harvest is 38 plentiful, but the laborers are few; therefore pray earnestly to the Lord of the harvest to send out laborers into his harvest.”"
+        },
+        {
+          "kind": "spoken",
+          "speaker": "P",
+          "text": "This is the Gospel of the Lord."
+        },
+        {
+          "kind": "spoken",
+          "speaker": "C",
+          "text": "Praise to You, O Christ. 7"
+        }
+      ]
+    },
+    {
+      "kind": "liturgy",
+      "title": "Nicene Creed (LSB 158)",
+      "items": [
+        {
+          "kind": "spoken",
+          "speaker": "C",
+          "text": "I believe in one God, the Father Almighty, maker of heaven and earth and of all things visible and invisible. And in one Lord Jesus Christ, the only-begotten Son of God, begotten of His Father before all worlds, God of God, Light of Light, very God of very God, begotten, not made, being of one substance with the Father, by whom all things were made; who for us men and for our salvation came down from heaven and was incarnate by the Holy Spirit of the virgin Mary and was made man; and was crucified also for us under Pontius Pilate. He suffered and was buried. And the third day He rose again according to the Scriptures and ascended into heaven and sits at the right hand of the Father. And He will come again with glory to judge both the living and the dead, whose kingdom will have no end. And I believe in the Holy Spirit, the Lord and giver of life, who proceeds from the Father and the Son, who with the Father and the Son together is worshiped and glorified, who spoke by the prophets. And I believe in one holy Christian and apostolic Church, I acknowledge one Baptism for the remission of sins, and I look for the resurrection of the dead and the life T of the world to come. Amen."
+        },
+        {
+          "kind": "rubric",
+          "text": "Sit"
+        }
+      ]
+    },
+    {
+      "kind": "song",
+      "title": "Mighty To Save",
+      "authors": "Fielding, Morgan",
+      "stanzaPlan": "Verse 1, Chorus, Verse 2, Chorus, Bridge, Chorus x2"
+    },
+    {
+      "kind": "header",
+      "title": "Sermon"
+    },
+    {
+      "kind": "liturgy",
+      "title": "Prayer of the Church",
+      "items": [
+        {
+          "kind": "spoken",
+          "speaker": "L",
+          "text": "Let us pray for the whole Church of God in Christ Jesus and for all people according to their needs. The response after each petition is as follows:"
+        },
+        {
+          "kind": "spoken",
+          "speaker": "L",
+          "text": "Lord, in your mercy:"
+        },
+        {
+          "kind": "spoken",
+          "speaker": "C",
+          "text": "Hear our prayer."
+        },
+        {
+          "kind": "spoken",
+          "speaker": "C",
+          "text": "Amen."
+        },
+        {
+          "kind": "rubric",
+          "text": "Lord’s Prayer"
+        },
+        {
+          "kind": "spoken",
+          "speaker": "P",
+          "text": "Lord, remember us in Your kingdom and teach us to pray:"
+        },
+        {
+          "kind": "spoken",
+          "speaker": "C",
+          "text": "Our Father who art in heaven, hallowed be Thy name, Thy kingdom come, Thy will be done on earth as it is in heaven; give us this day our daily bread; and forgive us our trespasses as we forgive those who trespass against us; and lead us not into temptation, but deliver us from evil. For Thine is the kingdom and the power and the glory forever and ever. Amen."
+        }
+      ]
+    },
+    {
+      "kind": "liturgy",
+      "title": "Benediction",
+      "items": [
+        {
+          "kind": "spoken",
+          "speaker": "P",
+          "text": "The grace of our Lord T Jesus Christ and the love of God and the communion of the Holy Spirit be with you all."
+        },
+        {
+          "kind": "spoken",
+          "speaker": "C",
+          "text": "Amen."
+        },
+        {
+          "kind": "rubric",
+          "text": "Sit"
+        }
+      ]
+    },
+    {
+      "kind": "song",
+      "title": "My Hope",
+      "authors": "Baloche, Kerr, Mellinger, Rabe",
+      "stanzaPlan": "Verse 1, Verse 2, Chorus, Verse 3, Chorus x2"
+    },
+    {
+      "kind": "note",
+      "title": "Acknowledgments",
+      "text": "Divine Service, Setting One from Lutheran Service Book\nUnless otherwise indicated, Scripture quotations are from the ESV® Bible (The Holy Bible,\nEnglish Standard Version®), © 2001 by Crossway, a publishing ministry of Good\nNews Publishers. Used by permission. All rights reserved.\nCreated by Lutheran Service Builder © 2026 Concordia Publishing House.\n“Everlasting God” - words and music by Brenton Brown, Ken Riley\nCCLI Song # 4556538\n©2005 Thankyou Music (Admin. by Capitol CMG Publishing)\nCCLI License # 236495, Streaming Lic No. 20373402\n“Resound In Praise” - words and music by Billy Funk\nCCLI Song # 1271112\n© 1994 Integrity's Hosanna! Music (Admin. by Integrity Music)\nCCLI License # 236495, Streaming Lic No. 20373402\n“Mighty to Save” - words and music by Ben Fielding, Reuben Morgan\nCCLI Song # 4591782\n©2006 Hillsong Music Publishing Australia (Admin. Hillsong Music Publishing USA)\nCCLI License # 236495, Streaming Lic No. 20373402\n“My Hope” - words and music by Alyssa Mellinger, Ed Kerr, Paul Baloche, Sheila Rabe\nCCLI Song # 5882177\n© 2010 Integrity Worship Music; Leadworship Songs; kerrtunes (Admin. by Integrity\nMusic, kerrtunes)\nCCLI License # 236495, Streaming Lic No. 20373402",
+      "includeInSlides": false
+    },
+    {
+      "kind": "note",
+      "title": "Resources for Meditation this Week",
+      "text": "THIRD SUNDAY AFTER PENTECOST  14 June 2026\nReadings\nExodus 19:2–8\nRomans 5:6–15\nMatthew 9:35—10:8 (9–20)\nThe Lord Our God Saves Us in Love and Cares for Us by the Ministry\nof His Gospel\nThe holy Triune God “shows his love for us in that while we were still\nsinners,” ungodly and at enmity with Him, “Christ died for us” (Rom. 5:8).\nThe incarnate Son has justified us by His blood and reconciled us to His\nGod and Father (Rom. 5:9–10). Whereas sin and death originated with\nAdam, forgiveness and life abound for all his children through “that one\nman Jesus Christ” (Rom. 5:12–17). As the Lord brought Israel out of Egypt,\nso does He bring us to Himself by the Gospel and make of us “a kingdom\nof priests and a holy nation” (Ex. 19:6) by our Baptism into Christ. For “all\nthat the LORD has spoken” (Ex. 19:8), Christ has done for us. As He has\ngone up to God by His cross and resurrection, so does He bring us to the\nFather in Himself (Ex. 19:3–4). Nor does He leave us “harassed and\nhelpless, like sheep without a shepherd” (Matt. 9:36), but He sends men\nwith authority “to heal every disease and every affliction” by His\nforgiveness of sins (Matt. 10:1). In their proclamation, “the kingdom of\nheaven is at hand” (Matt. 10:7).\nFOURTH SUNDAY AFTER PENTECOST  21 June 2026\nReadings\nJeremiah 20:7–13\nRomans 6:12–23\nMatthew 10:5a, 21–33\nDelivered from Sin and Death, You Now Live before God in the\nRighteousness of Christ\nThe outcome of sin is death, “but the free gift of God is eternal life in\nChrist Jesus our Lord” (Rom. 6:23). He has set you free from the slavery of\nsin and has brought you “from death to life” (Rom. 6:13). No longer are\nyou under the condemnation of the Law, but you live “under grace” (Rom.\n6:14). Such is your courage in the face of “those who kill the body but\ncannot kill the soul” (Matt. 10:28). For though “you will be hated by all”\nand maligned by the world for the name of Christ (Matt. 10:22, 25), you\nabide in the care of your Father in heaven, who numbers “even the hairs\nof your head” and values you more “than many sparrows” (Matt. 10:30–\n31). By the Word of Christ, you have become like Him, your Teacher and\nMaster in whom you endure to the end, and “will be saved” (Matt. 10:22,\n25). For He is with you “as a dread warrior,” who has overcome your\nenemies (Jer. 20:11). By the righteousness of faith, He delivers your heart,\nmind, body and life “from the hand of evildoers,” and He brings you into\nthe land of the living (Jer. 20:12–13).",
+      "includeInSlides": false
+    },
+    {
+      "kind": "note",
+      "title": "Communion Theology and Practice",
+      "text": "Welcome! In Holy Communion, our Lord invites us to eat and drink His\ntrue Body and Blood for the forgiveness of sins and eternal life\n(Matthew 26:26-28). In preparation for this sacrament, each\ncommunicant should examine him or herself and come to the Lord’s\nTable seeking these things. As the Small Catechism teaches, “a person\nis truly worthy and well prepared who has faith in these words: ‘Given\nand shed for you for the forgiveness of sins.’” We likewise take\nseriously St. Paul's admonition in 1 Corinthians 11:27-30 regarding\nrecognizing the Lord's Body and Blood in this sacrament and receiving\nit worthily. We also believe that Holy Communion is a profession of\nconfessional unity in which all who commune at the Lord's Table are\nunited in their confession and faith (1 Corinthians 11:26).\nTherefore, we practice what is often called “closed communion,” in\nwhich we invite those Christians who have been baptized and\ninstructed in the Christian faith, who share in the same confession of\nfaith as the Lutheran Church—Missouri Synod, and who believe that\nJesus offers here His true Body and Blood, in, with, and under the\nelements of bread and wine, for the strengthening of their bodies and\nsouls, cleansing them of their old nature and giving them new life, to\njoin us at His table.\nIf you are new here, have not been baptized, or have not received\ninstruction with regard to the teachings of the Lutheran Church\nregarding the Lord's Supper, have doubts about the nature of the\nsacrament, or have questions, please introduce yourself to our pastor\nbefore the service. He will be happy to discuss these things with you\nand help determine whether or not you should commune. If you do\nnot wish to commune, have not been baptized, or have not been\ninstructed in the Christian faith, we invite you to come receive a\nblessing. When you come to the altar, please come forward with your\narms crossed to indicate that you would like the pastor to bless you. If\nyou would like to learn more about the Christian faith or wish to be\nbaptized, please speak to our pastor!",
+      "includeInSlides": false
+    }
+  ]
+}

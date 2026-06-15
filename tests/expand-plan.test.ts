@@ -1,0 +1,323 @@
+import { describe, it, expect } from "vitest";
+import { readFileSync } from "node:fs";
+import { join } from "node:path";
+import { expandPlan } from "../lib/expand-plan";
+import type { ServicePlan } from "../lib/service-plan";
+import type { HymnLibrary } from "../lib/hymn-library";
+
+// ---------------------------------------------------------------------------
+// Fixtures loaded once for the suite
+// ---------------------------------------------------------------------------
+
+function loadPlan(): ServicePlan {
+  const raw = readFileSync(
+    join(__dirname, "../examples/20260614/parsed-plan.json"),
+    "utf-8",
+  );
+  return JSON.parse(raw) as ServicePlan;
+}
+
+function loadLibrary(): HymnLibrary {
+  const raw = readFileSync(join(__dirname, "../data/hymns.json"), "utf-8");
+  return JSON.parse(raw) as HymnLibrary;
+}
+
+const plan = loadPlan();
+const library = loadLibrary();
+
+// ---------------------------------------------------------------------------
+// Test 1 — baseline expansion produces > 20 slides
+// ---------------------------------------------------------------------------
+
+describe("expandPlan — baseline", () => {
+  it("returns ExpandResult with slides.length > 20", () => {
+    const result = expandPlan(plan, { library });
+    expect(result.slides.length).toBeGreaterThan(20);
+  });
+});
+
+// ---------------------------------------------------------------------------
+// Test 2 — no section-title slides ever emitted
+// ---------------------------------------------------------------------------
+
+describe("expandPlan — no section-title slides", () => {
+  it("emits zero section-title slides", () => {
+    const result = expandPlan(plan, { library });
+    const sectionTitles = result.slides.filter(
+      (s) => s.slide.kind === ("section-title" as string),
+    );
+    expect(sectionTitles).toHaveLength(0);
+  });
+
+  it("all slides are of kind liturgy, reading, or hymn", () => {
+    const result = expandPlan(plan, { library });
+    const validKinds = new Set(["liturgy", "reading", "hymn"]);
+    for (const s of result.slides) {
+      expect(validKinds.has(s.slide.kind)).toBe(true);
+    }
+  });
+});
+
+// ---------------------------------------------------------------------------
+// Test 3 — sections with includeInSlides === false are excluded
+// ---------------------------------------------------------------------------
+
+describe("expandPlan — includeInSlides filter", () => {
+  it("emits no slide sourced from an excluded section", () => {
+    const result = expandPlan(plan, { library });
+
+    const excludedIndexes = new Set<number>();
+    plan.sections.forEach((s, i) => {
+      if (s.includeInSlides === false) excludedIndexes.add(i);
+    });
+
+    const leaking = result.slides.filter((s) =>
+      excludedIndexes.has(s.sectionIndex),
+    );
+    expect(leaking).toHaveLength(0);
+  });
+});
+
+// ---------------------------------------------------------------------------
+// Test 4 — no liturgy slide contains a rubric item
+// ---------------------------------------------------------------------------
+
+describe("expandPlan — rubric filtering", () => {
+  it("no liturgy slide has a rubric item", () => {
+    const result = expandPlan(plan, { library });
+    const liturgySlides = result.slides.filter(
+      (s) => s.slide.kind === "liturgy",
+    );
+    for (const s of liturgySlides) {
+      if (s.slide.kind === "liturgy") {
+        for (const item of s.slide.items) {
+          expect(item.speaker).toBeDefined();
+          expect(["P", "C", "A", "L"]).toContain(item.speaker);
+        }
+      }
+    }
+  });
+});
+
+// ---------------------------------------------------------------------------
+// Test 5 — liturgy slides carry the section title
+// ---------------------------------------------------------------------------
+
+describe("expandPlan — liturgy title propagation", () => {
+  it("liturgy slides from the Salutation section carry title 'Salutation and Collect of the Day'", () => {
+    const result = expandPlan(plan, { library });
+
+    const salutationPair = result.slides.find(
+      (s) =>
+        s.slide.kind === "liturgy" &&
+        s.slide.items.some((item) => item.text.includes("The Lord be with you.")),
+    );
+
+    expect(salutationPair).toBeDefined();
+    if (salutationPair && salutationPair.slide.kind === "liturgy") {
+      expect(salutationPair.slide.title).toBe("Salutation and Collect of the Day");
+    }
+  });
+
+  it("liturgy slides from sections with no title have title undefined or empty", () => {
+    const result = expandPlan(plan, { library });
+    const liturgySlides = result.slides.filter((s) => s.slide.kind === "liturgy");
+    // All liturgy slides should have either a string title or undefined — never null
+    for (const s of liturgySlides) {
+      if (s.slide.kind === "liturgy") {
+        expect(s.slide.title === undefined || typeof s.slide.title === "string").toBe(true);
+      }
+    }
+  });
+});
+
+// ---------------------------------------------------------------------------
+// Test 6 — auto-pair: "P The Lord be with you." / "C And also with you."
+//           should end up on a single liturgy slide
+// ---------------------------------------------------------------------------
+
+describe("expandPlan — auto-pair (default threshold 200)", () => {
+  it("salutation P/C pair lands on a single slide with 2 items", () => {
+    const result = expandPlan(plan, { library });
+
+    const pairSlide = result.slides.find(
+      (s) =>
+        s.slide.kind === "liturgy" &&
+        s.slide.items.some((item) =>
+          item.text.includes("The Lord be with you."),
+        ),
+    );
+
+    expect(pairSlide).toBeDefined();
+    if (pairSlide && pairSlide.slide.kind === "liturgy") {
+      expect(pairSlide.slide.items).toHaveLength(2);
+      expect(pairSlide.slide.items[0].speaker).toBe("P");
+      expect(pairSlide.slide.items[1].speaker).toBe("C");
+      expect(pairSlide.slide.items[1].text).toBe("And also with you.");
+    }
+  });
+});
+
+// ---------------------------------------------------------------------------
+// Test 7 — auto-pair suppressed when pairCharThreshold is too low
+// ---------------------------------------------------------------------------
+
+describe("expandPlan — auto-pair threshold override", () => {
+  it("with pairCharThreshold: 10, salutation pair is NOT merged", () => {
+    const result = expandPlan(plan, { library, pairCharThreshold: 10 });
+
+    const pairSlide = result.slides.find(
+      (s) =>
+        s.slide.kind === "liturgy" &&
+        s.slide.items.some((item) =>
+          item.text.includes("The Lord be with you."),
+        ),
+    );
+
+    expect(pairSlide).toBeDefined();
+    if (pairSlide && pairSlide.slide.kind === "liturgy") {
+      expect(pairSlide.slide.items).toHaveLength(1);
+    }
+  });
+});
+
+// ---------------------------------------------------------------------------
+// Test 8 — each song with includeInSlides !== false produces hymn slides
+// ---------------------------------------------------------------------------
+
+describe("expandPlan — hymn expansion", () => {
+  it("produces at least one hymn slide for every included song", () => {
+    const result = expandPlan(plan, { library });
+
+    const includedSongs = plan.sections.filter(
+      (s) => s.kind === "song" && s.includeInSlides !== false,
+    );
+
+    for (const song of includedSongs) {
+      if (song.kind !== "song") continue;
+      const hymnSlides = result.slides.filter(
+        (s) => s.slide.kind === "hymn" && s.slide.title === song.title,
+      );
+      expect(hymnSlides.length).toBeGreaterThan(0);
+    }
+  });
+
+  it("produces at least one hymn slide with title 'Everlasting God'", () => {
+    const result = expandPlan(plan, { library });
+    const found = result.slides.find(
+      (s) => s.slide.kind === "hymn" && s.slide.title === "Everlasting God",
+    );
+    expect(found).toBeDefined();
+  });
+});
+
+// ---------------------------------------------------------------------------
+// Test 9 — missing hymn → warning + placeholder slide
+// ---------------------------------------------------------------------------
+
+describe("expandPlan — missing hymn handling", () => {
+  it("emits a warning and placeholder slide when a song is not in the library", () => {
+    const reducedLibrary: HymnLibrary = {
+      songs: library.songs.filter((h) => h.title !== "Everlasting God"),
+    };
+
+    const result = expandPlan(plan, { library: reducedLibrary });
+
+    const sectionIndex = plan.sections.findIndex(
+      (s) => s.kind === "song" && s.title === "Everlasting God",
+    );
+    expect(sectionIndex).toBeGreaterThanOrEqual(0);
+
+    const warning = result.warnings.find(
+      (w) =>
+        w.sectionIndex === sectionIndex &&
+        w.message.includes("Everlasting God"),
+    );
+    expect(warning).toBeDefined();
+
+    const placeholder = result.slides.find(
+      (s) =>
+        s.sectionIndex === sectionIndex &&
+        s.slide.kind === "hymn" &&
+        s.slide.title === "Everlasting God" &&
+        s.slide.lines[0].includes("[Lyrics not in library"),
+    );
+    expect(placeholder).toBeDefined();
+  });
+});
+
+// ---------------------------------------------------------------------------
+// Test 10 — slide IDs are unique
+// ---------------------------------------------------------------------------
+
+describe("expandPlan — slide ID uniqueness", () => {
+  it("all slide ids are unique across the result", () => {
+    const result = expandPlan(plan, { library });
+    const ids = result.slides.map((s) => s.id);
+    const uniqueIds = new Set(ids);
+    expect(uniqueIds.size).toBe(ids.length);
+  });
+});
+
+// ---------------------------------------------------------------------------
+// Test 11 — Reading slides carry responseA and responseC
+// ---------------------------------------------------------------------------
+
+describe("expandPlan — reading response fields", () => {
+  it("OT Reading slide carries responseA and responseC with Word of the Lord defaults", () => {
+    const result = expandPlan(plan, { library });
+    const otReading = result.slides.find(
+      (s) =>
+        s.slide.kind === "reading" &&
+        s.slide.title === "Old Testament Reading",
+    );
+    expect(otReading).toBeDefined();
+    if (otReading && otReading.slide.kind === "reading") {
+      expect(otReading.slide.responseA).toBe("This is the Word of the Lord.");
+      expect(otReading.slide.responseC).toBe("Thanks be to God.");
+    }
+  });
+
+  it("Gospel reading slide carries Gospel-specific responseA and responseC", () => {
+    const result = expandPlan(plan, { library });
+    const gospel = result.slides.find(
+      (s) =>
+        s.slide.kind === "reading" &&
+        s.slide.title === "Holy Gospel",
+    );
+    expect(gospel).toBeDefined();
+    if (gospel && gospel.slide.kind === "reading") {
+      expect(gospel.slide.responseA).toBe("This is the Gospel of the Lord.");
+      expect(gospel.slide.responseC).toBe("Praise to You, O Christ.");
+    }
+  });
+
+  it("every reading slide has non-empty responseA and responseC", () => {
+    const result = expandPlan(plan, { library });
+    const readingSlides = result.slides.filter((s) => s.slide.kind === "reading");
+    for (const s of readingSlides) {
+      if (s.slide.kind === "reading") {
+        expect(s.slide.responseA.length).toBeGreaterThan(0);
+        expect(s.slide.responseC.length).toBeGreaterThan(0);
+      }
+    }
+  });
+});
+
+// ---------------------------------------------------------------------------
+// Test 12 — header sections emit no slides
+// ---------------------------------------------------------------------------
+
+describe("expandPlan — header sections", () => {
+  it("header sections emit no slides", () => {
+    const result = expandPlan(plan, { library });
+    const headerIndexes = new Set<number>();
+    plan.sections.forEach((s, i) => {
+      if (s.kind === "header") headerIndexes.add(i);
+    });
+    const headerSlides = result.slides.filter((s) =>
+      headerIndexes.has(s.sectionIndex),
+    );
+    expect(headerSlides).toHaveLength(0);
+  });
+});

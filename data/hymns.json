@@ -1,0 +1,168 @@
+{
+  "songs": [
+    {
+      "id": "everlasting-god",
+      "title": "Everlasting God",
+      "authors": "Brown, Riley",
+      "slides": [
+        {
+          "tag": "verse-1",
+          "lines": [
+            "Strength will rise as we wait upon the Lord.",
+            "We will wait upon the Lord, we will wait upon the Lord.",
+            "Strength will rise as we wait upon the Lord.",
+            "We will wait upon the Lord, we will wait upon the Lord.",
+            "Jesus, You reign forever;",
+            "Our hope, our strong deliverer.",
+            "You do not faint, You won’t grow weary."
+          ]
+        },
+        {
+          "tag": "verse-1",
+          "lines": [
+            "Strength will rise as we wait upon the Lord.",
+            "We will wait upon the Lord, we will wait upon the Lord.",
+            "Strength will rise as we wait upon the Lord.",
+            "We will wait upon the Lord, we will wait upon the Lord.",
+            "Jesus, You reign forever;",
+            "Our hope, our strong deliverer.",
+            "You do not faint, You won’t grow weary.",
+            "You’re the defender of the weak, You comfort those in need.",
+            "You lift us up on wings like eagles."
+          ]
+        },
+        {
+          "tag": "bridge",
+          "lines": [
+            "Jesus, You reign forever;",
+            "Our hope, our strong deliverer.",
+            "You do not faint, You won’t grow weary.",
+            "You’re the defender of the weak, You comfort those in need.",
+            "You lift us up on wings like eagles."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "resound-in-praise",
+      "title": "Resound in Praise",
+      "authors": "Funk",
+      "slides": [
+        {
+          "tag": "verse-1",
+          "lines": [
+            "We’ve been created as kings and priests,",
+            "To worship Your royalty;",
+            "To proclaim Your awesome, mighty works,",
+            "Your excellence for all to see.",
+            "Heaven and earth reflect Your glory,",
+            "The sun, moon, and stars give You praise;",
+            "You are the great and mighty God,",
+            "Forever Your kingdom will reign, will reign.",
+            "Let the sanctuary be filled with Your glory,",
+            "We lift our voice up in praise;",
+            "Let the sanctuary be filled with Your glory,"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "mighty-to-save",
+      "title": "Mighty To Save",
+      "authors": "Fielding, Morgan",
+      "slides": [
+        {
+          "tag": "verse-1",
+          "lines": [
+            "Everyone needs compassion,",
+            "Love that’s never failing,",
+            "Let mercy fall on me.",
+            "Everyone needs forgiveness,",
+            "The kindness of a Savior,",
+            "The hope of nations",
+            "Savior, He can move the mountains.",
+            "Forever, Author of salvation,",
+            "He rose and conquered the grave,",
+            "Jesus conquered the grave."
+          ]
+        },
+        {
+          "tag": "verse-2",
+          "lines": [
+            "So take me as You find me,",
+            "All my fears and failures.",
+            "Fill my life again.",
+            "I give my life to follow",
+            "Everything I believe in.",
+            "Now I surrender",
+            "Savior, He can move the mountains.",
+            "Forever, Author of salvation,",
+            "He rose and conquered the grave,",
+            "Jesus conquered the grave."
+          ]
+        },
+        {
+          "tag": "bridge",
+          "lines": [
+            "Shine Your light and let the whole world see.",
+            "We’re singing for the glory of risen King Jesus.",
+            "Shine Your light and let the whole world see.",
+            "We’re singing for the glory of the risen King.",
+            "Savior, He can move the mountains.",
+            "Forever, Author of salvation,",
+            "He rose and conquered the grave,",
+            "Jesus conquered the grave."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "my-hope",
+      "title": "My Hope",
+      "authors": "Baloche, Kerr, Mellinger, Rabe",
+      "slides": [
+        {
+          "tag": "verse-1",
+          "lines": [
+            "Baloche",
+            ", Ed Kerr, Alyssa Mellinger & Sheila Rabe",
+            "Leadworship",
+            "Songs",
+            "kerrtunes",
+            "kerrtunes",
+            ")",
+            "Nothing will change if all the plans I make go wrong;",
+            "Your love stays the same; Your light will guide me through it all;",
+            "I’m hanging on, I’m leaning in to You.",
+            "Nothing can reach the end of all Your faithfulness;",
+            "Your grace is with me through every shadow, every test;",
+            "I’m hanging on, I’m leaning in to You;",
+            "I don’t know where You’ll take me,",
+            "But I know You’re always good."
+          ]
+        },
+        {
+          "tag": "chorus",
+          "lines": [
+            "Baloche",
+            ", Ed Kerr, Alyssa Mellinger & Sheila Rabe",
+            "Leadworship",
+            "Songs",
+            "kerrtunes",
+            "kerrtunes",
+            ")",
+            "than Your great love, Your righteousness;",
+            "I will not walk another way;",
+            "I trust Your heart, I trust Your name;",
+            "I’m holding on, I’m holding on to You.",
+            "You are my Rock when storms are raging all around;",
+            "You shelter me God; I’m safe with You on solid ground;",
+            "I’m hanging on, I’m leaning in to You;",
+            "I don’t know where You’ll take me,",
+            "But I know You’re always good."
+          ]
+        }
+      ]
+    }
+  ]
+}
