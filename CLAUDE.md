@@ -95,8 +95,24 @@ can be overridden for any specific service.
   carry the **what**.
 - Boring and obvious over clever. Single responsibility per function.
 - Don't introduce backwards-compat shims when you can just change the code.
-- No commit hook bypasses (`--no-verify`) — fix the hook failure instead.
-- Don't commit unless explicitly asked.
+
+## Version control
+This repo uses **git**. Default branch is `main`.
+
+- **Don't commit unless the user explicitly asks.** When they do:
+  - Stage explicit paths (`git add CLAUDE.md lib/parse-bulletin.ts …`), not
+    `git add -A` or `git add .` — keeps stray artifacts (zips, scratch PNGs in
+    `out/`) out of the index.
+  - Commit messages via HEREDOC with a `Co-Authored-By: Claude Opus 4.7
+    <noreply@anthropic.com>` footer. Lead with the *why*, not a file list.
+  - Never `--no-verify`, never amend a commit the user didn't ask you to amend,
+    never force-push.
+- Don't push to a remote unless asked. There may not even be one configured.
+- `.gitignore` covers `node_modules/`, `.next/`, `out/`, env files,
+  `*.tsbuildinfo`, `.claude/settings.local.json`, `examples/**/*.zip`. If
+  something new shouldn't be tracked, add it there before committing.
+- Before a destructive operation (`git reset --hard`, branch delete, etc.),
+  stop and ask.
 
 ## Commands
 - `npm run dev` — local Next.js server
