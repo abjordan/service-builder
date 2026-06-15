@@ -26,6 +26,7 @@ type SectionBase = {
 export type LiturgyBlock = SectionBase & {
   kind: "liturgy";
   title?: string;
+  citation?: string;
   items: LiturgyItem[];
 };
 

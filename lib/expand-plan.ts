@@ -47,6 +47,70 @@ function isGospel(title: string): boolean {
   return /gospel/i.test(title);
 }
 
+// Ordinal word map for chapter numbers 1–30.
+const ORDINALS: Record<number, string> = {
+  1: "first", 2: "second", 3: "third", 4: "fourth", 5: "fifth",
+  6: "sixth", 7: "seventh", 8: "eighth", 9: "ninth", 10: "tenth",
+  11: "eleventh", 12: "twelfth", 13: "thirteenth", 14: "fourteenth",
+  15: "fifteenth", 16: "sixteenth", 17: "seventeenth", 18: "eighteenth",
+  19: "nineteenth", 20: "twentieth", 21: "twenty-first", 22: "twenty-second",
+  23: "twenty-third", 24: "twenty-fourth", 25: "twenty-fifth",
+  26: "twenty-sixth", 27: "twenty-seventh", 28: "twenty-eighth",
+  29: "twenty-ninth", 30: "thirtieth",
+};
+
+// Gospel books that get the "St." prefix.
+const SYNOPTIC_GOSPELS = new Set(["Matthew", "Mark", "Luke", "John"]);
+
+type GospelAnnounce = {
+  announceText: string;
+  warning?: string;
+};
+
+function buildGospelAnnounce(citation: string): GospelAnnounce {
+  // Citation format: "Matthew 9:35—10:8", "1 Corinthians 11:23—32", etc.
+  // Extract book (everything before first digit) and chapter (first integer after book).
+  const bookMatch = citation.match(/^(.*?)(\d)/);
+  if (!bookMatch) {
+    return {
+      announceText: `The Holy Gospel according to ${citation}.`,
+      warning: `Could not parse book from Gospel citation: "${citation}"`,
+    };
+  }
+
+  const book = bookMatch[1].trim();
+  // Strip leading numeric prefix ("1 ", "2 ", "3 ") for synoptic check — but
+  // preserve the full name for display.
+  const displayBook = book;
+  const strippedBook = book.replace(/^\d+\s+/, "");
+
+  const prefixedBook = SYNOPTIC_GOSPELS.has(strippedBook)
+    ? `St. ${displayBook}`
+    : displayBook;
+
+  // First integer following the book name is the chapter.
+  const chapterMatch = citation.slice(bookMatch[1].length).match(/^(\d+)/);
+  if (!chapterMatch) {
+    return {
+      announceText: `The Holy Gospel according to ${prefixedBook}.`,
+      warning: `Could not parse chapter from Gospel citation: "${citation}"`,
+    };
+  }
+
+  const chapter = parseInt(chapterMatch[1], 10);
+  const ordinal = ORDINALS[chapter];
+  if (!ordinal) {
+    return {
+      announceText: `The Holy Gospel according to ${prefixedBook}, chapter ${chapter}.`,
+      warning: `Chapter ${chapter} exceeds ordinal table — fell back to numeric for citation: "${citation}"`,
+    };
+  }
+
+  return {
+    announceText: `The Holy Gospel according to ${prefixedBook}, the ${ordinal} chapter.`,
+  };
+}
+
 // ---------------------------------------------------------------------------
 // Main entry point
 // ---------------------------------------------------------------------------
@@ -92,8 +156,22 @@ export function expandPlan(plan: ServicePlan, opts: ExpandOptions): ExpandResult
 
         const sectionTitle = section.title ?? "";
 
-        // Walk spoken items, applying auto-pair logic.
+        // Walk spoken items, applying auto-pair logic. Only the first emitted
+        // slide of a section carries the title and citation — subsequent slides
+        // render titleless to avoid visual repetition.
         let i = 0;
+        let isFirstSlide = true;
+        const sectionCitation = "citation" in section ? section.citation : undefined;
+        const titleAndCitationFor = () => {
+          if (isFirstSlide) {
+            isFirstSlide = false;
+            return {
+              title: sectionTitle || undefined,
+              citation: sectionCitation,
+            };
+          }
+          return { title: undefined, citation: undefined };
+        };
         while (i < spoken.length) {
           const current = spoken[i];
           const next = spoken[i + 1];
@@ -111,8 +189,9 @@ export function expandPlan(plan: ServicePlan, opts: ExpandOptions): ExpandResult
               { speaker: next.speaker, text: next.text },
             ];
             const lineNum = counter;
+            const { title, citation } = titleAndCitationFor();
             push(
-              { kind: "liturgy", items, title: sectionTitle || undefined },
+              { kind: "liturgy", items, title, citation },
               `${sectionTitle || "Liturgy"} — line ${lineNum}`,
             );
             i += 2;
@@ -121,8 +200,9 @@ export function expandPlan(plan: ServicePlan, opts: ExpandOptions): ExpandResult
               { speaker: current.speaker, text: current.text },
             ];
             const lineNum = counter;
+            const { title, citation } = titleAndCitationFor();
             push(
-              { kind: "liturgy", items, title: sectionTitle || undefined },
+              { kind: "liturgy", items, title, citation },
               `${sectionTitle || "Liturgy"} — line ${lineNum}`,
             );
             i += 1;
@@ -175,23 +255,48 @@ export function expandPlan(plan: ServicePlan, opts: ExpandOptions): ExpandResult
       }
 
       case "reading": {
-        const responseA = isGospel(section.title)
-          ? "This is the Gospel of the Lord."
-          : "This is the Word of the Lord.";
-        const responseC = isGospel(section.title)
-          ? "Praise to You, O Christ."
-          : "Thanks be to God.";
+        if (isGospel(section.title)) {
+          // Gospel readings emit two slides:
+          // 1. Pre-announce: congregation announce + "Glory to You, O Lord."
+          // 2. Post-response: "This is the Gospel of the Lord." + "Praise to You, O Christ."
+          const announce = buildGospelAnnounce(section.citation);
+          if (announce.warning) {
+            warnings.push({ sectionIndex, message: announce.warning });
+          }
 
-        push(
-          {
-            kind: "reading",
-            title: section.title,
-            citation: section.citation,
-            responseA,
-            responseC,
-          },
-          section.title,
-        );
+          push(
+            {
+              kind: "reading",
+              title: section.title,
+              citation: section.citation,
+              responseA: announce.announceText,
+              responseC: "Glory to You, O Lord.",
+            },
+            `${section.title} — announce`,
+          );
+
+          push(
+            {
+              kind: "reading",
+              title: section.title,
+              citation: section.citation,
+              responseA: "This is the Gospel of the Lord.",
+              responseC: "Praise to You, O Christ.",
+            },
+            `${section.title} — response`,
+          );
+        } else {
+          push(
+            {
+              kind: "reading",
+              title: section.title,
+              citation: section.citation,
+              responseA: "This is the Word of the Lord.",
+              responseC: "Thanks be to God.",
+            },
+            section.title,
+          );
+        }
         break;
       }
 

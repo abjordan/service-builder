@@ -327,7 +327,7 @@ function parseSections(lines: LayoutLine[], warnings: ParseWarning[]): Section[]
     const headingMatch = matchHeading(line);
     if (headingMatch) {
       const { heading, rightText } = headingMatch;
-      inPsalmSection = heading === "Psalm";
+      inPsalmSection = heading === "Psalm" || heading === "Introit";
 
       // Skip decorative / liturgical-day lines that happen to match (shouldn't
       // occur since SECTION_HEADINGS is specific, but guard anyway).
@@ -497,13 +497,26 @@ function parseSections(lines: LayoutLine[], warnings: ParseWarning[]): Section[]
       infoWarningCount = items.warnCount;
 
       if (items.items.length > 0) {
-        const title = heading + (rightText ? `  ${rightText}` : "");
-        sections.push({
-          kind: "liturgy",
-          title,
-          items: items.items,
-          includeInSlides: SLIDES_EXCLUDED_BY_DEFAULT.has(heading) ? false : undefined,
-        } satisfies LiturgyBlock);
+        // Psalm and Introit carry a citation in the second column of the heading row.
+        // Split that out rather than concatenating into the title.
+        if (inPsalmSection) {
+          const citationText = line.columns[1]?.[1]?.trim() || undefined;
+          sections.push({
+            kind: "liturgy",
+            title: heading,
+            citation: citationText,
+            items: items.items,
+            includeInSlides: SLIDES_EXCLUDED_BY_DEFAULT.has(heading) ? false : undefined,
+          } satisfies LiturgyBlock);
+        } else {
+          const title = heading + (rightText ? `  ${rightText}` : "");
+          sections.push({
+            kind: "liturgy",
+            title,
+            items: items.items,
+            includeInSlides: SLIDES_EXCLUDED_BY_DEFAULT.has(heading) ? false : undefined,
+          } satisfies LiturgyBlock);
+        }
       } else {
         // No immediate child items — emit as header
         sections.push({ kind: "header", title: heading } satisfies SectionHeader);
@@ -543,6 +556,29 @@ function collectLiturgyItems(
   // Speaker text indented at roughly x=63; speaker prefix at x≈45-46
   const SPEAKER_PREFIX_X = 45;
 
+  // In a Psalm/Introit section, pastor verses and congregation verses are
+  // distinguished only by font weight in the source PDF. Detect the "bold"
+  // fontName by sampling the body font of the first C-marked line in the
+  // current section (the Gloria Patri or any C response), then assign each
+  // numbered verse a speaker based on its line's fontName.
+  let boldFont = "";
+  if (inPsalmSection) {
+    for (let j = startIndex; j < lines.length; j++) {
+      const probe = lines[j];
+      if (matchHeading(probe)) break;
+      const sp = parseSpeakerLine(probe);
+      if (sp?.speaker === "C") {
+        boldFont = probe.fontName;
+        break;
+      }
+    }
+  }
+
+  const isVerseNumber = (line: LayoutLine): boolean =>
+    inPsalmSection &&
+    /^\d+$/.test(line.text.trim()) &&
+    line.minX >= SPEAKER_PREFIX_X;
+
   while (i < lines.length) {
     const line = lines[i];
 
@@ -561,10 +597,36 @@ function collectLiturgyItems(
       continue;
     }
 
-    // In Psalm section, strip standalone verse-number artifacts.
-    // Verse numbers are numeric-only lines at indented positions within the psalm.
-    if (inPsalmSection && isNumericOnly(line.text.trim())) {
+    // Psalm / Introit verse-driven path. Verse-number lines (numeric-only at
+    // indented x) start a new spoken item; gather the body lines that follow,
+    // and assign speaker from the body's fontName.
+    if (isVerseNumber(line)) {
+      const verseNum = line.text.trim();
       i++;
+      const bodyParts: string[] = [];
+      let verseFont = "";
+      while (i < lines.length) {
+        const b = lines[i];
+        if (matchHeading(b)) break;
+        if (parseSpeakerLine(b)) break;
+        if (isVerseNumber(b)) break;
+        const trimmed = b.text.trim();
+        if (!trimmed) {
+          i++;
+          continue;
+        }
+        if (isNumericOnly(trimmed) && (b.y < 30 || b.minX > 300)) {
+          i++;
+          continue;
+        }
+        if (b.minX <= 36) break; // back to section-heading column
+        bodyParts.push(trimmed);
+        if (!verseFont) verseFont = b.fontName;
+        i++;
+      }
+      const speaker: Speaker = boldFont && verseFont === boldFont ? "C" : "P";
+      const text = `${verseNum} ${bodyParts.join(" ")}`.trim();
+      if (text) items.push({ kind: "spoken", speaker, text });
       continue;
     }
 
@@ -577,6 +639,9 @@ function collectLiturgyItems(
         const cont = lines[i];
         if (matchHeading(cont)) break;
         if (parseSpeakerLine(cont)) break;
+        // In a Psalm/Introit, a verse-number line ends the current speaker's
+        // continuation — verses belong to the verse-driven path above.
+        if (isVerseNumber(cont)) break;
         if (isNumericOnly(cont.text) && (cont.y < 30 || cont.minX > 300)) {
           i++;
           continue;

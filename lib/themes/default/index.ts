@@ -80,7 +80,7 @@ function stripRoot(children: React.ReactNode): React.ReactElement {
         height: LOGO_SIZE,
         objectFit: "contain" as const,
         flexShrink: 0,
-        marginRight: 32,
+        marginRight: 64,
       },
     }),
     // Content column
@@ -102,11 +102,59 @@ function stripRoot(children: React.ReactNode): React.ReactElement {
 }
 
 // ---------------------------------------------------------------------------
+// LSB inline glyph rendering
+//
+// Body text strings may contain {{lsb:CHAR}} markers for characters that
+// appear in LSBSymbol font in the bulletin (e.g. the cross glyph "T" in
+// "In the name of the Father and of the ✠ Son"). Split on these markers
+// and render the wrapped span in LSBSymbol so the correct glyph appears.
+// ---------------------------------------------------------------------------
+
+const LSB_MARKER_RE = /\{\{lsb:([^}]+)\}\}/g;
+
+function renderTextWithLsb(
+  text: string,
+  baseFontSize: number,
+  _fontWeight: number
+): React.ReactNode[] {
+  const segments: React.ReactNode[] = [];
+  let lastIndex = 0;
+  let match: RegExpExecArray | null;
+  LSB_MARKER_RE.lastIndex = 0;
+  while ((match = LSB_MARKER_RE.exec(text)) !== null) {
+    if (match.index > lastIndex) {
+      segments.push(text.slice(lastIndex, match.index));
+    }
+    segments.push(
+      React.createElement(
+        "span",
+        {
+          key: `lsb-${match.index}`,
+          style: {
+            fontFamily: "LSBSymbol",
+            fontSize: Math.round(baseFontSize * 0.85),
+            fontWeight: 400,
+          },
+        },
+        match[1]
+      )
+    );
+    lastIndex = match.index + match[0].length;
+  }
+  if (lastIndex < text.length) {
+    segments.push(text.slice(lastIndex));
+  }
+  if (segments.length === 0) return [text];
+  return segments;
+}
+
+// ---------------------------------------------------------------------------
 // Speaker row — glyph box + text line(s)
 // ---------------------------------------------------------------------------
 
 function speakerRow(item: LiturgyLine, key: number): React.ReactElement {
   const isCongregation = item.speaker === "C";
+  const fontWeight = isCongregation ? 700 : 400;
 
   return React.createElement(
     "div",
@@ -136,21 +184,26 @@ function speakerRow(item: LiturgyLine, key: number): React.ReactElement {
       },
       item.speaker
     ),
-    // Text column
+    // Text column — inline LSB markers rendered in LSBSymbol font.
+    // Use display:flex + flexWrap so Satori handles mixed text/span children.
     React.createElement(
       "div",
       {
         style: {
+          display: "flex",
+          flexDirection: "row" as const,
+          flexWrap: "wrap" as const,
+          alignItems: "baseline",
           flex: 1,
           fontFamily: "Source Serif Pro",
           fontSize: BODY_FONT_SIZE,
           lineHeight: BODY_LINE_HEIGHT,
           color: "#000000",
-          fontWeight: isCongregation ? 700 : 400,
+          fontWeight,
           fontStyle: "normal" as const,
         },
       },
-      item.text
+      ...renderTextWithLsb(item.text, BODY_FONT_SIZE, fontWeight)
     )
   );
 }
@@ -349,8 +402,14 @@ function renderHymn(
     s.title
   );
 
-  // Tag — italic, gray, left-aligned above lyric block
-  const tagEl = s.tag
+  // Tag — italic, gray, left-aligned above lyric block.
+  // Tag stored slug-style ("verse-1", "chorus"); display as "Verse 1", "Chorus".
+  const tagLabel = s.tag
+    ? s.tag
+        .replace(/-/g, " ")
+        .replace(/\b\w/g, (c) => c.toUpperCase())
+    : null;
+  const tagEl = tagLabel
     ? React.createElement(
         "div",
         {
@@ -364,7 +423,7 @@ function renderHymn(
             width: "100%",
           },
         },
-        s.tag
+        tagLabel
       )
     : null;
 

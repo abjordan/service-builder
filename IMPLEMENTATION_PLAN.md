@@ -122,7 +122,7 @@ full-screen layout entirely.
 - Unit test: expander emits no `section-title` slides given the example plan.
 - Unit test: Reading expander picks Gospel responses when title contains "Gospel".
 
-**Status**: In Progress
+**Status**: Complete (with follow-up items — see Stocktake below)
 
 ## Stage 4: Hymn Library
 **Goal**: Local store of hymn lyrics keyed by (hymnal, number). On first encounter of

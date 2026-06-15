@@ -278,17 +278,26 @@ describe("expandPlan — reading response fields", () => {
     }
   });
 
-  it("Gospel reading slide carries Gospel-specific responseA and responseC", () => {
+  it("Gospel reading emits two slides: pre-announce and post-response", () => {
     const result = expandPlan(plan, { library });
-    const gospel = result.slides.find(
+    const gospelSlides = result.slides.filter(
       (s) =>
         s.slide.kind === "reading" &&
         s.slide.title === "Holy Gospel",
     );
-    expect(gospel).toBeDefined();
-    if (gospel && gospel.slide.kind === "reading") {
-      expect(gospel.slide.responseA).toBe("This is the Gospel of the Lord.");
-      expect(gospel.slide.responseC).toBe("Praise to You, O Christ.");
+    expect(gospelSlides.length).toBe(2);
+
+    const preAnnounce = gospelSlides[0];
+    const postResponse = gospelSlides[1];
+
+    if (preAnnounce && preAnnounce.slide.kind === "reading") {
+      expect(preAnnounce.slide.responseA).toMatch(/The Holy Gospel according to/);
+      expect(preAnnounce.slide.responseC).toBe("Glory to You, O Lord.");
+    }
+
+    if (postResponse && postResponse.slide.kind === "reading") {
+      expect(postResponse.slide.responseA).toBe("This is the Gospel of the Lord.");
+      expect(postResponse.slide.responseC).toBe("Praise to You, O Christ.");
     }
   });
 
