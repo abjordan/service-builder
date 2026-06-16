@@ -7,6 +7,7 @@ import type { ServicePlan } from "@/lib/service-plan";
 import type { PreviewResponse } from "./types";
 import { PREVIEW_SESSION_KEY } from "./types";
 import { SlideGrid } from "@/app/_components/SlideGrid";
+import { StepIndicator } from "@/app/_components/StepIndicator";
 
 // ---------------------------------------------------------------------------
 // Types
@@ -174,6 +175,8 @@ function PreviewPageInner() {
 
   return (
     <main className="max-w-6xl mx-auto px-6 py-8">
+      <StepIndicator current="preview" />
+
       {/* Load zone — only shown when not coming from editor or after reset */}
       {!fromEditor && previewState === "idle" && (
         <section className="bg-white border border-gray-200 rounded-lg p-6 mb-8">
@@ -257,10 +260,10 @@ export default function PreviewPage() {
       <header className="bg-white border-b border-gray-200 px-6 py-4 flex items-start justify-between">
         <div>
           <h1 className="text-xl font-bold text-gray-900">
-            Service Builder &mdash; Stage 3: Deck Preview
+            Service Builder &mdash; Preview
           </h1>
           <p className="text-sm text-gray-500 mt-0.5">
-            Load a service plan JSON to see the rendered slide deck.
+            Review the rendered slide deck before building the OBS bundle.
           </p>
         </div>
         <Link

@@ -16,6 +16,7 @@ import { splitLiturgyBlock } from "@/lib/section-utils";
 import { WarningsPanel } from "./_components/WarningsPanel";
 import { MetadataCard } from "./_components/MetadataCard";
 import { SectionCard } from "./_components/SectionCard";
+import { StepIndicator } from "./_components/StepIndicator";
 import { PREVIEW_SESSION_KEY } from "./preview/types";
 
 // ---------------------------------------------------------------------------
@@ -192,14 +193,16 @@ export default function Home() {
       {/* Header */}
       <header className="bg-white border-b border-gray-200 px-6 py-4">
         <h1 className="text-xl font-bold text-gray-900">
-          Service Builder &mdash; Stage 2: Review
+          Service Builder &mdash; {plan ? "Review" : "Upload"}
         </h1>
         <p className="text-sm text-gray-500 mt-0.5">
-          Upload a bulletin PDF, review and edit the parsed plan, download the JSON.
+          Upload a bulletin PDF, review and edit the parsed plan, then preview the deck.
         </p>
       </header>
 
       <main className="max-w-3xl mx-auto px-6 py-8">
+        <StepIndicator current={plan ? "review" : "upload"} />
+
         {/* Upload zone */}
         <section className="bg-white border border-gray-200 rounded-lg p-6 mb-8">
           <h2 className="text-sm font-semibold text-gray-500 uppercase tracking-wide mb-4">
@@ -322,12 +325,6 @@ export default function Home() {
       {plan && (
         <div className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 px-6 py-3 flex items-center gap-3 flex-wrap">
           <button
-            onClick={handleDownload}
-            className="px-4 py-2 bg-green-600 text-white text-sm font-medium rounded hover:bg-green-700"
-          >
-            Download plan JSON
-          </button>
-          <button
             onClick={handlePreview}
             disabled={previewLoading}
             className="px-4 py-2 bg-blue-600 text-white text-sm font-medium rounded hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2"
@@ -336,6 +333,12 @@ export default function Home() {
               <span className="inline-block w-3.5 h-3.5 border-2 border-white border-t-transparent rounded-full animate-spin" />
             )}
             Preview deck &rarr;
+          </button>
+          <button
+            onClick={handleDownload}
+            className="px-4 py-2 border border-gray-300 text-sm text-gray-500 rounded hover:bg-gray-50"
+          >
+            Download plan JSON
           </button>
           <button
             onClick={handleReset}
