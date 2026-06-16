@@ -124,17 +124,23 @@ full-screen layout entirely.
 
 **Status**: Complete (with follow-up items — see Stocktake below)
 
-## Stage 4: Hymn Library
+## Stage 4: Hymn Library + Editor UX
 **Goal**: Local store of hymn lyrics keyed by (hymnal, number). On first encounter of
 an unknown hymn, the UI prompts with a paste-in form; the entry is saved for reuse.
-Each hymn record stores its verse/refrain layout preference.
+Each hymn record stores its verse/refrain layout preference. Also: pick up the
+section-title override workflow deferred from Stage 3 polish.
 **Success Criteria**:
 - New hymn added via UI persists and is found on the next build.
 - Hymn record schema: hymnal, number, title, verses[], refrain?, layout config.
 - Bulk import from a CSV or JSON file for seeding (not required, but designed for).
+- Per-section title override in the review UI — replaces the parser's literal
+  heading on slides (e.g. "Salutation and Collect of the Day" → "Salutation",
+  "Confession and Absolution" → "Invocation"). Persists per-service in the plan
+  JSON. Optional baked-in rename table for common LSB headings as the default.
 **Tests**:
 - CRUD round-trip test on the library store.
 - "Unknown hymn" flow: missing hymn in plan → UI prompt → save → next build succeeds.
+- Section-title override round-trips through plan JSON + appears on the rendered slide.
 **Status**: Not Started
 
 ## Stage 5: Hybrid OBS Assembly + Download

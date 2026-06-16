@@ -134,6 +134,7 @@ function renderTextWithLsb(
             fontFamily: "LSBSymbol",
             fontSize: Math.round(baseFontSize * 0.85),
             fontWeight: 400,
+            margin: "0 8px",
           },
         },
         match[1]
