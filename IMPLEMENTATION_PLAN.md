@@ -181,7 +181,7 @@ slice) and never wired into the UI. Surface it. Also drop the internal
 - Lightweight click-path verification of the new Build button (or manual).
 - README: review by hand.
 
-**Status**: Not Started
+**Status**: Complete
 
 ## Stage 4: Library editor + UX overrides
 **Goal**: Make the review UI usable week-to-week without hand-editing JSON.
