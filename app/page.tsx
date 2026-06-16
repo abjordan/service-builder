@@ -2,6 +2,7 @@
 
 import { useRef, useState } from "react";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 import type {
   ServicePlan,
   Section,
@@ -191,13 +192,21 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-gray-50 pb-24">
       {/* Header */}
-      <header className="bg-white border-b border-gray-200 px-6 py-4">
-        <h1 className="text-xl font-bold text-gray-900">
-          Service Builder &mdash; {plan ? "Review" : "Upload"}
-        </h1>
-        <p className="text-sm text-gray-500 mt-0.5">
-          Upload a bulletin PDF, review and edit the parsed plan, then preview the deck.
-        </p>
+      <header className="bg-white border-b border-gray-200 px-6 py-4 flex items-start justify-between">
+        <div>
+          <h1 className="text-xl font-bold text-gray-900">
+            Service Builder &mdash; {plan ? "Review" : "Upload"}
+          </h1>
+          <p className="text-sm text-gray-500 mt-0.5">
+            Upload a bulletin PDF, review and edit the parsed plan, then preview the deck.
+          </p>
+        </div>
+        <Link
+          href="/hymns"
+          className="text-sm text-gray-500 hover:text-gray-700 underline whitespace-nowrap mt-1"
+        >
+          Hymn library
+        </Link>
       </header>
 
       <main className="max-w-3xl mx-auto px-6 py-8">

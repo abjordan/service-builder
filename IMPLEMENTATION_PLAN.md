@@ -203,16 +203,26 @@ sibling sections (resolves the deferred "Salutation and Collect of the Day"
 - Helpers unit-tested in `tests/hymns-api.test.ts` (kept off the shared
   `data/hymns.json` since Vitest runs suites in parallel).
 
-**4b. Hymn editor UI**
-- New page `/hymns` — list view, edit form, "Add new".
-- Editor fields: title, LSB hymnal number, authors, copyright/CCLI footer.
+**4b-1. Hymn editor UI (CRUD)** — DONE
+- New page `/hymns` — list view, edit form, "Add new", delete.
+- Editor fields: title, authors.
 - Lyrics editor: per-slide blocks (each with `tag` + `lines`).
   - Per-slide tag dropdown (`verse-1`, `chorus`, `bridge`, …).
-  - `[— split here —]` button between lyric lines that drops a slide
-    boundary; user can manually carve lyrics into slides.
-- Refrain placement field per hymn (`append-to-verse` / `own-slide` /
-  `auto-split`); expander honors it when emitting song slides.
-- "Save" button → `POST /api/hymns`.
+  - Add / remove / reorder slide blocks; lines edited as newline-separated
+    text. (Manual carve is achieved via add/remove/reorder slides.)
+- "Save" button → `POST /api/hymns`; delete → `DELETE /api/hymns/:title`.
+- Link to `/hymns` from the home page; back-link to home.
+- No schema change — uses the existing `Hymn` type + the 4a API.
+- Note: hymnal number is per-Song (already editable in `SectionCard`), not a
+  library-entry field, so it is intentionally NOT in this editor.
+
+**4b-2. Hymn schema extensions + expander (DEFERRED)**
+- Add `copyright`/CCLI footer + refrain placement (`append-to-verse` /
+  `own-slide` / `auto-split`) to the `Hymn` schema.
+- Plumb copyright footer through the renderer; expander honors refrain
+  placement when emitting song slides. New expander tests.
+- Couples UI + schema + expander; do as its own increment (overlaps with the
+  Stage 4 "per-hymn layout overrides" goal).
 
 **4c. Unknown-hymn detection + add-to-library flow**
 - Expander already warns when a song title isn't in the library. Surface the
