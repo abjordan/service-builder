@@ -31,6 +31,9 @@ async function main(): Promise<void> {
   type Target = { id?: string; sectionIndex?: number; filename: string };
   const targets: Target[] = [
     { sectionIndex: 4, filename: "01-confession-first.png" },
+    { id: "s4-liturgy-4", filename: "01b-confession-mmg-part1.png" },
+    { id: "s4-liturgy-5", filename: "01c-confession-mmg-part2.png" },
+    { id: "s4-liturgy-6", filename: "01d-confession-absolution.png" },
     { sectionIndex: 7, filename: "02-psalm-first.png" },
     { id: "s7-liturgy-2", filename: "02b-psalm-v3-C-bold.png" },
     { id: "s7-liturgy-3", filename: "02c-psalm-v4-P-regular.png" },

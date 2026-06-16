@@ -43,8 +43,60 @@ export type ExpandResult = {
 // Helpers
 // ---------------------------------------------------------------------------
 
+// Max characters of body text that fit on a single 1920×360 liturgy strip
+// without overflowing. Calibrated against the renderer's font (Source Serif
+// Pro 40px) and the available body area (~1432px wide × 4–5 lines tall).
+// Pairs are bounded by `pairCharThreshold` (200), so this only kicks in for
+// long single-speaker items like the corporate confession.
+const MAX_CHARS_PER_SLIDE = 300;
+
 function isGospel(title: string): boolean {
   return /gospel/i.test(title);
+}
+
+export function splitTextForSlides(text: string, maxChars: number): string[] {
+  if (text.length <= maxChars) return [text];
+
+  const sentences = text.match(/[^.!?]+[.!?]?\s*/g) ?? [text];
+  const chunks: string[] = [];
+  let current = "";
+
+  for (const raw of sentences) {
+    const sentence = raw.trim();
+    if (!sentence) continue;
+
+    if (current === "") {
+      current = sentence;
+    } else if (current.length + 1 + sentence.length <= maxChars) {
+      current += " " + sentence;
+    } else {
+      chunks.push(current);
+      current = sentence;
+    }
+  }
+  if (current) chunks.push(current);
+
+  return chunks.flatMap((c) =>
+    c.length <= maxChars ? [c] : hardSplitByWords(c, maxChars),
+  );
+}
+
+function hardSplitByWords(text: string, maxChars: number): string[] {
+  const words = text.split(/\s+/);
+  const out: string[] = [];
+  let current = "";
+  for (const w of words) {
+    if (current === "") {
+      current = w;
+    } else if (current.length + 1 + w.length <= maxChars) {
+      current += " " + w;
+    } else {
+      out.push(current);
+      current = w;
+    }
+  }
+  if (current) out.push(current);
+  return out;
 }
 
 // Ordinal word map for chapter numbers 1–30.
@@ -196,15 +248,18 @@ export function expandPlan(plan: ServicePlan, opts: ExpandOptions): ExpandResult
             );
             i += 2;
           } else {
-            const items: LiturgyLine[] = [
-              { speaker: current.speaker, text: current.text },
-            ];
-            const lineNum = counter;
-            const { title, citation } = titleAndCitationFor();
-            push(
-              { kind: "liturgy", items, title, citation },
-              `${sectionTitle || "Liturgy"} — line ${lineNum}`,
-            );
+            const chunks = splitTextForSlides(current.text, MAX_CHARS_PER_SLIDE);
+            for (const chunk of chunks) {
+              const items: LiturgyLine[] = [
+                { speaker: current.speaker, text: chunk },
+              ];
+              const lineNum = counter;
+              const { title, citation } = titleAndCitationFor();
+              push(
+                { kind: "liturgy", items, title, citation },
+                `${sectionTitle || "Liturgy"} — line ${lineNum}`,
+              );
+            }
             i += 1;
           }
         }

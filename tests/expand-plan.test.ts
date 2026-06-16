@@ -1,7 +1,7 @@
 import { describe, it, expect } from "vitest";
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
-import { expandPlan } from "../lib/expand-plan";
+import { expandPlan, splitTextForSlides } from "../lib/expand-plan";
 import type { ServicePlan } from "../lib/service-plan";
 import type { HymnLibrary } from "../lib/hymn-library";
 
@@ -328,5 +328,83 @@ describe("expandPlan — header sections", () => {
       headerIndexes.has(s.sectionIndex),
     );
     expect(headerSlides).toHaveLength(0);
+  });
+});
+
+describe("splitTextForSlides", () => {
+  it("returns text as-is when under the limit", () => {
+    const text = "Short and sweet.";
+    expect(splitTextForSlides(text, 100)).toEqual([text]);
+  });
+
+  it("splits at sentence boundaries", () => {
+    const text =
+      "First sentence here. Second one follows. Third arrives next. Fourth completes the set.";
+    const chunks = splitTextForSlides(text, 40);
+    expect(chunks.length).toBeGreaterThan(1);
+    for (const c of chunks) expect(c.length).toBeLessThanOrEqual(40);
+    expect(chunks.join(" ")).toBe(text);
+  });
+
+  it("greedy-packs short sentences into one chunk when they fit", () => {
+    const text = "A. B. C. D. E.";
+    expect(splitTextForSlides(text, 100)).toEqual([text]);
+  });
+
+  it("falls back to word boundaries when a single sentence exceeds the limit", () => {
+    const long = "supercalifragilistic word splitting test of moderate length text";
+    const chunks = splitTextForSlides(long, 25);
+    for (const c of chunks) {
+      expect(c.length).toBeLessThanOrEqual(25);
+      expect(c).not.toMatch(/^\s|\s$/);
+    }
+  });
+
+  it("splits the corporate confession into multiple chunks under 300 chars", () => {
+    const mostMercifulGod =
+      "Most merciful God, we confess that we are by nature sinful and unclean. " +
+      "We have sinned against You in thought, word, and deed, by what we have done " +
+      "and by what we have left undone. We have not loved You with our whole heart; " +
+      "we have not loved our neighbors as ourselves. We justly deserve Your present " +
+      "and eternal punishment. For the sake of Your Son, Jesus Christ, have mercy on us. " +
+      "Forgive us, renew us, and lead us, so that we may delight in Your will and walk in " +
+      "Your ways to the glory of Your holy name. Amen.";
+    const chunks = splitTextForSlides(mostMercifulGod, 300);
+    expect(chunks.length).toBeGreaterThan(1);
+    for (const c of chunks) expect(c.length).toBeLessThanOrEqual(300);
+  });
+});
+
+describe("expandPlan — long liturgy items split across slides", () => {
+  it("splits the corporate confession across multiple slides", () => {
+    const result = expandPlan(plan, { library });
+    const matches = (pattern: RegExp) =>
+      result.slides.some(
+        (s) =>
+          s.slide.kind === "liturgy" &&
+          s.slide.items.some((it) => pattern.test(it.text)),
+      );
+    expect(matches(/Most merciful God/)).toBe(true);
+    expect(matches(/Forgive us, renew us/)).toBe(true);
+    const onSameSlide = result.slides.find(
+      (s) =>
+        s.slide.kind === "liturgy" &&
+        s.slide.items.some(
+          (it) =>
+            /Most merciful God/.test(it.text) &&
+            /Forgive us, renew us/.test(it.text),
+        ),
+    );
+    expect(onSameSlide).toBeUndefined();
+  });
+
+  it("keeps every liturgy item under the slide character limit", () => {
+    const result = expandPlan(plan, { library });
+    for (const s of result.slides) {
+      if (s.slide.kind !== "liturgy") continue;
+      for (const item of s.slide.items) {
+        expect(item.text.length).toBeLessThanOrEqual(300);
+      }
+    }
   });
 });
