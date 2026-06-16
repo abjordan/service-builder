@@ -19,6 +19,7 @@ interface SectionCardProps {
   onMoveUp: () => void;
   onMoveDown: () => void;
   onDelete: () => void;
+  onSplit?: (itemIndex: number) => void;
 }
 
 // ----- Reusable field components -----
@@ -162,9 +163,11 @@ function HeaderEditor({
 function LiturgyEditor({
   section,
   onChange,
+  onSplit,
 }: {
   section: LiturgyBlock;
   onChange: (updated: LiturgyBlock) => void;
+  onSplit?: (itemIndex: number) => void;
 }) {
   function updateItem(idx: number, item: LiturgyItem) {
     const items = [...section.items];
@@ -191,6 +194,8 @@ function LiturgyEditor({
     });
   }
 
+  const showSplitAffordances = onSplit !== undefined && section.items.length >= 2;
+
   return (
     <div className="space-y-2">
       <TextInput
@@ -201,12 +206,25 @@ function LiturgyEditor({
       />
       <div className="space-y-1 mt-2">
         {section.items.map((item, idx) => (
-          <LiturgyItemRow
-            key={idx}
-            item={item}
-            onChange={(updated) => updateItem(idx, updated)}
-            onRemove={() => removeItem(idx)}
-          />
+          <div key={idx}>
+            {showSplitAffordances && idx > 0 && (
+              <div className="group flex items-center gap-2 py-1">
+                <div className="flex-1 h-px bg-gray-200" />
+                <button
+                  onClick={() => onSplit(idx)}
+                  className="text-xs text-gray-400 hover:text-blue-600 opacity-30 group-hover:opacity-100 transition-opacity whitespace-nowrap"
+                >
+                  + Split section here
+                </button>
+                <div className="flex-1 h-px bg-gray-200" />
+              </div>
+            )}
+            <LiturgyItemRow
+              item={item}
+              onChange={(updated) => updateItem(idx, updated)}
+              onRemove={() => removeItem(idx)}
+            />
+          </div>
         ))}
       </div>
       <div className="flex gap-2 pt-1">
@@ -367,6 +385,7 @@ export function SectionCard({
   onMoveUp,
   onMoveDown,
   onDelete,
+  onSplit,
 }: SectionCardProps) {
   function renderEditor() {
     switch (section.kind) {
@@ -382,6 +401,7 @@ export function SectionCard({
           <LiturgyEditor
             section={section}
             onChange={onChange as (u: LiturgyBlock) => void}
+            onSplit={onSplit}
           />
         );
       case "song":

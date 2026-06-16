@@ -12,6 +12,7 @@ import type {
   SectionHeader,
   Note,
 } from "@/lib/service-plan";
+import { splitLiturgyBlock } from "@/lib/section-utils";
 import { WarningsPanel } from "./_components/WarningsPanel";
 import { MetadataCard } from "./_components/MetadataCard";
 import { SectionCard } from "./_components/SectionCard";
@@ -132,6 +133,16 @@ export default function Home() {
   function addSection() {
     if (!plan) return;
     setPlan({ ...plan, sections: [...plan.sections, emptySection(addKind)] });
+  }
+
+  function splitSection(index: number, itemIndex: number) {
+    if (!plan) return;
+    const section = plan.sections[index];
+    if (section.kind !== "liturgy") return;
+    const sections = [...plan.sections];
+    const [firstHalf, secondHalf] = splitLiturgyBlock(section, itemIndex);
+    sections.splice(index, 1, firstHalf, secondHalf);
+    setPlan({ ...plan, sections });
   }
 
   // -------------------------------------------------------------------------
@@ -278,6 +289,7 @@ export default function Home() {
                   onMoveUp={() => moveSection(idx, "up")}
                   onMoveDown={() => moveSection(idx, "down")}
                   onDelete={() => deleteSection(idx)}
+                  onSplit={(itemIndex) => splitSection(idx, itemIndex)}
                 />
               ))}
 

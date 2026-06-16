@@ -124,23 +124,66 @@ full-screen layout entirely.
 
 **Status**: Complete (with follow-up items — see Stocktake below)
 
-## Stage 4: Hymn Library + Editor UX
-**Goal**: Local store of hymn lyrics keyed by (hymnal, number). On first encounter of
-an unknown hymn, the UI prompts with a paste-in form; the entry is saved for reuse.
-Each hymn record stores its verse/refrain layout preference. Also: pick up the
-section-title override workflow deferred from Stage 3 polish.
+## Stage 4: Library editor + UX overrides
+**Goal**: Make the review UI usable week-to-week without hand-editing JSON.
+Three threads: (1) persistent hymn library with an editor + add-from-prompt
+flow; (2) per-hymn layout overrides (refrain placement + manual slide-split
+markers); (3) UI affordance to split a single liturgy block into two
+sibling sections (resolves the deferred "Salutation and Collect of the Day"
+→ "Salutation" + "Collect of the Day" case from Stage 3 polish).
+
+### Substages
+
+**4a. Hymn API + persistence**
+- `POST /api/hymns` (create/update by title), `DELETE /api/hymns/:title`.
+- Writes back to `data/hymns.json` via `fs.writeFile`. Single-user, no
+  contention; read-modify-write is fine.
+- API tests + happy-path round-trip.
+
+**4b. Hymn editor UI**
+- New page `/hymns` — list view, edit form, "Add new".
+- Editor fields: title, LSB hymnal number, authors, copyright/CCLI footer.
+- Lyrics editor: per-slide blocks (each with `tag` + `lines`).
+  - Per-slide tag dropdown (`verse-1`, `chorus`, `bridge`, …).
+  - `[— split here —]` button between lyric lines that drops a slide
+    boundary; user can manually carve lyrics into slides.
+- Refrain placement field per hymn (`append-to-verse` / `own-slide` /
+  `auto-split`); expander honors it when emitting song slides.
+- "Save" button → `POST /api/hymns`.
+
+**4c. Unknown-hymn detection + add-to-library flow**
+- Expander already warns when a song title isn't in the library. Surface the
+  warning in the review UI with an "Add to library" CTA.
+- CTA opens the hymn editor pre-populated with the title; on save, the next
+  build picks the hymn up.
+
+**4d. Section-split UI**
+- In `SectionCard`'s `LiturgyEditor`, add a "Split section here" affordance
+  between items. Clicking splits the current `LiturgyBlock` at that
+  boundary into two adjacent `LiturgyBlock` sections.
+  - First half retains the original section's properties.
+  - Second half gets an empty title input (user fills in, e.g., "Collect of
+    the Day"); inherits `includeInSlides` from the source.
+- Optional: "Merge with previous section" button on a liturgy card to undo.
+- No schema change — the plan already supports adjacent liturgy blocks.
+- This is what lets the user turn "Salutation and Collect of the Day" into
+  two cleanly-titled sub-sections in one click.
+
 **Success Criteria**:
-- New hymn added via UI persists and is found on the next build.
-- Hymn record schema: hymnal, number, title, verses[], refrain?, layout config.
-- Bulk import from a CSV or JSON file for seeding (not required, but designed for).
-- Per-section title override in the review UI — replaces the parser's literal
-  heading on slides (e.g. "Salutation and Collect of the Day" → "Salutation",
-  "Confession and Absolution" → "Invocation"). Persists per-service in the plan
-  JSON. Optional baked-in rename table for common LSB headings as the default.
+- New hymn added via UI persists to `data/hymns.json` and is found on the
+  next build without restart.
+- Hymn editor supports manual slide-split markers; expander respects them
+  (auto-split stays as the default when no markers are present).
+- "Unknown hymn" warning has a working add-to-library flow.
+- Splitting a liturgy section produces two adjacent sections in the plan
+  JSON, each renderable independently with its own title.
+
 **Tests**:
-- CRUD round-trip test on the library store.
-- "Unknown hymn" flow: missing hymn in plan → UI prompt → save → next build succeeds.
-- Section-title override round-trips through plan JSON + appears on the rendered slide.
+- Hymn API CRUD round-trip.
+- Expander honors `slidesOverride` / split markers on a fixture hymn.
+- Section-split utility: given a `LiturgyBlock` + item index, returns two
+  `LiturgyBlock`s with the items distributed correctly.
+
 **Status**: Not Started
 
 ## Stage 5: Hybrid OBS Assembly + Download
