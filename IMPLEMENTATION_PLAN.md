@@ -193,11 +193,15 @@ sibling sections (resolves the deferred "Salutation and Collect of the Day"
 
 ### Substages
 
-**4a. Hymn API + persistence**
-- `POST /api/hymns` (create/update by title), `DELETE /api/hymns/:title`.
-- Writes back to `data/hymns.json` via `fs.writeFile`. Single-user, no
+**4a. Hymn API + persistence** — DONE
+- `GET /api/hymns` (list), `POST /api/hymns` (create/update by title),
+  `DELETE /api/hymns/:title`.
+- CRUD logic lives in pure helpers in `lib/hymn-library.ts`
+  (`slugify`, `upsertHymn`, `deleteHymnByTitle`); routes are thin wrappers.
+- Writes back to `data/hymns.json` via `writeLibrary`. Single-user, no
   contention; read-modify-write is fine.
-- API tests + happy-path round-trip.
+- Helpers unit-tested in `tests/hymns-api.test.ts` (kept off the shared
+  `data/hymns.json` since Vitest runs suites in parallel).
 
 **4b. Hymn editor UI**
 - New page `/hymns` — list view, edit form, "Add new".
@@ -219,7 +223,7 @@ sibling sections (resolves the deferred "Salutation and Collect of the Day"
 **4d. Section-split UI**
 - In `SectionCard`'s `LiturgyEditor`, add a "Split section here" affordance
   between items. Clicking splits the current `LiturgyBlock` at that
-  boundary into two adjacent `LiturgyBlock` sections.
+  boundary into two adjacent `LiturgyBlock` sections. — DONE
   - First half retains the original section's properties.
   - Second half gets an empty title input (user fills in, e.g., "Collect of
     the Day"); inherits `includeInSlides` from the source.
@@ -243,7 +247,7 @@ sibling sections (resolves the deferred "Salutation and Collect of the Day"
 - Section-split utility: given a `LiturgyBlock` + item index, returns two
   `LiturgyBlock`s with the items distributed correctly.
 
-**Status**: Not Started
+**Status**: In Progress (4a + 4d done; 4b, 4c remaining)
 
 ## Stage 5: Hybrid OBS Assembly + Download
 **Goal**: Maintain a base scene collection (cameras, audio, title cards, transitions);

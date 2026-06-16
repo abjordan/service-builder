@@ -49,7 +49,6 @@ export function writeLibrary(lib: HymnLibrary, path?: string): void {
   writeFileSync(filePath, JSON.stringify(lib, null, 2) + "\n", "utf-8");
 }
 
-/** Fuzzy match: normalize both sides (lowercase, strip punctuation, collapse whitespace). */
 function normalize(s: string): string {
   return s
     .toLowerCase()
@@ -61,4 +60,38 @@ function normalize(s: string): string {
 export function findHymnByTitle(lib: HymnLibrary, title: string): Hymn | undefined {
   const needle = normalize(title);
   return lib.songs.find((h) => normalize(h.title) === needle);
+}
+
+export function slugify(title: string): string {
+  return title
+    .toLowerCase()
+    .replace(/[^\w\s]/g, "")
+    .replace(/\s+/g, "-")
+    .replace(/^-+|-+$/g, "");
+}
+
+export function upsertHymn(lib: HymnLibrary, hymn: Hymn): HymnLibrary {
+  const stored: Hymn = { ...hymn, id: slugify(hymn.title) };
+  const needle = normalize(hymn.title);
+  const idx = lib.songs.findIndex((h) => normalize(h.title) === needle);
+  if (idx === -1) {
+    return { songs: [...lib.songs, stored] };
+  }
+  const songs = [...lib.songs];
+  songs[idx] = stored;
+  return { songs };
+}
+
+export function deleteHymnByTitle(
+  lib: HymnLibrary,
+  title: string
+): { library: HymnLibrary; removed: boolean } {
+  const needle = normalize(title);
+  const idx = lib.songs.findIndex((h) => normalize(h.title) === needle);
+  if (idx === -1) {
+    return { library: lib, removed: false };
+  }
+  const songs = [...lib.songs];
+  songs.splice(idx, 1);
+  return { library: { songs }, removed: true };
 }
