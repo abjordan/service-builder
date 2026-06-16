@@ -1,5 +1,10 @@
 import { describe, it, expect } from "vitest";
-import { emitSceneCollection, type Stage1Plan } from "../lib/emit-scene-collection";
+import {
+  emitSceneCollection,
+  emitMultiSceneCollection,
+  type Stage1Plan,
+  type SceneSpec,
+} from "../lib/emit-scene-collection";
 
 const UUID_V4_RE = /^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
 
@@ -118,5 +123,90 @@ describe("emitSceneCollection", () => {
     const scene = sources.find((s) => s.id === "scene") as Record<string, unknown>;
 
     expect(scene.canvas_uuid).toBe("6c69626f-6273-4c00-9d88-c5136d61696e");
+  });
+});
+
+// ---------------------------------------------------------------------------
+// emitMultiSceneCollection
+// ---------------------------------------------------------------------------
+
+const MULTI_SCENES: SceneSpec[] = [
+  { name: "Confession and Absolution — line 0", imagePath: "/tmp/svc/assets/01-s0-liturgy-0.png" },
+  { name: "Confession and Absolution — line 1", imagePath: "/tmp/svc/assets/02-s0-liturgy-1.png" },
+  { name: "Holy Gospel — announce",              imagePath: "/tmp/svc/assets/03-s1-reading-0.png" },
+];
+
+describe("emitMultiSceneCollection", () => {
+  it("has the expected collection name", () => {
+    const result = emitMultiSceneCollection("2026-06-14 Livestream", MULTI_SCENES);
+    expect(result.name).toBe("2026-06-14 Livestream");
+  });
+
+  it("scene_order length equals number of scenes", () => {
+    const result = emitMultiSceneCollection("Test", MULTI_SCENES);
+    const order = result.scene_order as Array<{ name: string }>;
+    expect(order).toHaveLength(MULTI_SCENES.length);
+  });
+
+  it("scene_order names match the scene spec names in order", () => {
+    const result = emitMultiSceneCollection("Test", MULTI_SCENES);
+    const order = result.scene_order as Array<{ name: string }>;
+    for (let i = 0; i < MULTI_SCENES.length; i++) {
+      expect(order[i].name).toBe(MULTI_SCENES[i].name);
+    }
+  });
+
+  it("sources has 2 entries per scene (image_source + scene)", () => {
+    const result = emitMultiSceneCollection("Test", MULTI_SCENES);
+    const sources = result.sources as Array<{ id: string }>;
+    expect(sources).toHaveLength(MULTI_SCENES.length * 2);
+  });
+
+  it("each scene source references its paired image_source uuid", () => {
+    const result = emitMultiSceneCollection("Test", MULTI_SCENES);
+    const sources = result.sources as Array<Record<string, unknown>>;
+
+    // Sources are interleaved: [img0, scene0, img1, scene1, ...]
+    for (let i = 0; i < MULTI_SCENES.length; i++) {
+      const imgSource = sources[i * 2];
+      const sceneSource = sources[i * 2 + 1];
+
+      expect(imgSource.id).toBe("image_source");
+      expect(sceneSource.id).toBe("scene");
+
+      const imgUuid = imgSource.uuid as string;
+      const settings = sceneSource.settings as { items: Array<{ source_uuid: string }> };
+      expect(settings.items[0].source_uuid).toBe(imgUuid);
+    }
+  });
+
+  it("each image_source settings.file equals the corresponding scene spec imagePath", () => {
+    const result = emitMultiSceneCollection("Test", MULTI_SCENES);
+    const sources = result.sources as Array<Record<string, unknown>>;
+
+    for (let i = 0; i < MULTI_SCENES.length; i++) {
+      const imgSource = sources[i * 2];
+      const settings = imgSource.settings as { file: string };
+      expect(settings.file).toBe(MULTI_SCENES[i].imagePath);
+    }
+  });
+
+  it("current_scene and current_program_scene equal the first scene name", () => {
+    const result = emitMultiSceneCollection("Test", MULTI_SCENES);
+    expect(result.current_scene).toBe(MULTI_SCENES[0].name);
+    expect(result.current_program_scene).toBe(MULTI_SCENES[0].name);
+  });
+
+  it("all scene canvas_uuid values are the OBS main canvas sentinel", () => {
+    const result = emitMultiSceneCollection("Test", MULTI_SCENES);
+    const sources = result.sources as Array<Record<string, unknown>>;
+    const sceneEntries = sources.filter((s) => s.id === "scene");
+    for (const scene of sceneEntries) {
+      expect(scene.canvas_uuid).toBe("6c69626f-6273-4c00-9d88-c5136d61696e");
+    }
+  });
+
+  it("throws when given an empty scenes array", () => {
+    expect(() => emitMultiSceneCollection("Test", [])).toThrow();
   });
 });
