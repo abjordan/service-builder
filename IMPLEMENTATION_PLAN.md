@@ -124,6 +124,65 @@ full-screen layout entirely.
 
 **Status**: Complete (with follow-up items — see Stocktake below)
 
+## Stage 3.5: Navigation polish + README
+**Goal**: Make the end-to-end user flow obvious in the UI, and make the
+project legible to a stranger via a README. Currently the editor page
+dead-ends at the deck preview because the "Build OBS Bundle" action — the
+actual product output — was implemented at the CLI level (Stage 1 thin
+slice) and never wired into the UI. Surface it. Also drop the internal
+"Stage N" labels from user-facing chrome.
+
+### Substages
+
+**3.5a. Drop development-stage labels from the UI**
+- `app/page.tsx` header "Service Builder — Stage 2: Review" → "Service
+  Builder — Review".
+- Same fix on `app/preview/page.tsx`.
+- Stage tracking lives in `IMPLEMENTATION_PLAN.md`, not in user chrome.
+
+**3.5b. Demote "Download plan JSON"; promote "Preview Deck →"**
+- Keep "Download plan JSON" (useful for debugging + persisting state across
+  sessions), but make it visually secondary — smaller / ghost-button.
+- Make "Preview Deck →" the primary CTA on the editor page.
+
+**3.5c. Add "Build OBS Bundle" action on `/preview`**
+- New primary button below the rendered deck. POSTs the plan to
+  `/api/build`, receives the zip, triggers browser download. Filename:
+  `{serviceDate}-bundle.zip`.
+- Disabled while preview is loading or if any slide failed to render.
+- `/api/build` currently accepts a `Stage1BuildRequest` (single hard-coded
+  hymn). Extend it to take a full `ServicePlan` and assemble the whole
+  deck (expander → render-all → emit scene collection → zip).
+
+**3.5d. Step indicator across pages**
+- Small breadcrumb at the top: `Upload › Review › Preview › Build`.
+- Highlights the current step. Indicates progression without being heavy
+  chrome.
+
+**3.5e. `README.md`**
+- One-line project intro + who it's for.
+- Quickstart: clone, `npm install`, `npm run dev`, upload a bulletin.
+- User workflow walkthrough (the four steps above).
+- Architecture paragraph (stack, where files live).
+- Pointers to `CLAUDE.md` (agent guide) and `IMPLEMENTATION_PLAN.md`
+  (stage tracker).
+- Keep it under one page of scroll. Detailed engineering belongs in
+  `CLAUDE.md`.
+
+**Success Criteria**:
+- A fresh user lands on `/`, follows Upload → Review → Preview → Build,
+  and ends with a zip on disk — no question about what to click.
+- `Build OBS Bundle` produces a downloadable zip importable into OBS.
+- `README.md` exists and explains the project + workflow under one screen.
+- Zero "Stage N" labels in the live UI.
+
+**Tests**:
+- Extend `tests/build-bundle.test.ts` to cover full-`ServicePlan` input.
+- Lightweight click-path verification of the new Build button (or manual).
+- README: review by hand.
+
+**Status**: Not Started
+
 ## Stage 4: Library editor + UX overrides
 **Goal**: Make the review UI usable week-to-week without hand-editing JSON.
 Three threads: (1) persistent hymn library with an editor + add-from-prompt

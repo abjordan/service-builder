@@ -36,9 +36,24 @@ bundle; volunteers run OBS during the service.
 ## Stages & planning
 - `IMPLEMENTATION_PLAN.md` tracks staged work. Update `Status:` in place as you
   progress; delete the file when all stages are done (per user's global rules).
-- 5 stages: (1) thin slice, (2) PDF parser, (3) themed rendering — **rewrite in
-  progress to match reference PPTX**, (4) hymn library editor, (5) hybrid OBS
-  assembly with base template.
+- Active stages: (1) thin slice, (2) PDF parser, (3) themed rendering, (3.5)
+  navigation polish + README, (4) hymn library editor + section split, (5)
+  hybrid OBS assembly with base template.
+
+## Documentation
+Three docs serve three audiences — keep them in sync.
+
+- **`README.md`** — user-facing. What this is, how to run it, what to click.
+  Stays under one screen of scroll.
+- **`CLAUDE.md`** (this file) — agent-facing. Stack, conventions, gotchas,
+  references. Tribal knowledge.
+- **`IMPLEMENTATION_PLAN.md`** — task-facing. Staged work tracker.
+
+When a change affects the **user workflow** (new UI step, new page, new
+affordance, new keyboard shortcut) or the **quickstart** (new env var, new
+command, new dependency that needs installing), update `README.md` in the
+same commit. Don't let it drift. Likewise, when a load-bearing convention
+or gotcha changes, update `CLAUDE.md`.
 
 ## Slide rendering ground truth
 This was the hardest thing to get right. Reference PNGs in `examples/20260614/`
