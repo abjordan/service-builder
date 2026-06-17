@@ -302,6 +302,7 @@ export function expandPlan(plan: ServicePlan, opts: ExpandOptions): ExpandResult
               hymnNumber,
               tag,
               lines: hymnSlide.lines,
+              ...(hymn.copyright ? { copyright: hymn.copyright } : {}),
             },
             `${hymn.title} — slide ${slideNum}/${total}`,
           );

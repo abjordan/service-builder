@@ -408,3 +408,85 @@ describe("expandPlan — long liturgy items split across slides", () => {
     }
   });
 });
+
+// ---------------------------------------------------------------------------
+// Test — copyright field propagates to every hymn slide for that song
+// ---------------------------------------------------------------------------
+
+describe("expandPlan — copyright propagation", () => {
+  it("every hymn slide for a library song with copyright carries that copyright", () => {
+    const copyrightText =
+      "'Everlasting God' - words and music by Brenton Brown, Ken Riley\n" +
+      "©2005 Thankyou Music (Admin. by Capitol CMG Publishing)\n" +
+      "CCLI License No. 236495, streaming lic No. 20373402";
+
+    const songPlan: ServicePlan = {
+      date: "2026-06-16",
+      theme: "Test",
+      sections: [
+        {
+          kind: "song",
+          title: "Everlasting God",
+          includeInSlides: true,
+        },
+      ],
+    };
+
+    const testLibrary: HymnLibrary = {
+      songs: [
+        {
+          id: "everlasting-god",
+          title: "Everlasting God",
+          copyright: copyrightText,
+          slides: [
+            { tag: "verse-1", lines: ["Strength will rise as we wait upon the Lord."] },
+            { tag: "chorus", lines: ["You are the everlasting God."] },
+          ],
+        },
+      ],
+    };
+
+    const result = expandPlan(songPlan, { library: testLibrary });
+    const hymnSlides = result.slides.filter((s) => s.slide.kind === "hymn");
+
+    expect(hymnSlides).toHaveLength(2);
+    for (const s of hymnSlides) {
+      if (s.slide.kind === "hymn") {
+        expect(s.slide.copyright).toBe(copyrightText);
+      }
+    }
+  });
+
+  it("hymn slides for a library song without copyright have copyright undefined", () => {
+    const songPlan: ServicePlan = {
+      date: "2026-06-16",
+      theme: "Test",
+      sections: [
+        {
+          kind: "song",
+          title: "No Copyright Hymn",
+          includeInSlides: true,
+        },
+      ],
+    };
+
+    const testLibrary: HymnLibrary = {
+      songs: [
+        {
+          id: "no-copyright-hymn",
+          title: "No Copyright Hymn",
+          slides: [
+            { tag: "verse-1", lines: ["A line without copyright."] },
+          ],
+        },
+      ],
+    };
+
+    const result = expandPlan(songPlan, { library: testLibrary });
+    const hymnSlides = result.slides.filter((s) => s.slide.kind === "hymn");
+    expect(hymnSlides).toHaveLength(1);
+    if (hymnSlides[0].slide.kind === "hymn") {
+      expect(hymnSlides[0].slide.copyright).toBeUndefined();
+    }
+  });
+});

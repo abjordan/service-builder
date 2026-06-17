@@ -44,7 +44,9 @@ Upload › Review › Preview › Build
 The **Hymn library** (reachable via the *Hymn library* link in the home-page
 header, or at `/hymns`) lets you add, edit, and delete the persistent hymn
 records that the build step uses to generate lyric slides. Each hymn stores a
-title, optional authors, and an ordered list of slides (tag + lyric lines).
+title, optional authors, an optional copyright/CCLI block (rendered as a
+footer on every slide of the hymn), and an ordered list of slides (tag +
+lyric lines).
 
 Send the zip to the volunteer. They extract it to the exact path you entered,
 then in OBS: **Scene Collection › Import › pick `scene_collection.json`**.

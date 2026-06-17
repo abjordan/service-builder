@@ -159,7 +159,7 @@ function HymnEditor({
   isNew,
 }: {
   initial: Partial<Hymn>;
-  onSave: (hymn: { title: string; authors?: string; slides: HymnSlideContent[] }) => void;
+  onSave: (hymn: { title: string; authors?: string; copyright?: string; slides: HymnSlideContent[] }) => void;
   onCancel: () => void;
   saving: boolean;
   saveError: string | null;
@@ -168,6 +168,7 @@ function HymnEditor({
 }) {
   const [title, setTitle] = useState(initial.title ?? "");
   const [authors, setAuthors] = useState(initial.authors ?? "");
+  const [copyright, setCopyright] = useState(initial.copyright ?? "");
   const [slides, setSlides] = useState<HymnSlideContent[]>(
     initial.slides ?? []
   );
@@ -199,6 +200,7 @@ function HymnEditor({
     onSave({
       title: title.trim(),
       ...(authors.trim() ? { authors: authors.trim() } : {}),
+      ...(copyright.trim() ? { copyright: copyright.trim() } : {}),
       slides: nonEmptySlides,
     });
   }
@@ -229,6 +231,19 @@ function HymnEditor({
         onChange={setAuthors}
         placeholder="e.g. Brown, Riley"
       />
+
+      <div className="flex flex-col gap-1">
+        <label className="text-xs font-medium text-gray-400 uppercase tracking-wide">
+          Copyright / CCLI (optional)
+        </label>
+        <textarea
+          value={copyright}
+          onChange={(e) => setCopyright(e.target.value)}
+          rows={3}
+          placeholder={"e.g. ©2005 Thankyou Music\nCCLI License No. 236495"}
+          className="border border-gray-300 rounded px-2 py-1.5 text-sm focus:outline-none focus:ring-2 focus:ring-blue-300 resize-y"
+        />
+      </div>
 
       <div className="space-y-2">
         <label className="text-xs font-medium text-gray-400 uppercase tracking-wide">
@@ -345,6 +360,7 @@ function HymnsPageInner() {
   async function handleSave(data: {
     title: string;
     authors?: string;
+    copyright?: string;
     slides: HymnSlideContent[];
   }) {
     setSaving(true);

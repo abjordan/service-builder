@@ -216,13 +216,24 @@ sibling sections (resolves the deferred "Salutation and Collect of the Day"
 - Note: hymnal number is per-Song (already editable in `SectionCard`), not a
   library-entry field, so it is intentionally NOT in this editor.
 
-**4b-2. Hymn schema extensions + expander (DEFERRED)**
-- Add `copyright`/CCLI footer + refrain placement (`append-to-verse` /
-  `own-slide` / `auto-split`) to the `Hymn` schema.
-- Plumb copyright footer through the renderer; expander honors refrain
-  placement when emitting song slides. New expander tests.
-- Couples UI + schema + expander; do as its own increment (overlaps with the
-  Stage 4 "per-hymn layout overrides" goal).
+**4b-2a. Hymn copyright/CCLI footer** — DONE
+- Added `copyright?: string` (free-form multi-line) to the `Hymn` type and the
+  hymn `Slide`; textarea field in the `/hymns` editor; plumbed through the
+  expander onto every slide of the hymn.
+- Renderer draws it as centered italic gray lines at the bottom, stacked with
+  the existing `hymnNumber` line. Ground truth: `examples/20260614/Hymns/Slide2.PNG`.
+- Also fixed a pre-existing satori centering bug: the hymn **title** (and the
+  new footer) rendered left-aligned because satori treats divs as flex, so
+  `textAlign: center` is ignored — fixed with `justifyContent: center`.
+
+**4b-2b. Refrain placement (DEFERRED — needs design pass)**
+- `append-to-verse` / `own-slide` / `auto-split`. The reference deck renders a
+  verse AND its refrain as two labeled blocks on ONE slide, but the current
+  hymn `Slide` model is one tag + one flat `lines[]`, and imported hymn data
+  stores each block as a separate slide entry. This needs a multi-block hymn
+  slide type + expander composition + auto-split, grounded in several
+  reference slides. Own stage; overlaps the Stage 4 "per-hymn layout
+  overrides" goal.
 
 **4c. Unknown-hymn detection + add-to-library flow** — DONE
 - The editor (review step) fetches the library and flags any `song` whose
@@ -262,7 +273,7 @@ sibling sections (resolves the deferred "Salutation and Collect of the Day"
 - Section-split utility: given a `LiturgyBlock` + item index, returns two
   `LiturgyBlock`s with the items distributed correctly.
 
-**Status**: In Progress (4a, 4b-1, 4c, 4d done; 4b-2 deferred)
+**Status**: In Progress (4a, 4b-1, 4b-2a, 4c, 4d done; 4b-2b refrain placement deferred)
 
 ## Stage 5: Hybrid OBS Assembly + Download
 **Goal**: Maintain a base scene collection (cameras, audio, title cards, transitions);

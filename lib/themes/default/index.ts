@@ -390,6 +390,10 @@ function renderHymn(
     "div",
     {
       style: {
+        // satori renders divs as flex by default, so textAlign alone does not
+        // center — justifyContent does.
+        display: "flex" as const,
+        justifyContent: "center" as const,
         fontFamily: "Source Serif Pro",
         fontSize: 72,
         fontWeight: 700,
@@ -459,23 +463,51 @@ function renderHymn(
     )
   );
 
-  // Copyright footer — italic, gray, small, bottom
-  const footerEl = s.hymnNumber
+  // Footer — hymnNumber line then copyright lines, italic gray, bottom.
+  // Only rendered when at least one of the two is present.
+  const copyrightLines = s.copyright
+    ? s.copyright.split("\n").filter((l) => l.trim() !== "")
+    : [];
+  const hasFooter = Boolean(s.hymnNumber) || copyrightLines.length > 0;
+
+  const footerLineStyle = {
+    display: "flex" as const,
+    justifyContent: "center" as const,
+    fontFamily: "Source Serif Pro",
+    fontSize: 24,
+    fontWeight: 400,
+    fontStyle: "italic" as const,
+    color: "#777777",
+    width: "100%",
+    textAlign: "center" as const,
+    lineHeight: 1.3,
+  };
+
+  const footerChildren: React.ReactNode[] = [];
+  if (s.hymnNumber) {
+    footerChildren.push(
+      React.createElement("div", { style: footerLineStyle }, s.hymnNumber)
+    );
+  }
+  for (const line of copyrightLines) {
+    footerChildren.push(
+      React.createElement("div", { style: footerLineStyle }, line)
+    );
+  }
+
+  const footerEl = hasFooter
     ? React.createElement(
         "div",
         {
           style: {
-            fontFamily: "Source Serif Pro",
-            fontSize: 24,
-            fontWeight: 400,
-            fontStyle: "italic" as const,
-            color: "#777777",
+            display: "flex",
+            flexDirection: "column" as const,
+            alignItems: "center" as const,
             marginTop: "auto",
             width: "100%",
-            textAlign: "center" as const,
           },
         },
-        s.hymnNumber
+        ...footerChildren
       )
     : null;
 

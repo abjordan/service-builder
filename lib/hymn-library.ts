@@ -23,6 +23,10 @@ export type Hymn = {
   title: string;
   // Comma-separated authors as in the bulletin, e.g. "Brown, Riley"
   authors?: string;
+  // Free-form multi-line copyright/CCLI block rendered verbatim at the
+  // bottom of every slide for this hymn. Use "\n" to separate lines.
+  // Example: "©2005 Thankyou Music\nCCLI License No. 236495"
+  copyright?: string;
   // Each entry is one slide as it appeared in Hymns.pptx, in order.
   // Stage 3's plan expander reads this raw ordered list and emits one
   // rendered slide per entry. The verse/chorus distinction is preserved

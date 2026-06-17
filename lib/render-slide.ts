@@ -21,7 +21,7 @@ export type LiturgyLine = { speaker: "P" | "C" | "A" | "L"; text: string };
 export type Slide =
   | { kind: "liturgy"; items: LiturgyLine[]; title?: string; citation?: string }
   | { kind: "reading"; title: string; citation: string; responseA: string; responseC: string }
-  | { kind: "hymn"; title: string; hymnNumber?: string; tag?: string; lines: string[] };
+  | { kind: "hymn"; title: string; hymnNumber?: string; tag?: string; lines: string[]; copyright?: string };
 
 // ---------------------------------------------------------------------------
 // Back-compat alias for Stage 1 consumers (build-bundle imports this)
