@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import type {
@@ -14,6 +14,7 @@ import type {
   Note,
 } from "@/lib/service-plan";
 import { splitLiturgyBlock } from "@/lib/section-utils";
+import { isTitleKnown } from "@/lib/hymn-match";
 import { WarningsPanel } from "./_components/WarningsPanel";
 import { MetadataCard } from "./_components/MetadataCard";
 import { SectionCard } from "./_components/SectionCard";
@@ -62,6 +63,39 @@ export default function Home() {
   const [previewError, setPreviewError] = useState<string | null>(null);
 
   const [addKind, setAddKind] = useState<Section["kind"]>("liturgy");
+
+  const [knownTitles, setKnownTitles] = useState<string[]>([]);
+
+  // -------------------------------------------------------------------------
+  // Hymn library — load titles so SongEditor can flag unknown songs
+  // -------------------------------------------------------------------------
+
+  async function loadLibrary() {
+    try {
+      const res = await fetch("/api/hymns");
+      if (!res.ok) return;
+      const json = (await res.json()) as { songs: { title: string }[] };
+      setKnownTitles(json.songs.map((s) => s.title));
+    } catch {
+      // Silently ignore — unknown-hymn detection is advisory only.
+    }
+  }
+
+  // Load once when the plan is available; refresh on window focus so that
+  // returning from the hymn-editor tab picks up newly added songs.
+  useEffect(() => {
+    if (!plan) return;
+    void loadLibrary();
+
+    function onFocus() {
+      void loadLibrary();
+    }
+    window.addEventListener("focus", onFocus);
+    return () => window.removeEventListener("focus", onFocus);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [plan !== null]);
+
+  const isHymnKnown = (title: string) => isTitleKnown(knownTitles, title);
 
   // -------------------------------------------------------------------------
   // Upload / parse
@@ -302,6 +336,7 @@ export default function Home() {
                   onMoveDown={() => moveSection(idx, "down")}
                   onDelete={() => deleteSection(idx)}
                   onSplit={(itemIndex) => splitSection(idx, itemIndex)}
+                  isHymnKnown={isHymnKnown}
                 />
               ))}
 

@@ -224,11 +224,16 @@ sibling sections (resolves the deferred "Salutation and Collect of the Day"
 - Couples UI + schema + expander; do as its own increment (overlaps with the
   Stage 4 "per-hymn layout overrides" goal).
 
-**4c. Unknown-hymn detection + add-to-library flow**
-- Expander already warns when a song title isn't in the library. Surface the
-  warning in the review UI with an "Add to library" CTA.
-- CTA opens the hymn editor pre-populated with the title; on save, the next
-  build picks the hymn up.
+**4c. Unknown-hymn detection + add-to-library flow** — DONE
+- The editor (review step) fetches the library and flags any `song` whose
+  title isn't in it with an amber "Add to library" CTA in `SongEditor`.
+  (Detection lives in the editor, not the preview warnings, so it's caught
+  before rendering a deck of placeholder lyrics.)
+- CTA opens `/hymns?title=<X>` in a new tab, pre-filled as a NEW hymn. The
+  editor re-fetches the library on window focus, so the warning clears when
+  the user returns after adding the hymn.
+- Normalization shared via `lib/hymn-match.ts` (`normalizeTitle`,
+  `isTitleKnown`) so editor and server agree on matches.
 
 **4d. Section-split UI**
 - In `SectionCard`'s `LiturgyEditor`, add a "Split section here" affordance
@@ -257,7 +262,7 @@ sibling sections (resolves the deferred "Salutation and Collect of the Day"
 - Section-split utility: given a `LiturgyBlock` + item index, returns two
   `LiturgyBlock`s with the items distributed correctly.
 
-**Status**: In Progress (4a + 4d done; 4b, 4c remaining)
+**Status**: In Progress (4a, 4b-1, 4c, 4d done; 4b-2 deferred)
 
 ## Stage 5: Hybrid OBS Assembly + Download
 **Goal**: Maintain a base scene collection (cameras, audio, title cards, transitions);

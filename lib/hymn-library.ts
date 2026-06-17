@@ -7,6 +7,7 @@
 
 import { readFileSync, writeFileSync, mkdirSync } from "node:fs";
 import { dirname } from "node:path";
+import { normalizeTitle } from "./hymn-match";
 
 export type HymnSlideContent = {
   // Best-effort tag, e.g. "verse-1", "chorus", "bridge", or "unknown".
@@ -49,17 +50,9 @@ export function writeLibrary(lib: HymnLibrary, path?: string): void {
   writeFileSync(filePath, JSON.stringify(lib, null, 2) + "\n", "utf-8");
 }
 
-function normalize(s: string): string {
-  return s
-    .toLowerCase()
-    .replace(/[^\w\s]/g, "")
-    .replace(/\s+/g, " ")
-    .trim();
-}
-
 export function findHymnByTitle(lib: HymnLibrary, title: string): Hymn | undefined {
-  const needle = normalize(title);
-  return lib.songs.find((h) => normalize(h.title) === needle);
+  const needle = normalizeTitle(title);
+  return lib.songs.find((h) => normalizeTitle(h.title) === needle);
 }
 
 export function slugify(title: string): string {
@@ -72,8 +65,8 @@ export function slugify(title: string): string {
 
 export function upsertHymn(lib: HymnLibrary, hymn: Hymn): HymnLibrary {
   const stored: Hymn = { ...hymn, id: slugify(hymn.title) };
-  const needle = normalize(hymn.title);
-  const idx = lib.songs.findIndex((h) => normalize(h.title) === needle);
+  const needle = normalizeTitle(hymn.title);
+  const idx = lib.songs.findIndex((h) => normalizeTitle(h.title) === needle);
   if (idx === -1) {
     return { songs: [...lib.songs, stored] };
   }
@@ -86,8 +79,8 @@ export function deleteHymnByTitle(
   lib: HymnLibrary,
   title: string
 ): { library: HymnLibrary; removed: boolean } {
-  const needle = normalize(title);
-  const idx = lib.songs.findIndex((h) => normalize(h.title) === needle);
+  const needle = normalizeTitle(title);
+  const idx = lib.songs.findIndex((h) => normalizeTitle(h.title) === needle);
   if (idx === -1) {
     return { library: lib, removed: false };
   }

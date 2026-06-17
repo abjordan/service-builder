@@ -1,6 +1,7 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
+import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 import type { Hymn, HymnSlideContent } from "@/lib/hymn-library";
 import { linesToText, textToLines } from "./lyric-text";
@@ -155,6 +156,7 @@ function HymnEditor({
   saving,
   saveError,
   saved,
+  isNew,
 }: {
   initial: Partial<Hymn>;
   onSave: (hymn: { title: string; authors?: string; slides: HymnSlideContent[] }) => void;
@@ -162,6 +164,7 @@ function HymnEditor({
   saving: boolean;
   saveError: string | null;
   saved: boolean;
+  isNew: boolean;
 }) {
   const [title, setTitle] = useState(initial.title ?? "");
   const [authors, setAuthors] = useState(initial.authors ?? "");
@@ -203,7 +206,7 @@ function HymnEditor({
   return (
     <div className="bg-white border border-gray-200 rounded-lg p-6 space-y-4">
       <h2 className="text-sm font-semibold text-gray-500 uppercase tracking-wide">
-        {initial.title ? "Edit Hymn" : "New Hymn"}
+        {isNew ? "New Hymn" : "Edit Hymn"}
       </h2>
 
       <div>
@@ -213,7 +216,7 @@ function HymnEditor({
           onChange={setTitle}
           placeholder="e.g. Everlasting God"
         />
-        {initial.title && (
+        {!isNew && (
           <p className="text-xs text-gray-400 mt-1">
             Changing the title saves a new entry; the original is kept under its
             old name.
@@ -284,15 +287,18 @@ function HymnEditor({
 }
 
 // ---------------------------------------------------------------------------
-// Main page
+// Main page (inner — uses useSearchParams, must be wrapped in Suspense)
 // ---------------------------------------------------------------------------
 
-export default function HymnsPage() {
+function HymnsPageInner() {
+  const searchParams = useSearchParams();
+
   const [loadState, setLoadState] = useState<LoadState>("idle");
   const [loadError, setLoadError] = useState<string | null>(null);
   const [hymns, setHymns] = useState<Hymn[]>([]);
 
   const [editing, setEditing] = useState<Partial<Hymn> | null>(null);
+  const [editingIsNew, setEditingIsNew] = useState(false);
   const [saving, setSaving] = useState(false);
   const [saveError, setSaveError] = useState<string | null>(null);
   const [saved, setSaved] = useState(false);
@@ -320,6 +326,20 @@ export default function HymnsPage() {
 
   useEffect(() => {
     fetchHymns();
+  }, []);
+
+  // On initial mount, open the editor pre-filled with the title query param
+  // so that the "Add to library" deep-link from the bulletin editor works.
+  useEffect(() => {
+    const title = searchParams.get("title");
+    if (title) {
+      setSaved(false);
+      setSaveError(null);
+      setEditingIsNew(true);
+      setEditing({ title });
+    }
+    // Intentionally runs once on mount only — searchParams is stable on load.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   async function handleSave(data: {
@@ -372,12 +392,14 @@ export default function HymnsPage() {
   function handleEdit(hymn: Hymn) {
     setSaved(false);
     setSaveError(null);
+    setEditingIsNew(false);
     setEditing(hymn);
   }
 
   function handleAddNew() {
     setSaved(false);
     setSaveError(null);
+    setEditingIsNew(true);
     setEditing({});
   }
 
@@ -486,9 +508,28 @@ export default function HymnsPage() {
             saving={saving}
             saveError={saveError}
             saved={saved}
+            isNew={editingIsNew}
           />
         )}
       </main>
     </div>
+  );
+}
+
+// ---------------------------------------------------------------------------
+// Page shell — wraps inner in Suspense (required by Next.js for useSearchParams)
+// ---------------------------------------------------------------------------
+
+export default function HymnsPage() {
+  return (
+    <Suspense
+      fallback={
+        <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+          <p className="text-sm text-gray-500">Loading&hellip;</p>
+        </div>
+      }
+    >
+      <HymnsPageInner />
+    </Suspense>
   );
 }

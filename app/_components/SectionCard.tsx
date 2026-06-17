@@ -20,6 +20,7 @@ interface SectionCardProps {
   onMoveDown: () => void;
   onDelete: () => void;
   onSplit?: (itemIndex: number) => void;
+  isHymnKnown?: (title: string) => boolean;
 }
 
 // ----- Reusable field components -----
@@ -248,11 +249,18 @@ function LiturgyEditor({
 function SongEditor({
   section,
   onChange,
+  isHymnKnown,
 }: {
   section: Song;
   onChange: (updated: Song) => void;
+  isHymnKnown?: (title: string) => boolean;
 }) {
   const hasHymnal = section.hymnal !== undefined;
+  const titleTrimmed = section.title.trim();
+  const showUnknownWarning =
+    titleTrimmed !== "" &&
+    isHymnKnown !== undefined &&
+    !isHymnKnown(titleTrimmed);
 
   function toggleHymnal() {
     if (hasHymnal) {
@@ -270,6 +278,19 @@ function SongEditor({
         value={section.title}
         onChange={(v) => onChange({ ...section, title: v })}
       />
+      {showUnknownWarning && (
+        <p className="text-amber-700 bg-amber-50 border border-amber-200 rounded px-2 py-1 text-xs">
+          Not in the hymn library &mdash; slides will use placeholder lyrics.{" "}
+          <a
+            href={`/hymns?title=${encodeURIComponent(titleTrimmed)}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="underline font-medium"
+          >
+            Add to library
+          </a>
+        </p>
+      )}
       <TextInput
         label="Authors"
         value={section.authors ?? ""}
@@ -386,6 +407,7 @@ export function SectionCard({
   onMoveDown,
   onDelete,
   onSplit,
+  isHymnKnown,
 }: SectionCardProps) {
   function renderEditor() {
     switch (section.kind) {
@@ -409,6 +431,7 @@ export function SectionCard({
           <SongEditor
             section={section}
             onChange={onChange as (u: Song) => void}
+            isHymnKnown={isHymnKnown}
           />
         );
       case "reading":
