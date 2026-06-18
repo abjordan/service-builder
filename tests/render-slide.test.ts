@@ -164,7 +164,7 @@ describe("renderSlide — Slide union kinds", () => {
     const slide: Slide = {
       kind: "hymn",
       title: "A Mighty Fortress",
-      lines: ["Line 1", "Line 2"],
+      blocks: [{ lines: ["Line 1", "Line 2"] }],
     };
     const buf = await renderSlide(slide);
     assertValidPng(buf);
@@ -176,12 +176,16 @@ describe("renderSlide — Slide union kinds", () => {
       kind: "hymn",
       title: "A Mighty Fortress Is Our God",
       hymnNumber: "LSB 656",
-      tag: "verse 1",
-      lines: [
-        "A mighty fortress is our God,",
-        "A trusty shield and weapon;",
-        "He helps us free from ev'ry need",
-        "That hath us now o'ertaken.",
+      blocks: [
+        {
+          tag: "verse 1",
+          lines: [
+            "A mighty fortress is our God,",
+            "A trusty shield and weapon;",
+            "He helps us free from ev'ry need",
+            "That hath us now o'ertaken.",
+          ],
+        },
       ],
     };
     const buf = await renderSlide(slide);

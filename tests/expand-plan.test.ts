@@ -1,9 +1,10 @@
 import { describe, it, expect } from "vitest";
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
-import { expandPlan, splitTextForSlides } from "../lib/expand-plan";
+import { expandPlan, splitTextForSlides, packHymnBlocks } from "../lib/expand-plan";
 import type { ServicePlan } from "../lib/service-plan";
 import type { HymnLibrary } from "../lib/hymn-library";
+import type { HymnBlock } from "../lib/render-slide";
 
 // ---------------------------------------------------------------------------
 // Fixtures loaded once for the suite
@@ -240,7 +241,7 @@ describe("expandPlan — missing hymn handling", () => {
         s.sectionIndex === sectionIndex &&
         s.slide.kind === "hymn" &&
         s.slide.title === "Everlasting God" &&
-        s.slide.lines[0].includes("[Lyrics not in library"),
+        s.slide.blocks[0].lines[0].includes("[Lyrics not in library"),
     );
     expect(placeholder).toBeDefined();
   });
@@ -449,11 +450,12 @@ describe("expandPlan — copyright propagation", () => {
     const result = expandPlan(songPlan, { library: testLibrary });
     const hymnSlides = result.slides.filter((s) => s.slide.kind === "hymn");
 
-    expect(hymnSlides).toHaveLength(2);
-    for (const s of hymnSlides) {
-      if (s.slide.kind === "hymn") {
-        expect(s.slide.copyright).toBe(copyrightText);
-      }
+    // Two short blocks auto-pack onto one slide.
+    expect(hymnSlides).toHaveLength(1);
+    const slide = hymnSlides[0].slide;
+    if (slide.kind === "hymn") {
+      expect(slide.blocks).toHaveLength(2);
+      expect(slide.copyright).toBe(copyrightText);
     }
   });
 
@@ -488,5 +490,49 @@ describe("expandPlan — copyright propagation", () => {
     if (hymnSlides[0].slide.kind === "hymn") {
       expect(hymnSlides[0].slide.copyright).toBeUndefined();
     }
+  });
+});
+
+// ---------------------------------------------------------------------------
+// Test 12 — hymn block auto-packing
+// ---------------------------------------------------------------------------
+
+describe("packHymnBlocks", () => {
+  const block = (tag: string, lineCount: number): HymnBlock => ({
+    tag,
+    lines: Array.from({ length: lineCount }, (_, i) => `${tag} line ${i + 1}`),
+  });
+
+  it("packs several short blocks onto one slide", () => {
+    const groups = packHymnBlocks([block("verse-1", 2), block("chorus", 2)]);
+    expect(groups).toHaveLength(1);
+    expect(groups[0]).toHaveLength(2);
+  });
+
+  it("starts a new slide when the next block would overflow the budget", () => {
+    // Two ~9-line blocks cannot share the ~720px budget.
+    const groups = packHymnBlocks([block("verse-1", 9), block("verse-2", 9)]);
+    expect(groups).toHaveLength(2);
+  });
+
+  it("keeps an oversized single block on its own slide", () => {
+    const groups = packHymnBlocks([block("verse-1", 20)]);
+    expect(groups).toHaveLength(1);
+    expect(groups[0]).toHaveLength(1);
+  });
+
+  it("preserves block order across groups", () => {
+    const groups = packHymnBlocks([
+      block("verse-1", 6),
+      block("chorus", 2),
+      block("verse-2", 6),
+      block("chorus", 2),
+    ]);
+    const flatTags = groups.flat().map((b) => b.tag);
+    expect(flatTags).toEqual(["verse-1", "chorus", "verse-2", "chorus"]);
+  });
+
+  it("returns an empty array for no blocks", () => {
+    expect(packHymnBlocks([])).toEqual([]);
   });
 });

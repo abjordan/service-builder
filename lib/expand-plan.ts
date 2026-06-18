@@ -4,7 +4,7 @@
 // hymn library from disk and pass them in.
 
 import type { ServicePlan, LiturgyItem } from "./service-plan";
-import type { Slide, LiturgyLine } from "./render-slide";
+import type { Slide, LiturgyLine, HymnBlock } from "./render-slide";
 import type { HymnLibrary } from "./hymn-library";
 import { findHymnByTitle } from "./hymn-library";
 
@@ -164,6 +164,52 @@ function buildGospelAnnounce(citation: string): GospelAnnounce {
 }
 
 // ---------------------------------------------------------------------------
+// Hymn block auto-packing
+//
+// A hymn slide stacks one or more labeled blocks. Pack consecutive library
+// blocks onto a slide until the next one would overflow the available height.
+// Budget is calibrated against the default theme's renderHymn metrics on the
+// 1920×1080 canvas, after title, footer, and padding. A single block that
+// exceeds the budget on its own still gets its own slide (we don't split a
+// block mid-lyric here — manual slide breaks come in a later substage).
+// ---------------------------------------------------------------------------
+
+const HYMN_BLOCK_BUDGET_PX = 720;
+const HYMN_LINE_PX = 67; // 48px font × 1.4 line-height
+const HYMN_TAG_PX = 48; // tag label + its bottom margin
+const HYMN_BLOCK_GAP_PX = 28; // gap between stacked blocks
+
+function hymnBlockHeight(block: HymnBlock): number {
+  return (block.tag ? HYMN_TAG_PX : 0) + block.lines.length * HYMN_LINE_PX;
+}
+
+export function packHymnBlocks(blocks: HymnBlock[]): HymnBlock[][] {
+  const groups: HymnBlock[][] = [];
+  let current: HymnBlock[] = [];
+  let currentHeight = 0;
+
+  for (const block of blocks) {
+    const h = hymnBlockHeight(block);
+    if (current.length === 0) {
+      current = [block];
+      currentHeight = h;
+      continue;
+    }
+    const combined = currentHeight + HYMN_BLOCK_GAP_PX + h;
+    if (combined > HYMN_BLOCK_BUDGET_PX) {
+      groups.push(current);
+      current = [block];
+      currentHeight = h;
+    } else {
+      current.push(block);
+      currentHeight = combined;
+    }
+  }
+  if (current.length > 0) groups.push(current);
+  return groups;
+}
+
+// ---------------------------------------------------------------------------
 // Main entry point
 // ---------------------------------------------------------------------------
 
@@ -278,35 +324,41 @@ export function expandPlan(plan: ServicePlan, opts: ExpandOptions): ExpandResult
             {
               kind: "hymn",
               title: section.title,
-              lines: ["[Lyrics not in library — add via Stage 4 hymn editor]"],
+              blocks: [
+                { lines: ["[Lyrics not in library — add via Stage 4 hymn editor]"] },
+              ],
             },
             `${section.title} — slide 1/1`,
           );
           break;
         }
 
-        const total = hymn.slides.length;
         const hymnNumber =
           section.hymnal
             ? `${section.hymnal.source} ${section.hymnal.number}`
             : undefined;
 
-        for (const hymnSlide of hymn.slides) {
+        const blocks: HymnBlock[] = hymn.slides.map((hymnSlide) => {
           const rawTag = hymnSlide.tag.toLowerCase();
           const tag = rawTag === "unknown" ? undefined : rawTag;
-          const slideNum = counter + 1;
+          return { tag, lines: hymnSlide.lines };
+        });
+
+        const groups = packHymnBlocks(blocks);
+        const total = groups.length;
+
+        groups.forEach((group, idx) => {
           push(
             {
               kind: "hymn",
               title: hymn.title,
               hymnNumber,
-              tag,
-              lines: hymnSlide.lines,
+              blocks: group,
               ...(hymn.copyright ? { copyright: hymn.copyright } : {}),
             },
-            `${hymn.title} — slide ${slideNum}/${total}`,
+            `${hymn.title} — slide ${idx + 1}/${total}`,
           );
-        }
+        });
         break;
       }
 

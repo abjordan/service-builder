@@ -226,14 +226,40 @@ sibling sections (resolves the deferred "Salutation and Collect of the Day"
   new footer) rendered left-aligned because satori treats divs as flex, so
   `textAlign: center` is ignored — fixed with `justifyContent: center`.
 
-**4b-2b. Refrain placement (DEFERRED — needs design pass)**
-- `append-to-verse` / `own-slide` / `auto-split`. The reference deck renders a
-  verse AND its refrain as two labeled blocks on ONE slide, but the current
-  hymn `Slide` model is one tag + one flat `lines[]`, and imported hymn data
-  stores each block as a separate slide entry. This needs a multi-block hymn
-  slide type + expander composition + auto-split, grounded in several
-  reference slides. Own stage; overlaps the Stage 4 "per-hymn layout
-  overrides" goal.
+**4b-2b. Refrain placement (IN PROGRESS)**
+Design settled (grounded in Slide2/6/9): a hymn slide stacks one or more
+labeled blocks; blocks auto-pack onto a slide until full, with a manual
+slide-break override. Approach chosen over the narrower
+append/own/auto-split refrain policy because the references also group
+v1+v2 (no refrain), so general multi-block packing is the right primitive.
+Song-structure-map subtitle deferred.
+
+- **i — model + renderer (DONE).** Hymn `Slide` now carries
+  `blocks: { tag?, lines }[]` (was `tag?` + flat `lines[]`).
+  `renderHymn` stacks labeled blocks (hanging italic-gray label, indented
+  no-wrap lyrics, gap between blocks). Expander still emits one slide per
+  library block, so behavior is unchanged and all suites pass. Verified
+  visually against Slide2.
+  - Tags now render lowercase (`v1`, `chorus`) to match the reference;
+    `formatTag` no longer capitalizes.
+- **ii — expander auto-pack (DONE).** `packHymnBlocks` greedily groups
+  consecutive blocks onto a slide by an estimated px budget
+  (`HYMN_BLOCK_BUDGET_PX` 720; 67px/line, 48px/tag, 28px gap). One slide
+  per group; an oversized single block keeps its own slide. 5 unit tests
+  in `expand-plan.test.ts`.
+  - **Revealed (expected): the library data is the real blocker.** Each
+    `data/hymns.json` block is one coarse verse (7–16 lines), so nothing
+    packs and several blocks overflow 1080px on their own. `my-hope` also
+    has import corruption — copyright fragments ("Baloche", "kerrtunes",
+    …) leaked into its lyric lines. Auto-pack is correct; it has no
+    fine-grained blocks to combine. Fixing this is a data pass (re-import
+    or hand-edit via /hymns), tracked next.
+- **iii — manual slide-break override + data cleanup (NEXT).** Add a
+  per-block "start new slide here" affordance in the `/hymns` editor;
+  expander honors breaks (auto-pack fills only within a group). Pairs
+  naturally with cleaning up the corrupt/coarse library entries so the
+  packed output matches Slide2/6/9.
+- **iv (optional) — song-structure-map subtitle** under the title.
 
 **4c. Unknown-hymn detection + add-to-library flow** — DONE
 - The editor (review step) fetches the library and flags any `song` whose

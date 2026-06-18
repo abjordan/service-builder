@@ -18,10 +18,17 @@ import { defaultTheme } from "./themes/default/index";
 
 export type LiturgyLine = { speaker: "P" | "C" | "A" | "L"; text: string };
 
+/**
+ * One labeled lyric block on a hymn slide — a tag ("v1", "chorus") above its
+ * lyric lines. A hymn slide stacks one or more of these (e.g. a verse and its
+ * refrain on the same slide), matching the reference deck.
+ */
+export type HymnBlock = { tag?: string; lines: string[] };
+
 export type Slide =
   | { kind: "liturgy"; items: LiturgyLine[]; title?: string; citation?: string }
   | { kind: "reading"; title: string; citation: string; responseA: string; responseC: string }
-  | { kind: "hymn"; title: string; hymnNumber?: string; tag?: string; lines: string[]; copyright?: string };
+  | { kind: "hymn"; title: string; hymnNumber?: string; blocks: HymnBlock[]; copyright?: string };
 
 // ---------------------------------------------------------------------------
 // Back-compat alias for Stage 1 consumers (build-bundle imports this)
@@ -93,8 +100,7 @@ function adaptHymnVerse(s: HymnVerseSlide): Extract<Slide, { kind: "hymn" }> {
     kind: "hymn",
     title: s.hymnTitle,
     hymnNumber: s.hymnNumber,
-    tag: `verse ${s.verseNumber}`,
-    lines: s.lines,
+    blocks: [{ tag: `verse ${s.verseNumber}`, lines: s.lines }],
   };
 }
 

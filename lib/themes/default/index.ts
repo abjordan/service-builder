@@ -8,7 +8,7 @@ import fs from "fs";
 import path from "path";
 import type { Theme } from "../types";
 import type { SlideRenderResult } from "../types";
-import type { Slide, LiturgyLine } from "../../render-slide";
+import type { Slide, LiturgyLine, HymnBlock } from "../../render-slide";
 
 // ---------------------------------------------------------------------------
 // Logo — loaded once at module init as a base64 data URL
@@ -382,9 +382,80 @@ function renderReading(
 const HYMN_H_PAD = 96;
 const HYMN_V_PAD = 80;
 
+// Display a slug-style tag ("verse-1", "chorus") as "verse 1", "chorus".
+// Tags render lowercase to match the reference deck (Slide2/9).
+function formatTag(tag: string): string {
+  return tag.replace(/-/g, " ").toLowerCase();
+}
+
+// One labeled lyric block: italic gray hanging label above left-aligned,
+// no-wrap lyric lines. Reference: examples/20260614/Hymns/Slide2.PNG.
+function renderHymnBlock(block: HymnBlock, key: number): React.ReactElement {
+  const tagLabel = block.tag ? formatTag(block.tag) : null;
+  const children: React.ReactNode[] = [];
+
+  if (tagLabel) {
+    children.push(
+      React.createElement(
+        "div",
+        {
+          key: "tag",
+          style: {
+            fontFamily: "Source Serif Pro",
+            fontSize: 32,
+            fontWeight: 400,
+            fontStyle: "italic" as const,
+            color: "#555555",
+            marginBottom: 8,
+          },
+        },
+        tagLabel
+      )
+    );
+  }
+
+  for (let i = 0; i < block.lines.length; i++) {
+    children.push(
+      React.createElement(
+        "div",
+        {
+          key: `line-${i}`,
+          style: {
+            fontFamily: "Source Serif Pro",
+            fontSize: 48,
+            fontWeight: 400,
+            fontStyle: "normal" as const,
+            lineHeight: 1.4,
+            color: "#000000",
+            whiteSpace: "nowrap" as const,
+            // Lyrics hang to the right of the tag's left edge.
+            paddingLeft: 32,
+          },
+        },
+        block.lines[i]
+      )
+    );
+  }
+
+  return React.createElement(
+    "div",
+    {
+      key,
+      style: {
+        display: "flex",
+        flexDirection: "column" as const,
+        width: "100%",
+      },
+    },
+    ...children
+  );
+}
+
 function renderHymn(
   s: Extract<Slide, { kind: "hymn" }>
 ): SlideRenderResult {
+  const hasTag = s.blocks.some((b) => b.tag);
+
   // Title — centered, bold
   const titleEl = React.createElement(
     "div",
@@ -400,67 +471,25 @@ function renderHymn(
         fontStyle: "normal" as const,
         color: "#000000",
         textAlign: "center" as const,
-        marginBottom: s.tag ? 16 : 40,
+        marginBottom: hasTag ? 16 : 40,
         width: "100%",
       },
     },
     s.title
   );
 
-  // Tag — italic, gray, left-aligned above lyric block.
-  // Tag stored slug-style ("verse-1", "chorus"); display as "Verse 1", "Chorus".
-  const tagLabel = s.tag
-    ? s.tag
-        .replace(/-/g, " ")
-        .replace(/\b\w/g, (c) => c.toUpperCase())
-    : null;
-  const tagEl = tagLabel
-    ? React.createElement(
-        "div",
-        {
-          style: {
-            fontFamily: "Source Serif Pro",
-            fontSize: 32,
-            fontWeight: 400,
-            fontStyle: "italic" as const,
-            color: "#555555",
-            marginBottom: 16,
-            width: "100%",
-          },
-        },
-        tagLabel
-      )
-    : null;
-
-  // Lyric lines — left-aligned, no-wrap
-  const lyricsEl = React.createElement(
+  // Stack labeled blocks, with vertical space between them.
+  const blocksEl = React.createElement(
     "div",
     {
       style: {
         display: "flex",
         flexDirection: "column" as const,
         width: "100%",
-        gap: 4,
+        gap: 28,
       },
     },
-    ...s.lines.map((line, i) =>
-      React.createElement(
-        "div",
-        {
-          key: i,
-          style: {
-            fontFamily: "Source Serif Pro",
-            fontSize: 48,
-            fontWeight: 400,
-            fontStyle: "normal" as const,
-            lineHeight: 1.4,
-            color: "#000000",
-            whiteSpace: "nowrap" as const,
-          },
-        },
-        line
-      )
-    )
+    ...s.blocks.map((block, i) => renderHymnBlock(block, i))
   );
 
   // Footer — hymnNumber line then copyright lines, italic gray, bottom.
@@ -511,9 +540,7 @@ function renderHymn(
       )
     : null;
 
-  const children: React.ReactNode[] = [titleEl];
-  if (tagEl) children.push(tagEl);
-  children.push(lyricsEl);
+  const children: React.ReactNode[] = [titleEl, blocksEl];
   if (footerEl) children.push(footerEl);
 
   return {

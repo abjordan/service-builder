@@ -82,14 +82,18 @@ const SLIDES: Array<{ name: string; slide: Slide }> = [
     slide: {
       kind: "hymn",
       title: "Everlasting God",
-      tag: "v1",
-      lines: [
-        "Strength will rise as we wait upon the Lord.",
-        "We will wait upon the Lord, we will wait upon the Lord.",
-        "Strength will rise as we wait upon the Lord.",
-        "We will wait upon the Lord, we will wait upon the Lord.",
-        "Jesus, You reign forever;",
-        "Our hope, our strong deliverer.",
+      blocks: [
+        {
+          tag: "v1",
+          lines: [
+            "Strength will rise as we wait upon the Lord.",
+            "We will wait upon the Lord, we will wait upon the Lord.",
+            "Strength will rise as we wait upon the Lord.",
+            "We will wait upon the Lord, we will wait upon the Lord.",
+            "Jesus, You reign forever;",
+            "Our hope, our strong deliverer.",
+          ],
+        },
       ],
     },
   },
