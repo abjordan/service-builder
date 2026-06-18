@@ -22,6 +22,7 @@ function isValidHymnBody(body: unknown): body is Omit<Hymn, "id"> & { id?: strin
     if (typeof s.tag !== "string") return false;
     if (!Array.isArray(s.lines)) return false;
     if (s.lines.some((l) => typeof l !== "string")) return false;
+    if (s.startNewSlide !== undefined && typeof s.startNewSlide !== "boolean") return false;
   }
   if (b.authors !== undefined && typeof b.authors !== "string") return false;
   if (b.copyright !== undefined && typeof b.copyright !== "string") return false;

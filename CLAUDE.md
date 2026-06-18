@@ -72,8 +72,12 @@ are the source of visual truth.
   Lord." / "Praise to You, O Christ."; else → "This is the Word of the Lord." /
   "Thanks be to God."
 - **Hymn slides** are full 1920×1080 white background, centered Source Serif Pro
-  Bold title, italic gray tag ("v1", "chorus"), `whiteSpace: nowrap` lyric
-  lines, optional copyright footer.
+  Bold title, then one or more labeled lyric **blocks** — each a lowercase
+  italic gray hanging tag ("v1", "chorus") above left-indented
+  `whiteSpace: nowrap` lyric lines — and an optional copyright footer. The
+  hymn `Slide` carries `blocks: { tag?, lines }[]`; the expander packs
+  consecutive library blocks onto a slide by a px budget (`packHymnBlocks`)
+  and honors a per-block `startNewSlide` marker that forces a slide break.
 - **No `section-title` slide kind** — title is embedded in every strip.
 - **The LSBSymbol font's glyph is the filled box itself** — no extra rounded
   amber background; render glyphs in white/black at body-line size.

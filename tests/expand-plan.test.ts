@@ -536,3 +536,75 @@ describe("packHymnBlocks", () => {
     expect(packHymnBlocks([])).toEqual([]);
   });
 });
+
+// ---------------------------------------------------------------------------
+// Test 13 — manual slide-break markers (startNewSlide)
+// ---------------------------------------------------------------------------
+
+describe("expandPlan — manual slide breaks", () => {
+  const planFor = (): ServicePlan => ({
+    metadata: {
+      serviceDate: "2026-06-21",
+      liturgicalDay: "Test",
+      church: { name: "LCS" },
+    },
+    sections: [{ kind: "song", title: "Break Test", includeInSlides: true }],
+  });
+
+  it("forces a slide boundary at a startNewSlide marker that would otherwise pack", () => {
+    const library: HymnLibrary = {
+      songs: [
+        {
+          id: "break-test",
+          title: "Break Test",
+          slides: [
+            { tag: "verse-1", lines: ["short a"] },
+            { tag: "chorus", lines: ["short b"], startNewSlide: true },
+          ],
+        },
+      ],
+    };
+
+    const result = expandPlan(planFor(), { library });
+    const hymnSlides = result.slides.filter((s) => s.slide.kind === "hymn");
+    expect(hymnSlides).toHaveLength(2);
+  });
+
+  it("packs the same blocks onto one slide without the marker", () => {
+    const library: HymnLibrary = {
+      songs: [
+        {
+          id: "break-test",
+          title: "Break Test",
+          slides: [
+            { tag: "verse-1", lines: ["short a"] },
+            { tag: "chorus", lines: ["short b"] },
+          ],
+        },
+      ],
+    };
+
+    const result = expandPlan(planFor(), { library });
+    const hymnSlides = result.slides.filter((s) => s.slide.kind === "hymn");
+    expect(hymnSlides).toHaveLength(1);
+  });
+
+  it("a marker on the first block is a no-op", () => {
+    const library: HymnLibrary = {
+      songs: [
+        {
+          id: "break-test",
+          title: "Break Test",
+          slides: [
+            { tag: "verse-1", lines: ["short a"], startNewSlide: true },
+            { tag: "chorus", lines: ["short b"] },
+          ],
+        },
+      ],
+    };
+
+    const result = expandPlan(planFor(), { library });
+    const hymnSlides = result.slides.filter((s) => s.slide.kind === "hymn");
+    expect(hymnSlides).toHaveLength(1);
+  });
+});

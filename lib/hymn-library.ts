@@ -13,8 +13,13 @@ export type HymnSlideContent = {
   // Best-effort tag, e.g. "verse-1", "chorus", "bridge", or "unknown".
   // Heuristic only — Stage 4 will let the user re-tag in the library UI.
   tag: string;
-  // The lyric lines for this slide, in order.
+  // The lyric lines for this block, in order.
   lines: string[];
+  // Forces a rendered-slide boundary before this block. The expander packs
+  // consecutive blocks onto one slide by height; a block marked
+  // startNewSlide always begins a fresh slide regardless of remaining space.
+  // (The first block always starts a slide, so the flag is a no-op there.)
+  startNewSlide?: boolean;
 };
 
 export type Hymn = {

@@ -45,8 +45,10 @@ The **Hymn library** (reachable via the *Hymn library* link in the home-page
 header, or at `/hymns`) lets you add, edit, and delete the persistent hymn
 records that the build step uses to generate lyric slides. Each hymn stores a
 title, optional authors, an optional copyright/CCLI block (rendered as a
-footer on every slide of the hymn), and an ordered list of slides (tag +
-lyric lines).
+footer on every slide of the hymn), and an ordered list of lyric blocks (a
+tag plus lines). Blocks auto-pack onto slides to fill the screen — a verse
+and its refrain can share one slide; tick *Start new slide* on a block to
+force a break before it.
 
 Send the zip to the volunteer. They extract it to the exact path you entered,
 then in OBS: **Scene Collection › Import › pick `scene_collection.json`**.
@@ -67,8 +69,9 @@ then in OBS: **Scene Collection › Import › pick `scene_collection.json`**.
 - **Reading slides** — title + citation + A/C response on a single strip.
   Gospel readings get a pre-announce strip ("The Holy Gospel according to St.
   Matthew, the ninth chapter…") in addition to the post-response.
-- **Hymn slides** — full 1920×1080, centered title, italic verse/chorus tag,
-  no-wrap lyrics.
+- **Hymn slides** — full 1920×1080, centered title, then one or more labeled
+  lyric blocks (italic verse/chorus tag above no-wrap lines), with an optional
+  copyright footer.
 
 Excluded by default (overridable per-service via the Review UI):
 

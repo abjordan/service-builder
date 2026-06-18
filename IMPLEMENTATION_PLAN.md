@@ -254,11 +254,20 @@ Song-structure-map subtitle deferred.
     …) leaked into its lyric lines. Auto-pack is correct; it has no
     fine-grained blocks to combine. Fixing this is a data pass (re-import
     or hand-edit via /hymns), tracked next.
-- **iii — manual slide-break override + data cleanup (NEXT).** Add a
-  per-block "start new slide here" affordance in the `/hymns` editor;
-  expander honors breaks (auto-pack fills only within a group). Pairs
-  naturally with cleaning up the corrupt/coarse library entries so the
-  packed output matches Slide2/6/9.
+- **iii — manual slide-break override (machinery DONE).**
+  `HymnSlideContent` gains `startNewSlide?: boolean`. Expander partitions
+  blocks at markers, then auto-packs within each partition
+  (`partitions.flatMap(packHymnBlocks)`). `/hymns` editor: per-block
+  "Start new slide" checkbox (from block 2 on) with a "New slide" divider;
+  terminology shifted Slide→Block; hint added. API validation accepts the
+  optional boolean; the body spread persists it. 3 expander tests cover
+  marker-forces-break, no-marker-packs, first-block-no-op.
+  - **Data cleanup — user owns it (decided).** The four library entries
+    have import garbage / truncated / missing lyrics (`my-hope` garbage
+    lines + truncated chorus; `everlasting-god` missing its chorus).
+    Correct lyrics aren't in the data and won't be fabricated. User will
+    re-block and fix hymns via the now-working `/hymns` editor with the
+    real bulletin/lyrics in hand. No code task remaining here.
 - **iv (optional) — song-structure-map subtitle** under the title.
 
 **4c. Unknown-hymn detection + add-to-library flow** — DONE
@@ -299,7 +308,9 @@ Song-structure-map subtitle deferred.
 - Section-split utility: given a `LiturgyBlock` + item index, returns two
   `LiturgyBlock`s with the items distributed correctly.
 
-**Status**: In Progress (4a, 4b-1, 4b-2a, 4c, 4d done; 4b-2b refrain placement deferred)
+**Status**: In Progress (4a, 4b-1, 4b-2a, 4b-2b i/ii/iii, 4c, 4d done;
+4b-2b iv song-map subtitle optional/deferred; hymn data cleanup is the
+user's via the editor)
 
 ## Stage 5: Hybrid OBS Assembly + Download
 **Goal**: Maintain a base scene collection (cameras, audio, title cards, transitions);

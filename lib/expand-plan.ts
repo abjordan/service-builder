@@ -338,13 +338,22 @@ export function expandPlan(plan: ServicePlan, opts: ExpandOptions): ExpandResult
             ? `${section.hymnal.source} ${section.hymnal.number}`
             : undefined;
 
-        const blocks: HymnBlock[] = hymn.slides.map((hymnSlide) => {
+        // Partition blocks at manual slide breaks, then auto-pack within each
+        // partition. A block flagged startNewSlide forces a fresh slide; the
+        // packer still prevents overflow inside a partition.
+        const partitions: HymnBlock[][] = [];
+        for (const hymnSlide of hymn.slides) {
           const rawTag = hymnSlide.tag.toLowerCase();
           const tag = rawTag === "unknown" ? undefined : rawTag;
-          return { tag, lines: hymnSlide.lines };
-        });
+          const block: HymnBlock = { tag, lines: hymnSlide.lines };
+          if (hymnSlide.startNewSlide || partitions.length === 0) {
+            partitions.push([block]);
+          } else {
+            partitions[partitions.length - 1].push(block);
+          }
+        }
 
-        const groups = packHymnBlocks(blocks);
+        const groups = partitions.flatMap((p) => packHymnBlocks(p));
         const total = groups.length;
 
         groups.forEach((group, idx) => {

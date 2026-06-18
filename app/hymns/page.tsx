@@ -88,60 +88,87 @@ function SlideBlock({
 }) {
   const tagOptions = slideTagOptions(slide.tag);
   const text = linesToText(slide.lines);
+  // The first block always starts the first slide, so the break control only
+  // applies from the second block onward.
+  const canBreak = index > 0;
+  const breaksHere = canBreak && !!slide.startNewSlide;
 
   return (
-    <div className="border border-gray-200 rounded p-3 space-y-2 bg-gray-50">
-      <div className="flex items-center justify-between">
-        <div className="flex items-center gap-2">
-          <select
-            value={slide.tag}
-            onChange={(e) => onChange({ ...slide, tag: e.target.value })}
-            className="border border-gray-300 rounded px-2 py-1 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-blue-300"
-          >
-            {tagOptions.map((t) => (
-              <option key={t} value={t}>
-                {t}
-              </option>
-            ))}
-          </select>
-          <span className="text-xs text-gray-400">Slide {index + 1}</span>
+    <>
+      {breaksHere && (
+        <div className="flex items-center gap-2 pt-1" aria-hidden>
+          <span className="h-px flex-1 bg-blue-200" />
+          <span className="text-[10px] font-medium uppercase tracking-wide text-blue-400">
+            New slide
+          </span>
+          <span className="h-px flex-1 bg-blue-200" />
         </div>
-        <div className="flex items-center gap-1">
-          <button
-            onClick={onMoveUp}
-            disabled={index === 0}
-            title="Move up"
-            className="text-xs border border-gray-300 rounded px-2 py-1 hover:bg-gray-100 disabled:opacity-30 disabled:cursor-not-allowed"
-          >
-            ↑
-          </button>
-          <button
-            onClick={onMoveDown}
-            disabled={index === total - 1}
-            title="Move down"
-            className="text-xs border border-gray-300 rounded px-2 py-1 hover:bg-gray-100 disabled:opacity-30 disabled:cursor-not-allowed"
-          >
-            ↓
-          </button>
-          <button
-            onClick={onRemove}
-            title="Remove slide"
-            className="text-gray-400 hover:text-red-500 text-lg leading-none ml-1"
-          >
-            ✕
-          </button>
+      )}
+      <div className="border border-gray-200 rounded p-3 space-y-2 bg-gray-50">
+        <div className="flex items-center justify-between">
+          <div className="flex items-center gap-2">
+            <select
+              value={slide.tag}
+              onChange={(e) => onChange({ ...slide, tag: e.target.value })}
+              className="border border-gray-300 rounded px-2 py-1 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-blue-300"
+            >
+              {tagOptions.map((t) => (
+                <option key={t} value={t}>
+                  {t}
+                </option>
+              ))}
+            </select>
+            <span className="text-xs text-gray-400">Block {index + 1}</span>
+          </div>
+          <div className="flex items-center gap-1">
+            {canBreak && (
+              <label className="flex items-center gap-1 text-xs text-gray-500 mr-2 select-none cursor-pointer">
+                <input
+                  type="checkbox"
+                  checked={breaksHere}
+                  onChange={(e) =>
+                    onChange({ ...slide, startNewSlide: e.target.checked })
+                  }
+                />
+                Start new slide
+              </label>
+            )}
+            <button
+              onClick={onMoveUp}
+              disabled={index === 0}
+              title="Move up"
+              className="text-xs border border-gray-300 rounded px-2 py-1 hover:bg-gray-100 disabled:opacity-30 disabled:cursor-not-allowed"
+            >
+              ↑
+            </button>
+            <button
+              onClick={onMoveDown}
+              disabled={index === total - 1}
+              title="Move down"
+              className="text-xs border border-gray-300 rounded px-2 py-1 hover:bg-gray-100 disabled:opacity-30 disabled:cursor-not-allowed"
+            >
+              ↓
+            </button>
+            <button
+              onClick={onRemove}
+              title="Remove block"
+              className="text-gray-400 hover:text-red-500 text-lg leading-none ml-1"
+            >
+              ✕
+            </button>
+          </div>
         </div>
+        <textarea
+          value={text}
+          onChange={(e) =>
+            onChange({ ...slide, lines: textToLines(e.target.value) })
+          }
+          rows={4}
+          placeholder="One lyric line per row"
+          className="w-full border border-gray-300 rounded px-2 py-1.5 text-sm font-mono focus:outline-none focus:ring-2 focus:ring-blue-300 resize-y"
+        />
       </div>
-      <textarea
-        value={text}
-        onChange={(e) =>
-          onChange({ ...slide, lines: textToLines(e.target.value) })
-        }
-        rows={4}
-        placeholder="One lyric line per row"
-        className="w-full border border-gray-300 rounded px-2 py-1.5 text-sm font-mono focus:outline-none focus:ring-2 focus:ring-blue-300 resize-y"
-      />
-    </div>
+    </>
   );
 }
 
@@ -247,8 +274,12 @@ function HymnEditor({
 
       <div className="space-y-2">
         <label className="text-xs font-medium text-gray-400 uppercase tracking-wide">
-          Slides ({slides.length})
+          Lyric blocks ({slides.length})
         </label>
+        <p className="text-xs text-gray-400">
+          Blocks auto-pack onto slides to fill the screen. Tick &ldquo;Start new
+          slide&rdquo; to force a break before a block.
+        </p>
         {slides.map((slide, idx) => (
           <SlideBlock
             key={idx}
@@ -265,7 +296,7 @@ function HymnEditor({
           onClick={addSlide}
           className="text-xs border border-gray-300 rounded px-2 py-1 hover:bg-gray-100"
         >
-          + Add slide
+          + Add block
         </button>
       </div>
 
@@ -479,7 +510,7 @@ function HymnsPageInner() {
                       <p className="text-xs text-gray-500">{hymn.authors}</p>
                     )}
                     <p className="text-xs text-gray-400">
-                      {hymn.slides.length} slide
+                      {hymn.slides.length} block
                       {hymn.slides.length !== 1 ? "s" : ""}
                     </p>
                   </div>
