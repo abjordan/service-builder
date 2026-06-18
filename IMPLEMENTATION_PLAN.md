@@ -327,4 +327,35 @@ all PNG assets, paths relative so the bundle is portable.
 - Schema-validate the emitted .json against an OBS scene-collection JSON schema.
 - Diff test: regenerated `20260614.json` from a captured service-plan fixture is
   structurally equivalent to the hand-built original (allowing for known differences).
-**Status**: Not Started
+
+### Design (settled, grounded in 20260614.json)
+- **Splice model: infra-base + generated scenes** (chosen over fixed-shell
+  refill, for week-to-week robustness). Base supplies shared infrastructure
+  (1 camera dshow_input, audio devices, 2 vlc intro/outro, 3 color
+  backgrounds, 9 text title cards, transitions) + static bookend scenes.
+- **Bookends only**: Intro, Welcome (front) / Thanks, Outro, Black (back).
+- **Generated content scene** = shared-camera ref (bottom) + a `slideshow`
+  of that section's PNGs. Layout from the reference: hymn PNGs (1920×1080)
+  at pos (0,0) scale 1.0 (full-screen); strip PNGs (1920×360) at pos
+  (0,720) scale 1.0 (lower third over live camera).
+- **scene_order** = static front + generated (plan order) + static back.
+- Paths stay absolute (baked from the user's extract path) — OBS slideshow
+  sources require absolute paths.
+
+### Substages
+- **5a — Base template (DONE).** `lib/derive-base-template.ts`
+  (`deriveBaseTemplate`) keeps bookend scenes + the transitive source/group
+  closure (handles the Intro "Title Card" group), empties leftover
+  slideshow file lists (Outro "Announcements"), preserves audio/transition
+  config + canvas sentinel. `scripts/derive-base-template.ts` (npm run
+  `derive:base-template`) writes the checked-in `lib/base-template.json`
+  (6 scenes, 28 sources, down from 56). 11 unit tests.
+- **5b — Content-scene generator (NEXT).** Build one scene = shared-camera
+  ref + slideshow(PNG list) with per-kind layout. Unit test vs reference.
+- **5c — Splice + scene_order.** Map expanded sections → generated scenes;
+  assemble scene_order. Structural test.
+- **5d — Wire into build-bundle.** Replace the flat `emitMultiSceneCollection`
+  path; bundle grouped PNGs; update README + tests.
+- **5e — Import verification in OBS.**
+
+**Status**: In Progress (5a done)
