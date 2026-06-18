@@ -18,7 +18,7 @@ export type SceneSpec = {
 };
 
 // Trailing fields shared by both the slideshow source and the scene source.
-const SHARED_TRAILING: Record<string, unknown> = {
+export const SHARED_TRAILING: Record<string, unknown> = {
   mixers: 0,
   sync: 0,
   flags: 0,
@@ -37,9 +37,9 @@ const SHARED_TRAILING: Record<string, unknown> = {
 };
 
 // The sentinel UUID OBS uses to identify the main canvas.
-const MAIN_CANVAS_UUID = "6c69626f-6273-4c00-9d88-c5136d61696e";
+export const MAIN_CANVAS_UUID = "6c69626f-6273-4c00-9d88-c5136d61696e";
 
-function uuid(): string {
+export function uuid(): string {
   return globalThis.crypto.randomUUID();
 }
 

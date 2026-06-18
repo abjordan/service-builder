@@ -350,10 +350,20 @@ all PNG assets, paths relative so the bundle is portable.
   config + canvas sentinel. `scripts/derive-base-template.ts` (npm run
   `derive:base-template`) writes the checked-in `lib/base-template.json`
   (6 scenes, 28 sources, down from 56). 11 unit tests.
-- **5b — Content-scene generator (NEXT).** Build one scene = shared-camera
-  ref + slideshow(PNG list) with per-kind layout. Unit test vs reference.
-- **5c — Splice + scene_order.** Map expanded sections → generated scenes;
-  assemble scene_order. Structural test.
+- **5b — Content-scene generator (DONE).** `lib/generate-content-scene.ts`
+  (`generateContentScene`) builds a `scene` source + its `slideshow` source:
+  shared-camera ref on the bottom layer, slideshow on top with per-kind
+  layout (hymn full-screen scale 1.0; strip pos (0,720) scale 1.0),
+  `slide_mode: mode_manual`, sequential item ids + matching hotkeys, canvas
+  sentinel. Reuses `MAIN_CANVAS_UUID`/`SHARED_TRAILING`/`uuid` (now exported
+  from emit-scene-collection). 12 unit tests.
+- **5c — Splice + scene_order (NEXT).** Two pure pieces: (1) group expanded
+  slides by section → scene specs {name, kind, imagePaths} in plan order;
+  (2) splice generated scenes + slideshow sources into the base and build
+  scene_order = front bookends (Black2/Intro/Welcome) + generated +
+  back bookends (Thanks/Outro/Black) — content inserted between Welcome and
+  Thanks, matching the reference order. Resolve the shared camera from the
+  base by `id: dshow_input`. Structural tests.
 - **5d — Wire into build-bundle.** Replace the flat `emitMultiSceneCollection`
   path; bundle grouped PNGs; update README + tests.
 - **5e — Import verification in OBS.**
