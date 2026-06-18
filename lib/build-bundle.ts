@@ -6,15 +6,38 @@
  * buildServicePlanBundle — full ServicePlan path (all slides, one scene each).
  */
 
+import fs from "fs";
 import path from "path";
 import { PassThrough } from "stream";
 import archiver from "archiver";
 import { renderSlide } from "./render-slide";
 import type { HymnVerseSlide } from "./render-slide";
-import { emitSceneCollection, emitMultiSceneCollection } from "./emit-scene-collection";
+import { emitSceneCollection } from "./emit-scene-collection";
+import type { SceneCollection } from "./emit-scene-collection";
 import type { ServicePlan } from "./service-plan";
 import { expandPlan } from "./expand-plan";
 import { readLibrary } from "./hymn-library";
+import {
+  groupSlidesIntoSceneSpecs,
+  spliceContentScenes,
+} from "./assemble-collection";
+
+// The base scene collection (broadcast infrastructure + static bookend scenes)
+// that generated content scenes are spliced into. Loaded once per process.
+const BASE_TEMPLATE_PATH = path.join(
+  path.dirname(new URL(import.meta.url).pathname),
+  "base-template.json",
+);
+
+let _baseTemplate: SceneCollection | undefined;
+function loadBaseTemplate(): SceneCollection {
+  if (!_baseTemplate) {
+    _baseTemplate = JSON.parse(
+      fs.readFileSync(BASE_TEMPLATE_PATH, "utf-8"),
+    ) as SceneCollection;
+  }
+  return _baseTemplate;
+}
 
 export type Stage1BuildRequest = {
   collectionName: string;
@@ -124,7 +147,8 @@ function pad(n: number): string {
  *   2. Expand the plan via expandPlan.
  *   3. Render each slide sequentially (satori is CPU-bound).
  *   4. Name PNGs: assets/{NN}-{slide.id}.png
- *   5. Emit a multi-scene OBS collection (one scene per slide).
+ *   5. Group slides into per-section content scenes and splice them into the
+ *      base template (shared camera/audio + static bookend scenes).
  *   6. Bundle everything into a zip with a README.
  */
 export async function buildServicePlanBundle(
@@ -167,9 +191,17 @@ export async function buildServicePlanBundle(
     rendered.push({ filename, absPath, label, png });
   }
 
-  // 3. Emit multi-scene collection.
-  const sceneSpecs = rendered.map((r) => ({ name: r.label, imagePath: r.absPath }));
-  const sceneCollection = emitMultiSceneCollection(collectionName, sceneSpecs);
+  // 3. Group rendered slides into per-section content scenes and splice them
+  //    into the base template (camera/audio/bookends), in plan order.
+  //    `rendered` is index-aligned with `expandedSlides`.
+  const sceneSpecs = groupSlidesIntoSceneSpecs(
+    plan,
+    expandedSlides,
+    (_slide, i) => rendered[i].absPath,
+  );
+  const sceneCollection = spliceContentScenes(loadBaseTemplate(), sceneSpecs, {
+    collectionName,
+  });
   const sceneCollectionJson = JSON.stringify(sceneCollection, null, 2);
 
   // 4. Build README.
@@ -182,8 +214,8 @@ export async function buildServicePlanBundle(
         ]
       : [];
 
-  const slideIndex = rendered.map(
-    (r, i) => `  ${pad(i + 1)}. ${r.label}`,
+  const sceneIndex = sceneSpecs.map(
+    (s, i) => `  ${pad(i + 1)}. ${s.name} (${s.imagePaths.length} slide${s.imagePaths.length !== 1 ? "s" : ""})`,
   );
 
   const readme = [
@@ -193,8 +225,8 @@ export async function buildServicePlanBundle(
     "IMPORTANT: Extract this zip to EXACTLY the following path:",
     `  ${obsExtractPath}`,
     "",
-    "OBS image sources reference slides by absolute path. If you extract",
-    "the zip to a different location, OBS will show broken image sources.",
+    "OBS slideshow sources reference slides by absolute path. If you extract",
+    "the zip to a different location, OBS will show broken sources.",
     "",
     "To import the scene collection into OBS:",
     "  1. Extract this zip to the path shown above.",
@@ -203,11 +235,13 @@ export async function buildServicePlanBundle(
     "  4. Select: scene_collection.json (from the extracted folder).",
     "  5. Switch to the imported collection.",
     "",
-    "Advance through the service by clicking each scene in OBS's Scene panel",
-    "in order. The scenes are pre-named to match the order of service.",
+    "The collection keeps your base scenes (Intro, Welcome, Thanks, Outro,",
+    "camera, audio) and adds one content scene per section between Welcome",
+    "and Thanks. Each content scene plays its slides as a manual slideshow —",
+    "advance with the slideshow's next-slide control.",
     "",
-    `Slides in this bundle (${rendered.length} total):`,
-    ...slideIndex,
+    `Generated content scenes (${sceneSpecs.length}, in order):`,
+    ...sceneIndex,
     ...warningLines,
   ].join("\n");
 

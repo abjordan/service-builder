@@ -357,15 +357,28 @@ all PNG assets, paths relative so the bundle is portable.
   `slide_mode: mode_manual`, sequential item ids + matching hotkeys, canvas
   sentinel. Reuses `MAIN_CANVAS_UUID`/`SHARED_TRAILING`/`uuid` (now exported
   from emit-scene-collection). 12 unit tests.
-- **5c — Splice + scene_order (NEXT).** Two pure pieces: (1) group expanded
-  slides by section → scene specs {name, kind, imagePaths} in plan order;
-  (2) splice generated scenes + slideshow sources into the base and build
-  scene_order = front bookends (Black2/Intro/Welcome) + generated +
-  back bookends (Thanks/Outro/Black) — content inserted between Welcome and
-  Thanks, matching the reference order. Resolve the shared camera from the
-  base by `id: dshow_input`. Structural tests.
-- **5d — Wire into build-bundle.** Replace the flat `emitMultiSceneCollection`
-  path; bundle grouped PNGs; update README + tests.
-- **5e — Import verification in OBS.**
+- **5c — Splice + scene_order (DONE).** `lib/assemble-collection.ts`:
+  `groupSlidesIntoSceneSpecs` folds the flat ExpandedSlide list into one
+  scene spec per contiguous section (name from section title, deduped;
+  kind hymn→full-screen, liturgy/reading→strip; image paths via a
+  `pathFor` callback). `spliceContentScenes` deep-clones the base, resolves
+  the shared camera by `id: dshow_input`, generates a scene+slideshow per
+  spec, and rebuilds scene_order = front bookends + generated (plan order)
+  + back bookends (insert after "Welcome"). 8 tests incl. a real
+  plan+library+base end-to-end.
+- **5d — Wire into build-bundle (DONE).** `buildServicePlanBundle` now
+  renders PNGs → groups into scene specs → splices into the base template
+  (loaded once from `lib/base-template.json`) instead of the flat
+  one-scene-per-slide `emitMultiSceneCollection`. In-bundle README rewritten
+  to explain base + content scenes; user-facing README + CLAUDE.md synced.
+  All 14 build-bundle tests still green (zip-structure contracts preserved).
+  Verified on the example plan: 16 content scenes spliced in order between
+  Welcome and Thanks, 60 sources, one shared camera.
+  - Note: generated scene names come straight from parsed section titles, so
+    some read awkwardly ("Psalm  Psalm 100; antiphon: v. 5"). Cosmetic /
+    upstream parser-or-editor concern, not an assembly bug.
+- **5e — Import verification in OBS (NEEDS USER).** Build a bundle, extract
+  to the stated path, import into OBS, confirm scenes load and slides show.
+  Requires OBS on the operator machine — the producer's to run.
 
-**Status**: In Progress (5a done)
+**Status**: In Progress (5a–5d done; 5e import-check is the user's)

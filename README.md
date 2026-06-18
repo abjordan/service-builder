@@ -53,12 +53,17 @@ force a break before it.
 Send the zip to the volunteer. They extract it to the exact path you entered,
 then in OBS: **Scene Collection › Import › pick `scene_collection.json`**.
 
-> **Path warning.** OBS image sources are absolute paths. The bundle is
+The collection keeps your **base scenes** (Intro, Welcome, Thanks, Outro,
+shared camera, audio) and splices **one content scene per service section**
+between *Welcome* and *Thanks*, in order. Each content scene overlays its
+slides — full-screen for hymns, lower-third strip over the camera for
+liturgy — as a manual slideshow the volunteer clicks through.
+
+> **Path warning.** OBS slideshow sources are absolute paths. The bundle is
 > location-specific: whatever path you typed during Build is baked into the
 > scene collection. If the volunteer extracts somewhere else, OBS won't find
-> the images. Hardening this — relative paths or a post-extract path-fix
-> script — is a Stage 5 item; for now the producer and volunteer have to
-> coordinate.
+> the images. This is inherent to OBS (slideshow/image sources require
+> absolute paths), so producer and volunteer must agree on the extract path.
 
 ## What's in the deck
 
@@ -111,11 +116,12 @@ Source layout:
 
 ## Project status
 
-Stages 1–3 complete. Stage 3.5 (navigation polish) is wrapping up — Upload →
-Review → Preview → Build is now end-to-end. Stage 4 (hymn library editor +
-add-from-prompt) is next. Stage 5 (hybrid OBS assembly with a base scene
-template) caps the roadmap. See [`IMPLEMENTATION_PLAN.md`](./IMPLEMENTATION_PLAN.md)
-for the stage tracker.
+Stages 1–4 complete: Upload → Review → Preview → Build is end-to-end, and the
+hymn library editor handles week-to-week edits. Stage 5 (hybrid OBS assembly —
+splicing generated content scenes into a base scene collection) is in progress;
+the build now emits a full collection with base scenes plus per-section content
+scenes. See [`IMPLEMENTATION_PLAN.md`](./IMPLEMENTATION_PLAN.md) for the stage
+tracker.
 
 ## More docs
 

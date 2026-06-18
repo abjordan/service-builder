@@ -158,6 +158,19 @@ This repo uses **git**. Default branch is `main`.
 - Use `crypto.randomUUID()` for all other scene/source UUIDs.
 - Reference template: `examples/20260614/20260614.json` (round-tripped through
   the emitter unit test).
+- **Stage 5 assembly pipeline** (hybrid build):
+  - `lib/base-template.json` — checked-in base (broadcast infra + bookend
+    scenes), derived from the reference by `lib/derive-base-template.ts`. Regen
+    with `npm run derive:base-template`; don't hand-edit.
+  - `lib/generate-content-scene.ts` — one content scene = shared camera
+    (`id: dshow_input`, referenced by uuid) under a manual `slideshow`. Layout:
+    hymn full-screen `pos (0,0) scale 1`; strip `pos (0,720) scale 1` (our PNGs
+    are canvas-res, so scale 1.0 — unlike the reference's fractional scales).
+  - `lib/assemble-collection.ts` — `groupSlidesIntoSceneSpecs` (one scene per
+    contiguous section) + `spliceContentScenes` (weave generated scenes into
+    base scene_order, between "Welcome" and "Thanks").
+  - `buildServicePlanBundle` wires render → group → splice. Slideshow file
+    paths stay **absolute** (OBS requirement); `obsExtractPath` is baked in.
 
 ## Reference materials
 - `examples/{YYYYMMDD}/` — past-service artifacts. Today's is `20260614`.
