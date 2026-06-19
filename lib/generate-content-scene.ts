@@ -5,12 +5,10 @@
 // Layout depends on slide kind, matching the reference collection:
 //   - "hymn"  (1920×1080 full slides): slideshow fills the canvas, covering
 //     the camera — pos (0,0), scale 1.0.
-//   - "strip" (1920×360 liturgy/reading lower-thirds): slideshow sits in the
-//     bottom third over the live camera — pos (0,720), scale 1.0.
-//
-// Our renderer already outputs at canvas resolution, so the slideshow renders
-// at scale 1.0 (the reference's fractional scales only compensate for its
-// oversized native PNGs).
+//   - "strip" (3230×360 liturgy/reading lower-thirds): scaled to span the full
+//     1920 width, which lands it at 1920×214 anchored to the bottom — pos
+//     (0,866), scale 0.5944 (= 1920/3230). This gives the slim ~9:1 lower
+//     third of the reference deck rather than a chunky 1920×360 band.
 
 import {
   MAIN_CANVAS_UUID,
@@ -52,7 +50,7 @@ function slideshowLayout(kind: ContentSlideKind): { pos: Vec2; scale: Vec2 } {
     case "hymn":
       return { pos: { x: 0.0, y: 0.0 }, scale: { x: 1.0, y: 1.0 } };
     case "strip":
-      return { pos: { x: 0.0, y: 720.0 }, scale: { x: 1.0, y: 1.0 } };
+      return { pos: { x: 0.0, y: 866.0 }, scale: { x: 0.5944, y: 0.5944 } };
   }
 }
 

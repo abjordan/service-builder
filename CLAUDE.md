@@ -59,9 +59,12 @@ or gotcha changes, update `CLAUDE.md`.
 This was the hardest thing to get right. Reference PNGs in `examples/20260614/`
 are the source of visual truth.
 
-- **Liturgy slides are lower-third strips**, NOT full-screen. Canvas 1920×360,
-  white background.
-  - Logo column on the left (~312×312).
+- **Liturgy slides are lower-third strips**, NOT full-screen. Canvas 3230×360
+  (the reference native size, aspect ~9:1), white background. The OBS scene
+  places them at scale ~0.59 → 1920×214, a slim lower third over the live
+  camera. Rendering at the wide native size (not 1920×360) keeps the strip from
+  becoming a chunky 1/3-height band.
+  - Logo column on the left (~300×300).
   - Italic Source Serif Pro **title** at top of body. Psalm shape: title left +
     citation right.
   - Body: LSBSymbol speaker glyph + serif text. **C lines are bold (700);
@@ -174,8 +177,8 @@ This repo uses **git**. Default branch is `main`.
 
 ## Reference materials
 - `examples/{YYYYMMDD}/` — past-service artifacts. Today's is `20260614`.
-- `examples/20260614/Liturgy/*.PNG` — lower-third strips (3230×360 native, our
-  renderer outputs 1920×360).
+- `examples/20260614/Liturgy/*.PNG` — lower-third strips (3230×360 native; our
+  renderer matches this size).
 - `examples/20260614/Hymns/*.PNG` — full hymn slides (4800×2700 native, our
   renderer outputs 1920×1080).
 - `examples/Liturgy.pptx`, `examples/Hymns.pptx` — source PowerPoint decks.

@@ -82,7 +82,7 @@ describe("generateContentScene", () => {
     expect(slide.scale).toEqual({ x: 1, y: 1 });
   });
 
-  it("lays a strip slideshow in the bottom third at pos (0,720)", () => {
+  it("lays a strip slideshow as a slim bottom third at pos (0,866) scale 0.5944", () => {
     const { sceneSource } = generateContentScene({
       sceneName: "Conf., Abs.",
       kind: "strip",
@@ -90,8 +90,8 @@ describe("generateContentScene", () => {
       camera,
     });
     const slide = items(sceneSource).find((i) => i.name.endsWith("Slides"))!;
-    expect(slide.pos).toEqual({ x: 0, y: 720 });
-    expect(slide.scale).toEqual({ x: 1, y: 1 });
+    expect(slide.pos).toEqual({ x: 0, y: 866 });
+    expect(slide.scale).toEqual({ x: 0.5944, y: 0.5944 });
   });
 
   it("omits the camera layer when no camera is given", () => {

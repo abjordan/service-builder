@@ -204,35 +204,48 @@ function main(): void {
     const hymnSlides: HymnSlideContent[] = [];
 
     for (const slide of group.slides) {
-      // Process each run:
-      // - skip song title
-      // - skip boilerplate
-      // - ALL section labels are structural (skip them; the first one sets the tag)
-      let tag = "unknown";
-      let foundLabel = false;
-      const lyricLines: string[] = [];
+      // Split each PPTX slide into its labeled sections. Header runs (title,
+      // copyright, attribution) precede the first section label and are
+      // skipped wholesale; a slide commonly carries a verse AND its chorus, so
+      // each label starts a new block to keep verse and refrain distinct.
+      type Block = { tag: string; lines: string[] };
+      const blocks: Block[] = [];
+      let current: Block | null = null;
 
       for (const run of slide.runs) {
-        // Skip song title repeated at top of every slide
-        if (normTitle(run).includes(normTitle(group.meta.title))) continue;
-        // Skip copyright / stanza-plan boilerplate
-        if (isBoilerplateLine(run)) continue;
-        // Section labels are structural — first one sets the tag, all are skipped
+        // The song title repeats on every slide. Match it EXACTLY — a lyric
+        // line that merely contains the title (e.g. the hook "You are the
+        // everlasting God") is not the title and must be kept.
+        if (normTitle(run) === normTitle(group.meta.title)) continue;
+
         if (isSectionLabel(run)) {
-          if (!foundLabel) {
-            tag = inferTag(run);
-            foundLabel = true;
-          }
-          // Always skip: secondary labels on the same slide (e.g. "chorus" after "v1")
+          if (current && current.lines.length > 0) blocks.push(current);
+          current = { tag: inferTag(run), lines: [] };
           continue;
         }
-        // Lyric line
-        lyricLines.push(run);
-      }
 
-      if (lyricLines.length > 0) {
-        hymnSlides.push({ tag, lines: lyricLines });
+        // Before the first label everything is header / copyright / attribution
+        // (often fragmented across many runs) — skip it.
+        if (!current) continue;
+
+        // Boilerplate that appears mid-lyric, e.g. the stanza-plan line
+        // "Verse 1, Chorus, Verse 2, ...".
+        if (isBoilerplateLine(run)) continue;
+
+        current.lines.push(run);
       }
+      if (current && current.lines.length > 0) blocks.push(current);
+
+      // Each PPTX slide is one on-screen slide. Mark the first block of each
+      // slide (after the very first) as a manual break so the expander keeps a
+      // slide's verse + refrain together instead of repacking purely by height.
+      blocks.forEach((b, i) => {
+        hymnSlides.push({
+          tag: b.tag,
+          lines: b.lines,
+          ...(i === 0 && hymnSlides.length > 0 ? { startNewSlide: true } : {}),
+        });
+      });
     }
 
     const hymn: Hymn = {

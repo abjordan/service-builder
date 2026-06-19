@@ -43,7 +43,7 @@ export type ExpandResult = {
 // Helpers
 // ---------------------------------------------------------------------------
 
-// Max characters of body text that fit on a single 1920×360 liturgy strip
+// Max characters of body text that fit on a single 3230×360 liturgy strip
 // without overflowing. Calibrated against the renderer's font (Source Serif
 // Pro 40px) and the available body area (~1432px wide × 4–5 lines tall).
 // Pairs are bounded by `pairCharThreshold` (200), so this only kicks in for
@@ -174,9 +174,12 @@ function buildGospelAnnounce(citation: string): GospelAnnounce {
 // block mid-lyric here — manual slide breaks come in a later substage).
 // ---------------------------------------------------------------------------
 
-const HYMN_BLOCK_BUDGET_PX = 720;
-const HYMN_LINE_PX = 67; // 48px font × 1.4 line-height
-const HYMN_TAG_PX = 48; // tag label + its bottom margin
+// Calibrated against renderHymn: 1080 canvas minus padding (160) and the
+// title row (~262 total fixed overhead) leaves ~818px for stacked blocks, so a
+// verse and its refrain land together; an 8-line verse + refrain still splits.
+const HYMN_BLOCK_BUDGET_PX = 800;
+const HYMN_LINE_PX = 62; // 48px font × 1.3 line-height
+const HYMN_TAG_PX = 40; // tag label + its bottom margin
 const HYMN_BLOCK_GAP_PX = 28; // gap between stacked blocks
 
 function hymnBlockHeight(block: HymnBlock): number {

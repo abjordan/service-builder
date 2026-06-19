@@ -67,7 +67,7 @@ liturgy — as a manual slideshow the volunteer clicks through.
 
 ## What's in the deck
 
-- **Liturgy strips** — 1920×360 lower-third overlays with the church logo on
+- **Liturgy strips** — slim ~9:1 lower-third overlays with the church logo on
   the left, italic Source Serif Pro title, and P/A/L lines normal weight with
   Congregation (C) lines bold. One slide per spoken exchange; long prayers
   auto-split at sentence boundaries.

@@ -72,17 +72,17 @@ describe("renderSlide — back-compat HymnVerseSlide (Stage 1)", () => {
 // ---------------------------------------------------------------------------
 
 describe("renderSlide — Slide union kinds", () => {
-  it("liturgy (single item): produces valid 1920×360 PNG strip", async () => {
+  it("liturgy (single item): produces valid 3230×360 PNG strip", async () => {
     const slide: Slide = {
       kind: "liturgy",
       items: [{ speaker: "P", text: "The Lord be with you." }],
     };
     const buf = await renderSlide(slide);
     assertValidPng(buf);
-    assertPngDimensions(buf, 1920, 360);
+    assertPngDimensions(buf, 3230, 360);
   });
 
-  it("liturgy (two items, auto-paired): produces valid 1920×360 PNG strip", async () => {
+  it("liturgy (two items, auto-paired): produces valid 3230×360 PNG strip", async () => {
     const slide: Slide = {
       kind: "liturgy",
       items: [
@@ -92,20 +92,20 @@ describe("renderSlide — Slide union kinds", () => {
     };
     const buf = await renderSlide(slide);
     assertValidPng(buf);
-    assertPngDimensions(buf, 1920, 360);
+    assertPngDimensions(buf, 3230, 360);
   });
 
-  it("liturgy (single item, speaker C): produces valid 1920×360 PNG strip", async () => {
+  it("liturgy (single item, speaker C): produces valid 3230×360 PNG strip", async () => {
     const slide: Slide = {
       kind: "liturgy",
       items: [{ speaker: "C", text: "And also with you." }],
     };
     const buf = await renderSlide(slide);
     assertValidPng(buf);
-    assertPngDimensions(buf, 1920, 360);
+    assertPngDimensions(buf, 3230, 360);
   });
 
-  it("liturgy with title: produces valid 1920×360 PNG strip", async () => {
+  it("liturgy with title: produces valid 3230×360 PNG strip", async () => {
     const slide: Slide = {
       kind: "liturgy",
       title: "Salutation and Collect of the Day",
@@ -116,10 +116,10 @@ describe("renderSlide — Slide union kinds", () => {
     };
     const buf = await renderSlide(slide);
     assertValidPng(buf);
-    assertPngDimensions(buf, 1920, 360);
+    assertPngDimensions(buf, 3230, 360);
   });
 
-  it("liturgy with title and citation (Psalm shape): produces valid 1920×360 PNG strip", async () => {
+  it("liturgy with title and citation (Psalm shape): produces valid 3230×360 PNG strip", async () => {
     const slide: Slide = {
       kind: "liturgy",
       title: "Psalm",
@@ -131,10 +131,10 @@ describe("renderSlide — Slide union kinds", () => {
     };
     const buf = await renderSlide(slide);
     assertValidPng(buf);
-    assertPngDimensions(buf, 1920, 360);
+    assertPngDimensions(buf, 3230, 360);
   });
 
-  it("reading (OT): produces valid 1920×360 PNG strip", async () => {
+  it("reading (OT): produces valid 3230×360 PNG strip", async () => {
     const slide: Slide = {
       kind: "reading",
       title: "Old Testament Reading",
@@ -144,10 +144,10 @@ describe("renderSlide — Slide union kinds", () => {
     };
     const buf = await renderSlide(slide);
     assertValidPng(buf);
-    assertPngDimensions(buf, 1920, 360);
+    assertPngDimensions(buf, 3230, 360);
   });
 
-  it("reading (Gospel): produces valid 1920×360 PNG strip", async () => {
+  it("reading (Gospel): produces valid 3230×360 PNG strip", async () => {
     const slide: Slide = {
       kind: "reading",
       title: "Holy Gospel",
@@ -157,7 +157,7 @@ describe("renderSlide — Slide union kinds", () => {
     };
     const buf = await renderSlide(slide);
     assertValidPng(buf);
-    assertPngDimensions(buf, 1920, 360);
+    assertPngDimensions(buf, 3230, 360);
   });
 
   it("hymn: produces valid 1920×1080 PNG", async () => {

@@ -30,29 +30,34 @@ const LOGO_DATA_URL: string = loadLogoDataUrl();
 // Dimensions
 // ---------------------------------------------------------------------------
 
-const STRIP_WIDTH = 1920;
+// Strips are rendered at the reference native size (3230×360, aspect ~9:1) so
+// that, placed full-width in the 1920×1080 scene, they occupy a slim lower
+// third (1920×214) like the reference deck — not a chunky 1920×360 band.
+const STRIP_WIDTH = 3230;
 const STRIP_HEIGHT = 360;
 const HYMN_WIDTH = 1920;
 const HYMN_HEIGHT = 1080;
 
 // Logo column rendered at this size — square, vertically centered in strip
-const LOGO_SIZE = 280;
+const LOGO_SIZE = 300;
 
 // Strip outer padding
-const STRIP_H_PAD = 32;
+const STRIP_H_PAD = 48;
 const STRIP_V_PAD = 20;
 
-// Body text metrics (fontSize × lineHeight)
-const BODY_FONT_SIZE = 40;
-const BODY_LINE_HEIGHT = 1.3;
+// Body text metrics (fontSize × lineHeight). Sized for the 3230-wide canvas so
+// that, after the ~0.59 downscale into the scene, body text reads at a
+// comfortable broadcast size.
+const BODY_FONT_SIZE = 60;
+const BODY_LINE_HEIGHT = 1.25;
 // Actual pixel height of one body line-box
-const BODY_LINE_BOX = Math.round(BODY_FONT_SIZE * BODY_LINE_HEIGHT); // 52px
+const BODY_LINE_BOX = Math.round(BODY_FONT_SIZE * BODY_LINE_HEIGHT);
 
 // Glyph column fixed width (enough for the LSBSymbol box character)
-const GLYPH_COL_WIDTH = 80;
+const GLYPH_COL_WIDTH = 110;
 
 // ---------------------------------------------------------------------------
-// Shared helper: strip root (1920×360, white, logo left + content right)
+// Shared helper: strip root (3230×360, white, logo left + content right)
 // ---------------------------------------------------------------------------
 
 function stripRoot(children: React.ReactNode): React.ReactElement {
@@ -110,43 +115,59 @@ function stripRoot(children: React.ReactNode): React.ReactElement {
 // and render the wrapped span in LSBSymbol so the correct glyph appears.
 // ---------------------------------------------------------------------------
 
-const LSB_MARKER_RE = /\{\{lsb:([^}]+)\}\}/g;
+// Split text into the {{lsb:X}} markers and the plain runs between them.
+const LSB_SPLIT_RE = /(\{\{lsb:[^}]+\}\})/g;
+const LSB_TOKEN_RE = /^\{\{lsb:([^}]+)\}\}$/;
 
+// Render a body line as a sequence of word-level inline spans. Each word (and
+// each LSB glyph) is its own flex item so wrapping happens between words. A
+// single wrapping text node would instead occupy a full-width multi-line block
+// and force any following inline item (e.g. the cross glyph) onto a new row —
+// which is the bug this avoids.
 function renderTextWithLsb(
   text: string,
   baseFontSize: number,
   _fontWeight: number
 ): React.ReactNode[] {
-  const segments: React.ReactNode[] = [];
-  let lastIndex = 0;
-  let match: RegExpExecArray | null;
-  LSB_MARKER_RE.lastIndex = 0;
-  while ((match = LSB_MARKER_RE.exec(text)) !== null) {
-    if (match.index > lastIndex) {
-      segments.push(text.slice(lastIndex, match.index));
-    }
-    segments.push(
-      React.createElement(
-        "span",
-        {
-          key: `lsb-${match.index}`,
-          style: {
-            fontFamily: "LSBSymbol",
-            fontSize: Math.round(baseFontSize * 0.85),
-            fontWeight: 400,
-            margin: "0 8px",
+  // Word gap, in px — approximates a normal space at this font size.
+  const gap = Math.round(baseFontSize * 0.27);
+  const out: React.ReactNode[] = [];
+  let key = 0;
+
+  for (const part of text.split(LSB_SPLIT_RE)) {
+    if (part === "") continue;
+    const lsb = part.match(LSB_TOKEN_RE);
+    if (lsb) {
+      out.push(
+        React.createElement(
+          "span",
+          {
+            key: key++,
+            style: {
+              fontFamily: "LSBSymbol",
+              fontSize: Math.round(baseFontSize * 0.85),
+              fontWeight: 400,
+              marginRight: gap,
+            },
           },
-        },
-        match[1]
-      )
-    );
-    lastIndex = match.index + match[0].length;
+          lsb[1]
+        )
+      );
+      continue;
+    }
+    for (const word of part.split(/\s+/)) {
+      if (word === "") continue;
+      out.push(
+        React.createElement(
+          "span",
+          { key: key++, style: { marginRight: gap } },
+          word
+        )
+      );
+    }
   }
-  if (lastIndex < text.length) {
-    segments.push(text.slice(lastIndex));
-  }
-  if (segments.length === 0) return [text];
-  return segments;
+
+  return out;
 }
 
 // ---------------------------------------------------------------------------
@@ -239,7 +260,7 @@ function renderLiturgy(
         {
           style: {
             fontFamily: "Source Serif Pro",
-            fontSize: 36,
+            fontSize: 54,
             fontWeight: 700,
             fontStyle: "italic" as const,
             color: "#000000",
@@ -252,7 +273,7 @@ function renderLiturgy(
         {
           style: {
             fontFamily: "Source Serif Pro",
-            fontSize: 36,
+            fontSize: 54,
             fontWeight: 700,
             fontStyle: "italic" as const,
             color: "#000000",
@@ -270,7 +291,7 @@ function renderLiturgy(
           width: "100%",
           textAlign: "center" as const,
           fontFamily: "Source Serif Pro",
-          fontSize: 36,
+          fontSize: 54,
           fontWeight: 700,
           fontStyle: "italic" as const,
           color: "#000000",
@@ -321,7 +342,7 @@ function renderReading(
         width: "100%",
         textAlign: "center" as const,
         fontFamily: "Source Serif Pro",
-        fontSize: 32,
+        fontSize: 46,
         fontWeight: 700,
         fontStyle: "italic" as const,
         color: "#000000",
@@ -339,7 +360,7 @@ function renderReading(
         width: "100%",
         textAlign: "center" as const,
         fontFamily: "Source Serif Pro",
-        fontSize: 52,
+        fontSize: 76,
         fontWeight: 400,
         fontStyle: "normal" as const,
         color: "#000000",
@@ -425,7 +446,7 @@ function renderHymnBlock(block: HymnBlock, key: number): React.ReactElement {
             fontSize: 48,
             fontWeight: 400,
             fontStyle: "normal" as const,
-            lineHeight: 1.4,
+            lineHeight: 1.3,
             color: "#000000",
             whiteSpace: "nowrap" as const,
             // Lyrics hang to the right of the tag's left edge.
