@@ -116,15 +116,12 @@ Source layout:
 
 ## Project status
 
-Stages 1–4 complete: Upload → Review → Preview → Build is end-to-end, and the
-hymn library editor handles week-to-week edits. Stage 5 (hybrid OBS assembly —
-splicing generated content scenes into a base scene collection) is in progress;
-the build now emits a full collection with base scenes plus per-section content
-scenes. See [`IMPLEMENTATION_PLAN.md`](./IMPLEMENTATION_PLAN.md) for the stage
-tracker.
+Feature-complete: Upload → Review → Preview → Build is end-to-end, the hymn
+library editor handles week-to-week edits, and Build emits a full OBS scene
+collection — your base scenes (cameras, audio, Intro/Welcome/Thanks/Outro) with
+per-section content scenes spliced in, in service order.
 
 ## More docs
 
 - [`CLAUDE.md`](./CLAUDE.md) — agent-facing guide (stack details, conventions,
   gotchas, version control rules).
-- [`IMPLEMENTATION_PLAN.md`](./IMPLEMENTATION_PLAN.md) — staged work tracker.

@@ -422,8 +422,11 @@ describe("expandPlan — copyright propagation", () => {
       "CCLI License No. 236495, streaming lic No. 20373402";
 
     const songPlan: ServicePlan = {
-      date: "2026-06-16",
-      theme: "Test",
+      metadata: {
+        serviceDate: "2026-06-16",
+        liturgicalDay: "Test",
+        church: { name: "Test Church" },
+      },
       sections: [
         {
           kind: "song",
@@ -461,8 +464,11 @@ describe("expandPlan — copyright propagation", () => {
 
   it("hymn slides for a library song without copyright have copyright undefined", () => {
     const songPlan: ServicePlan = {
-      date: "2026-06-16",
-      theme: "Test",
+      metadata: {
+        serviceDate: "2026-06-16",
+        liturgicalDay: "Test",
+        church: { name: "Test Church" },
+      },
       sections: [
         {
           kind: "song",

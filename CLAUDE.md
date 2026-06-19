@@ -34,20 +34,21 @@ bundle; volunteers run OBS during the service.
 - `data/hymns.json` — hymn library (4 hymns currently)
 
 ## Stages & planning
-- `IMPLEMENTATION_PLAN.md` tracks staged work. Update `Status:` in place as you
-  progress; delete the file when all stages are done (per user's global rules).
-- Active stages: (1) thin slice, (2) PDF parser, (3) themed rendering, (3.5)
-  navigation polish + README, (4) hymn library editor + section split, (5)
-  hybrid OBS assembly with base template.
+- All planned stages are complete: (1) thin slice, (2) PDF parser, (3) themed
+  rendering, (3.5) navigation polish + README, (4) hymn library editor +
+  section split, (5) hybrid OBS assembly with base template. The staged
+  `IMPLEMENTATION_PLAN.md` tracker was retired per the global rule (delete when
+  done); git history holds the stage-by-stage record.
+- For new staged work, recreate `IMPLEMENTATION_PLAN.md` with the same format
+  and delete it again when finished.
 
 ## Documentation
-Three docs serve three audiences — keep them in sync.
+Two docs serve two audiences — keep them in sync.
 
 - **`README.md`** — user-facing. What this is, how to run it, what to click.
   Stays under one screen of scroll.
 - **`CLAUDE.md`** (this file) — agent-facing. Stack, conventions, gotchas,
   references. Tribal knowledge.
-- **`IMPLEMENTATION_PLAN.md`** — task-facing. Staged work tracker.
 
 When a change affects the **user workflow** (new UI step, new page, new
 affordance, new keyboard shortcut) or the **quickstart** (new env var, new
