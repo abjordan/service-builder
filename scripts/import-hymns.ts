@@ -24,29 +24,43 @@ const KNOWN_SONGS: Array<{ title: string; authors: string }> = [
 // PPTX text extraction via unzip + regex
 // ---------------------------------------------------------------------------
 
-/** Extract all <a:t>...</a:t> text runs from a single slide XML. */
+function decodeXmlEntities(s: string): string {
+  return s
+    .replace(/&lt;/g, "<")
+    .replace(/&gt;/g, ">")
+    .replace(/&quot;/g, '"')
+    .replace(/&#39;/g, "'")
+    .replace(/&amp;/g, "&"); // last, so &amp;lt; doesn't double-decode
+}
+
+/**
+ * Extract one line per <a:p> paragraph from a slide, joining the paragraph's
+ * <a:t> runs. PowerPoint splits a single line across runs at formatting
+ * changes (e.g. the CCLI line becomes "…streaming " + "lic" + " No. 20373402"),
+ * and the inter-run spaces live in the run text — so joining with "" rebuilds
+ * the line. Each lyric line is its own paragraph, so this is identity for them.
+ */
 function extractTextRuns(pptxPath: string, slideNum: number): string[] {
   const entryPath = `ppt/slides/slide${slideNum}.xml`;
   const xml = execSync(`unzip -p "${pptxPath}" "${entryPath}"`, {
     encoding: "utf-8",
     maxBuffer: 4 * 1024 * 1024,
   });
-  const runs: string[] = [];
-  const re = /<a:t>([^<]*)<\/a:t>/g;
-  let m: RegExpExecArray | null;
-  while ((m = re.exec(xml)) !== null) {
-    const text = m[1]
-      .replace(/&amp;/g, "&")
-      .replace(/&lt;/g, "<")
-      .replace(/&gt;/g, ">")
-      .replace(/&quot;/g, '"')
-      .replace(/&#39;/g, "'")
-      .trim();
-    if (text.length > 0) {
-      runs.push(text);
+  const lines: string[] = [];
+  const paraRe = /<a:p>([\s\S]*?)<\/a:p>/g;
+  const runRe = /<a:t>([^<]*)<\/a:t>/g;
+  let pm: RegExpExecArray | null;
+  while ((pm = paraRe.exec(xml)) !== null) {
+    let joined = "";
+    let rm: RegExpExecArray | null;
+    runRe.lastIndex = 0;
+    while ((rm = runRe.exec(pm[1])) !== null) {
+      joined += decodeXmlEntities(rm[1]);
     }
+    const line = joined.trim();
+    if (line.length > 0) lines.push(line);
   }
-  return runs;
+  return lines;
 }
 
 /** Count total slides by checking which slide XMLs exist in the archive. */
@@ -202,15 +216,19 @@ function main(): void {
       .replace(/\s+/g, "-");
 
     const hymnSlides: HymnSlideContent[] = [];
+    // Attribution / copyright / CCLI lines, captured from the header of the
+    // first slide (every slide in a song repeats the same header).
+    let copyright: string | undefined;
 
     for (const slide of group.slides) {
-      // Split each PPTX slide into its labeled sections. Header runs (title,
-      // copyright, attribution) precede the first section label and are
-      // skipped wholesale; a slide commonly carries a verse AND its chorus, so
-      // each label starts a new block to keep verse and refrain distinct.
+      // Split each PPTX slide into its labeled sections. Header lines (title,
+      // copyright, attribution) precede the first section label; a slide
+      // commonly carries a verse AND its chorus, so each label starts a new
+      // block to keep verse and refrain distinct.
       type Block = { tag: string; lines: string[] };
       const blocks: Block[] = [];
       let current: Block | null = null;
+      const header: string[] = [];
 
       for (const run of slide.runs) {
         // The song title repeats on every slide. Match it EXACTLY — a lyric
@@ -224,9 +242,12 @@ function main(): void {
           continue;
         }
 
-        // Before the first label everything is header / copyright / attribution
-        // (often fragmented across many runs) — skip it.
-        if (!current) continue;
+        // Everything before the first label is the header: attribution /
+        // copyright / CCLI. Keep it for the slide footer.
+        if (!current) {
+          header.push(run);
+          continue;
+        }
 
         // Boilerplate that appears mid-lyric, e.g. the stanza-plan line
         // "Verse 1, Chorus, Verse 2, ...".
@@ -235,6 +256,8 @@ function main(): void {
         current.lines.push(run);
       }
       if (current && current.lines.length > 0) blocks.push(current);
+
+      if (!copyright && header.length > 0) copyright = header.join("\n");
 
       // Each PPTX slide is one on-screen slide. Mark the first block of each
       // slide (after the very first) as a manual break so the expander keeps a
@@ -252,6 +275,7 @@ function main(): void {
       id,
       title: group.meta.title,
       authors: group.meta.authors,
+      ...(copyright ? { copyright } : {}),
       slides: hymnSlides,
     };
     songs.push(hymn);
