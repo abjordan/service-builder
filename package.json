@@ -10,6 +10,7 @@
     "test": "vitest",
     "test:ui": "vitest --ui",
     "build:stage1": "tsx scripts/build-stage1.ts",
+    "build:bundle": "tsx scripts/build-bundle-example.ts",
     "derive:base-template": "tsx scripts/derive-base-template.ts"
   },
   "dependencies": {

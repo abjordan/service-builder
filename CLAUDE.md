@@ -142,6 +142,11 @@ This repo uses **git**. Default branch is `main`.
   `RENDER_PREVIEW=1`)
 - `npm run lint` — Next/ESLint
 - `npm run build` — production build (also runs typecheck)
+- `npm run build:bundle [-- /abs/extract/path]` — build the full OBS bundle from
+  the example plan straight to `out/`, extracted import-ready (no dev server).
+  For manual OBS testing.
+- `npm run derive:base-template` — regenerate `lib/base-template.json` from the
+  reference collection.
 
 ## Gotchas
 - **satori needs WOFF v1, not WOFF2.** Verify with `xxd -l 4 <file>` showing
