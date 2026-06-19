@@ -160,6 +160,12 @@ export async function buildServicePlanBundle(
     opts.collectionName ??
     `${plan.metadata.serviceDate} Livestream`;
 
+  // Everything nests under a dated top-level directory, matching the OBS
+  // worship-folder layout (e.g. .../Worship/2026-06-14/...). Extracting the zip
+  // at obsExtractPath therefore creates obsExtractPath/<date>/, which is exactly
+  // the prefix baked into each slideshow's absolute path below.
+  const bundleDir = sanitizeId(plan.metadata.serviceDate);
+
   // 1. Load library and expand plan.
   const library = readLibrary();
   const { slides: expandedSlides, warnings } = expandPlan(plan, { library });
@@ -183,7 +189,7 @@ export async function buildServicePlanBundle(
     const nn = pad(i + 1);
     const safeId = sanitizeId(expanded.id);
     const filename = `assets/${nn}-${safeId}.png`;
-    const absPath = path.posix.join(obsExtractPath, filename);
+    const absPath = path.posix.join(obsExtractPath, bundleDir, filename);
     const label = expanded.label ?? expanded.id;
 
     const png = await renderSlide(expanded.slide);
@@ -225,6 +231,9 @@ export async function buildServicePlanBundle(
     "IMPORTANT: Extract this zip to EXACTLY the following path:",
     `  ${obsExtractPath}`,
     "",
+    `The zip contains a "${bundleDir}" folder, so extracting here produces:`,
+    `  ${path.posix.join(obsExtractPath, bundleDir)}`,
+    "",
     "OBS slideshow sources reference slides by absolute path. If you extract",
     "the zip to a different location, OBS will show broken sources.",
     "",
@@ -232,7 +241,7 @@ export async function buildServicePlanBundle(
     "  1. Extract this zip to the path shown above.",
     "  2. Open OBS.",
     "  3. Scene Collection menu > Import.",
-    "  4. Select: scene_collection.json (from the extracted folder).",
+    `  4. Select: ${bundleDir}/scene_collection.json (in the extracted folder).`,
     "  5. Switch to the imported collection.",
     "",
     "The collection keeps your base scenes (Intro, Welcome, Thanks, Outro,",
@@ -258,11 +267,13 @@ export async function buildServicePlanBundle(
     archive.on("error", reject);
     archive.pipe(passThrough);
 
-    archive.append(sceneCollectionJson, { name: "scene_collection.json" });
+    archive.append(sceneCollectionJson, {
+      name: `${bundleDir}/scene_collection.json`,
+    });
     for (const r of rendered) {
-      archive.append(r.png, { name: r.filename });
+      archive.append(r.png, { name: `${bundleDir}/${r.filename}` });
     }
-    archive.append(readme, { name: "README.txt" });
+    archive.append(readme, { name: `${bundleDir}/README.txt` });
 
     archive.finalize();
   });

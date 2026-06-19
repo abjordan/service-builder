@@ -48,13 +48,16 @@ async function main(): Promise<void> {
   fs.writeFileSync(zipPath, zip);
   console.log(`Zip:     ${zipPath} (${zip.byteLength.toLocaleString()} bytes)`);
 
-  // Extract to the baked path so the bundle is import-ready.
+  // Extract to the baked path so the bundle is import-ready. The zip nests
+  // everything under a <serviceDate> folder, so this produces
+  // <extractPath>/<serviceDate>/...
   fs.mkdirSync(extractPath, { recursive: true });
   execSync(`unzip -o "${zipPath}" -d "${extractPath}"`, { stdio: "ignore" });
-  console.log(`Extracted to: ${extractPath}`);
+  const bundleDir = path.join(extractPath, plan.metadata.serviceDate);
+  console.log(`Extracted to: ${bundleDir}`);
 
   console.log("\nIn OBS: Scene Collection > Import > select:");
-  console.log(`  ${path.join(extractPath, "scene_collection.json")}`);
+  console.log(`  ${path.join(bundleDir, "scene_collection.json")}`);
 }
 
 main().catch((err: unknown) => {

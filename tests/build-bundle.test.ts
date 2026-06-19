@@ -175,6 +175,15 @@ describe("buildServicePlanBundle", () => {
     expect(str).toContain("assets/01-");
   });
 
+  it("nests everything under a dated top-level directory", async () => {
+    const result = await buildServicePlanBundle(MINIMAL_PLAN, SAMPLE_BUILD_OPTS);
+    const str = result.toString("latin1");
+    // serviceDate of MINIMAL_PLAN is 2026-06-14.
+    expect(str).toContain("2026-06-14/scene_collection.json");
+    expect(str).toContain("2026-06-14/assets/01-");
+    expect(str).toContain("2026-06-14/README.txt");
+  });
+
   it("number of zip entries equals number of slides plus 2 (scene_collection + README)", async () => {
     // The minimal plan has:
     //   - 1 liturgy section with 4 spoken items → auto-pair logic applies:
